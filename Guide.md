@@ -16,6 +16,8 @@
 | 일시 | 변경 | 작성 |
 |---|---|---|
 | 2026-09-21 | 최초 작성. PHASE 0 환경 점검, PHASE 1 기획·소스 분석 결과와 Step 1~6 계획 | AI(Claude Code) 작성, 사용자 검토 전 |
+| 2026-09-21 | 사용자 "진행" 승인. 3.5 디자인 제안은 제안값 그대로 적용, 앱 표시 이름은 `AIPRGATE` 유지 | 기록 |
+| 2026-09-21 | 2.5 추가 의존성 버전 확정: lifecycle-*-compose 2.9.4, coroutines-test 1.9.0 (Step 1), Room 2.8.5·KSP 2.3.12 (Step 2). `room-ktx`는 불필요해 미추가. 근거는 `docs/development-progress.md` | AI 작성 |
 
 ---
 

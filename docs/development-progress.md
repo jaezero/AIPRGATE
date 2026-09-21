@@ -121,3 +121,89 @@ Step 2 실제 저장과 앱 동작. 진입 조건은 다음과 같다.
 - Step 1 변경을 사용자가 검토하고 커밋 여부를 결정.
 - Room·KSP 다운로드를 위한 네트워크 사용 가능.
 - AGP 9.4.1 내장 Kotlin과 KSP 호환 확인. 실패하면 원인과 대안을 보고하고 승인 후 진행.
+
+---
+
+## 2026-09-21 — Step 2: 실제 저장과 앱 동작
+
+브랜치 `feature/step1-app-structure`. Step 1은 `c2fb4d4`로 커밋했다(사용자가 Step 2 진행을 지시해 Step 1 결과를 확정한 것으로 보고, 증거 분리를 위해 로컬 커밋). Step 2 변경은 미커밋 상태다.
+
+### 1. 구현한 기능과 요구사항 ID
+
+| 요구사항 | 구현·검증 | 상태 |
+|---|---|---|
+| APP-01~04 | Room `tasks` 테이블, DAO 조회(ID 오름차순)·삽입·완료 변경·삭제 | 계측 테스트 통과 |
+| APP-05 재실행 후 보존 | Room 파일 DB `aiprgate.db`. 앱 강제 종료 후 콜드 스타트에서 항목·완료 상태 유지 | 에뮬레이터 확인 |
+| APP-06 실패 표시 | 없는 항목의 완료 변경은 실패로 알림(성공 위장 방지). 실패·조회 실패 화면을 Compose UI 테스트로 확인 | Step 1 미검증 항목 해소 |
+| APP-07 진행 중 비활성화 | 추가 버튼·항목 삭제 버튼 비활성화를 UI 테스트로 확인 | 해소 |
+| APP-08 | `RoomTaskRepository`가 같은 인터페이스를 구현. Application에서 단일 인스턴스 | 확인 |
+| APP-09 | 아래 3절 검토 | 검토 기록 |
+| TST-02 | DAO 6건, Repository 3건, 파일 DB 재오픈 1건 계측 테스트 | 통과 |
+| TST-03 | JVM 테스트 전체 실행, DB·DAO 구현 변경에 따른 계측 테스트 실행 | 수행 |
+
+### 2. 생성·수정 파일
+
+| 파일 | 변경 |
+|---|---|
+| `gradle/libs.versions.toml`, `build.gradle.kts`, `app/build.gradle.kts` | Room 2.8.5(`room-runtime`, `room-compiler`), KSP 플러그인 2.3.12, 스키마 경로 인자 |
+| `app/src/main/.../data/local/TaskEntity.kt`, `TaskDao.kt`, `AppDatabase.kt`, `RoomTaskRepository.kt` | Room 구현 |
+| `app/src/main/.../AiPrGateApplication.kt`, `AndroidManifest.xml` | DB·저장소 단일 인스턴스, `android:name` 등록 |
+| `app/src/main/.../MainActivity.kt` | Room 저장소 연결 |
+| `app/src/main/.../data/InMemoryTaskRepository.kt`, 해당 테스트 | **삭제.** Step 1 임시 구현. `c2fb4d4`에 보존 |
+| `app/schemas/.../1.json` | Room 스키마 버전 1. DB 구조 변경을 PR에서 검토하기 위해 저장소에 포함 |
+| `app/src/androidTest/.../data/local/TaskDaoTest.kt`, `RoomTaskRepositoryTest.kt`, `TaskDatabasePersistenceTest.kt` | 실제 Room 테스트 |
+| `app/src/androidTest/.../ui/tasks/TaskListScreenTest.kt` | 화면 상태 UI 테스트 10건 |
+
+버전 선정 근거:
+- Room 2.8.5는 Google Maven 메타데이터 기준 최신 안정판이다(2026-09-21 조회).
+- KSP는 2.3.1에서 AGP 9 내장 Kotlin을 지원했고, 2.3.6·2.3.10에서 관련 수정이 있었다. 2.3.12는 최소 AGP를 8.12.0으로 올렸다(GitHub 릴리스 노트).
+- Guide 2.5의 `room-ktx`는 Room 2.8 runtime에 코루틴 API가 포함되어 추가하지 않았다. 빌드로 확인했다.
+
+### 3. APP-09 수동 검토 (debug 병합 Manifest 기준)
+
+| 항목 | 결과 | 판단 |
+|---|---|---|
+| 권한 | 위험 권한·`INTERNET` 없음. androidx가 추가한 앱 전용 서명 권한 `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`만 있음 | 네트워크·민감 권한 요청 없음 |
+| exported=true | `MainActivity`(런처), debug 전용 `PreviewActivity`·`ComponentActivity`(ui-tooling·ui-test-manifest), `ProfileInstallReceiver`(`android.permission.DUMP` 보호) | debug 전용 두 개는 release 병합 Manifest에 없음을 확인. 일괄 취약 판정하지 않음 |
+| `debuggable=true` | debug variant 기본값 | 기획 4.2에 따라 차단 대상 아님 |
+| `allowBackup=true`, 기본 백업 규칙 | Room DB가 자동 백업 대상에 포함될 수 있음 | 저장 데이터는 테스트용 할 일 제목뿐이라 현재 유지. 실사용 민감 데이터를 다루면 재검토 |
+| 로그 | `app/src/main`에 `Log`·`println`·`printStackTrace` 없음 | 사용자 데이터 로그 출력 없음 |
+
+### 4. 검사 명령과 실제 결과
+
+| 명령 | 결과 |
+|---|---|
+| `gradlew :app:assembleDebug :app:testDebugUnitTest :app:connectedDebugAndroidTest --rerun-tasks` | BUILD SUCCESSFUL, 37.9초(캐시 있는 로컬). [로그](results/step2-20260921/build-test.log) |
+| JVM 테스트 | `TaskListViewModelTest` 21건, 템플릿 1건. 실패 0 |
+| 계측 테스트 (Pixel_9_ASCII API 35) | 21건 통과: `TaskListScreenTest` 10, `TaskDaoTest` 6, `RoomTaskRepositoryTest` 3, `TaskDatabasePersistenceTest` 1, 템플릿 1. [결과 XML](results/step2-20260921/connected/) |
+| 변형 확인 | DAO 정렬을 DESC로 바꾸면 계측 테스트 3건 실패(`expected [1, 2, 3] but was [3, 2, 1]` 포함). 원복 후 재실행 21건 통과 |
+| 재실행 보존 | 항목 3개 추가 → 1개 완료 → 1개 삭제 → `am force-stop`(pid 없음 확인) → 콜드 스타트. 남은 2개와 완료 상태 일치. [종료 전](results/step2-20260921/s1-before-restart.png), [재실행 후](results/step2-20260921/s2-after-restart.png) |
+| `lintDebug` | 미실행. Step 4 범위 |
+
+APK SHA-256: `cdf7c28a41c90df5069bd787dbb372cbf58b1671955ef3e9a516789c26c43b2c`
+
+실패·무효 시도:
+- 재실행 보존 1차 시도는 무효다. 조작 스크립트의 뒤로가기 키가 키보드가 닫힌 상태에서 앱을 종료시켰고, 이후 탭이 홈 화면에 입력되었다. [당시 화면](results/step2-20260921/invalid-attempt1-home-screen.png). 앱 결함이 아니며 단계별로 화면을 확인하는 방식으로 다시 수행했다.
+- 거부된 명령 1건: 파일 삭제를 포함한 명령이 사용자에게 거부 표시되었으나 실제로는 실행이 끝난 상태였다. 사용자 재지시로 그 상태에서 계속했다.
+
+### 5. Android Studio에서 확인할 순서
+
+1. Gradle Sync 후 KSP가 Room 코드를 생성하는지 확인한다(`Build > Make Project`).
+2. `app/src/androidTest`를 에뮬레이터에서 실행한다.
+3. 앱에서 한글 제목을 추가하고, 완료·삭제 후 앱을 완전히 종료했다가 다시 실행한다.
+4. App Inspection > Database Inspector에서 `aiprgate.db`의 `tasks` 테이블을 확인한다.
+
+### 6. 남은 문제
+
+- 계측 테스트 XML의 한글 테스트 이름이 깨져 기록된다. 이 PC의 기본 인코딩(MS949)과 관련된 것으로 보이며, 원인은 확정하지 않았다. 결과 판정에는 영향이 없다. JVM 테스트 XML은 정상이다. Step 3 이후 CI 결과 파싱에서 확인이 필요하다.
+- Gradle 실행 시 JDK 25의 `sun.misc.Unsafe` 경고가 출력된다. Gradle 도구 쪽 protobuf에서 나오며 앱 코드와 무관하다.
+- 한글 제목 입력은 에뮬레이터 자동 입력 제약으로 여전히 미확인이다.
+- Android Studio 안에서의 Sync·Run·Debug(ENV-01)는 사용자 확인이 필요하다.
+- 루트에 사용자 파일(성과공유회 포스터 PPTX와 `~$` 잠금 파일)이 생겼다. 건드리지 않았고 커밋하지 않는다. `.gitignore` 추가 여부는 사용자 결정이다.
+
+### 7. 다음 Step과 진입 조건
+
+Step 3 최소 PR 검사 연결. 진입 조건:
+- Step 2 변경 커밋 여부 결정.
+- GitHub 저장소 소유 계정, 공개/비공개 여부, 보호 규칙 사용 가능 플랜 확인(ENV-05).
+- `gh` CLI 설치 여부 결정. 미설치 시 GitHub 웹에서 사용자가 저장소를 만들고 remote URL을 알려 주는 방식도 가능.

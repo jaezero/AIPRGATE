@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="21" failures="0" errors="0" skipped="0" time="0.000" timestamp="2026-09-21T10:03:23" hostname="localhost">
+  <testsuite name="com.example.aiprgate.ExampleInstrumentedTest" tests="1" failures="0" errors="0" skipped="0" time="0.001" timestamp="2026-09-21T10:03:23" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="useAppContext" classname="com.example.aiprgate.ExampleInstrumentedTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.data.local.RoomTaskRepositoryTest" tests="3" failures="0" errors="0" skipped="0" time="0.067" timestamp="2026-09-21T10:03:23" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="이미_없는_항목의_삭제는_다른_항목에_영향이_없다" classname="com.example.aiprgate.data.local.RoomTaskRepositoryTest" time="0.037" />
+    <testcase name="추가_변경_삭제가_도메인_모델로_반영된다" classname="com.example.aiprgate.data.local.RoomTaskRepositoryTest" time="0.023" />
+    <testcase name="없는_항목의_완료_변경은_실패로_알린다" classname="com.example.aiprgate.data.local.RoomTaskRepositoryTest" time="0.007" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.data.local.TaskDaoTest" tests="6" failures="0" errors="0" skipped="0" time="0.054" timestamp="2026-09-21T10:03:23" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="삭제는_대상_항목만_지운다" classname="com.example.aiprgate.data.local.TaskDaoTest" time="0.010" />
+    <testcase name="완료_변경은_대상_항목에만_적용된다" classname="com.example.aiprgate.data.local.TaskDaoTest" time="0.010" />
+    <testcase name="삽입하면_ID가_생성되고_미완료로_저장된다" classname="com.example.aiprgate.data.local.TaskDaoTest" time="0.009" />
+    <testcase name="조회는_ID_오름차순이다" classname="com.example.aiprgate.data.local.TaskDaoTest" time="0.010" />
+    <testcase name="같은_제목도_별도_항목으로_저장된다" classname="com.example.aiprgate.data.local.TaskDaoTest" time="0.008" />
+    <testcase name="없는_항목의_완료_변경은_0행이다" classname="com.example.aiprgate.data.local.TaskDaoTest" time="0.007" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.data.local.TaskDatabasePersistenceTest" tests="1" failures="0" errors="0" skipped="0" time="0.026" timestamp="2026-09-21T10:03:23" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="DB를_닫고_다시_열어도_저장한_항목과_상태가_유지된다" classname="com.example.aiprgate.data.local.TaskDatabasePersistenceTest" time="0.026" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.ui.tasks.TaskListScreenTest" tests="10" failures="0" errors="0" skipped="0" time="15.881" timestamp="2026-09-21T10:03:23" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="완료_변경_실패_안내를_표시한다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="2.308" />
+    <testcase name="진행_중인_항목의_삭제만_비활성화된다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="1.760" />
+    <testcase name="빈_상태_문구를_표시한다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="1.548" />
+    <testcase name="로딩_중_표시를_한다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="0.953" />
+    <testcase name="추가_진행_중에는_추가_버튼이_비활성화된다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="1.179" />
+    <testcase name="삭제_실패_안내를_표시한다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="1.431" />
+    <testcase name="추가_가능할_때는_추가_버튼이_활성화된다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="1.873" />
+    <testcase name="공백_입력_오류_문구를_표시한다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="1.085" />
+    <testcase name="조회_실패_화면에서_다시_시도를_누르면_재조회한다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="1.737" />
+    <testcase name="저장_실패_안내와_입력값이_함께_보이고_다시_시도로_재요청한다" classname="com.example.aiprgate.ui.tasks.TaskListScreenTest" time="2.007" />
+  </testsuite>
+</testsuites>
