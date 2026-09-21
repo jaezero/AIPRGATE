@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AIPRGATETheme {
-                val repository = (application as AiPrGateApplication).taskRepositry
+                val repository = (application as AiPrGateApplication).taskRepository
                 val taskListViewModel: TaskListViewModel = viewModel(
                     factory = TaskListViewModel.factory { repository },
                 )
