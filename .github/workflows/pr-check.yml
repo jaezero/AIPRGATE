@@ -1,0 +1,224 @@
+# AI-PR Gate 단일 PR 검사 workflow (SRS CI-01~08).
+#
+# Step 3 상태:
+#   - app-check : debug 빌드 후 JVM 테스트. 실제 검사.
+#   - pr-info, quality-check, secret-check : 아직 연결하지 않음. skipped 로 기록하고 job 을 실패시킨다.
+#   - quality-gate : 모든 필수 결과를 집계한다. 미연결 검사가 있으므로 이 단계에서는 통과하지 않는다.
+#
+# 보안 원칙 (NFR-01~03):
+#   - pull_request 이벤트만 사용한다. pull_request_target 은 사용하지 않는다.
+#   - 권한은 contents: read 만 부여한다. 비밀값을 전달하지 않는다.
+#   - PR 제목·본문 같은 자유 텍스트를 run 스크립트에 직접 넣지 않는다.
+#   - Actions 는 커밋 SHA 로 고정한다 (2026-09-21 기준 최신 릴리스).
+
+name: pr-check
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+  RESULTS_DIR: gate-results
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  pr-info:
+    name: pr-info
+    # 외부 fork PR 은 지원 범위 밖이다. 실행하지 않으면 결과가 없어 gate 가 통과시키지 않는다 (NFR-03).
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: 미연결 결과 기록 (Step 5 에서 PR 본문 검사로 교체)
+        run: python tools/gate/result.py placeholder --check-id pr-info --reason "PR 본문 검사(PR-03)는 Step 5 에서 연결" --out "$RESULTS_DIR"
+      - name: 결과 업로드
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: result-pr-info-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.RESULTS_DIR }}
+          if-no-files-found: ignore
+          retention-days: 30
+
+  app-check:
+    name: app-check
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: "25"
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: 실행 환경 기록
+        run: |
+          mkdir -p "$RESULTS_DIR"
+          {
+            echo "runner_image=${ImageOS:-unknown} ${ImageVersion:-unknown}"
+            echo "tested_sha=$(git rev-parse HEAD)"
+            echo "head_sha=$HEAD_SHA"
+            echo "base_sha=$BASE_SHA"
+            java -version 2>&1
+            ./gradlew --version 2>&1
+            echo "ANDROID_HOME=$ANDROID_HOME"
+          } | tee "$RESULTS_DIR/environment.txt"
+      - name: Android SDK 준비 (compileSdk 37)
+        run: |
+          set -o pipefail
+          SDKM="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$SDKM" --licenses > /dev/null || true
+          "$SDKM" "platforms;android-37.0" "build-tools;37.0.0" 2>&1 | tail -5 | tee "$RESULTS_DIR/sdk-install.txt"
+      - name: debug 빌드 후 JVM 테스트
+        id: gradle
+        run: |
+          echo "started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+          set +e
+          ./gradlew :app:assembleDebug --console=plain --no-daemon > "$RESULTS_DIR/build.log" 2>&1
+          build_exit=$?
+          echo "build_exit=$build_exit" >> "$GITHUB_OUTPUT"
+          if [ "$build_exit" -eq 0 ]; then
+            ./gradlew :app:testDebugUnitTest --console=plain --no-daemon > "$RESULTS_DIR/test.log" 2>&1
+            echo "test_exit=$?" >> "$GITHUB_OUTPUT"
+          else
+            echo "test_exit=" >> "$GITHUB_OUTPUT"
+          fi
+          tail -40 "$RESULTS_DIR/build.log"
+          [ -f "$RESULTS_DIR/test.log" ] && tail -40 "$RESULTS_DIR/test.log"
+          exit 0
+      - name: 결과 정규화
+        env:
+          BUILD_EXIT: ${{ steps.gradle.outputs.build_exit }}
+          TEST_EXIT: ${{ steps.gradle.outputs.test_exit }}
+          STARTED_AT: ${{ steps.gradle.outputs.started_at }}
+        run: |
+          mkdir -p "$RESULTS_DIR/test-results"
+          cp -r app/build/test-results/testDebugUnitTest/. "$RESULTS_DIR/test-results/" 2>/dev/null || true
+          args=(--build-exit "${BUILD_EXIT:-99}" --build-log "$RESULTS_DIR/build.log"
+                --test-results "$RESULTS_DIR/test-results" --started-at "$STARTED_AT"
+                --tool-version "$(./gradlew --version 2>/dev/null | grep -E '^Gradle ' | head -1); $(java -version 2>&1 | head -1)"
+                --out "$RESULTS_DIR")
+          if [ -n "$TEST_EXIT" ]; then args+=(--test-exit "$TEST_EXIT"); fi
+          python tools/gate/app_check.py "${args[@]}"
+      - name: 결과 업로드
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: result-app-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.RESULTS_DIR }}
+          if-no-files-found: ignore
+          retention-days: 30
+
+  quality-check:
+    name: quality-check
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: 미연결 결과 기록 (Step 4 파일럿 후 품질 룰 연결)
+        run: python tools/gate/result.py placeholder --check-id quality-check --reason "품질 룰은 Step 4 파일럿 후 연결" --out "$RESULTS_DIR"
+      - name: 결과 업로드
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: result-quality-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.RESULTS_DIR }}
+          if-no-files-found: ignore
+          retention-days: 30
+
+  secret-check:
+    name: secret-check
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: 미연결 결과 기록 (Step 4 파일럿 후 시크릿 룰 연결)
+        run: python tools/gate/result.py placeholder --check-id secret-check --reason "시크릿 룰은 Step 4 파일럿 후 연결" --out "$RESULTS_DIR"
+      - name: 결과 업로드
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: result-secret-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.RESULTS_DIR }}
+          if-no-files-found: ignore
+          retention-days: 30
+
+  quality-gate:
+    name: quality-gate
+    needs: [pr-info, app-check, quality-check, secret-check]
+    # 선행 job 이 실패해도 집계를 실행한다 (CI-04). 전체 취소 시에는 실행되지 않으며 성공이 남지 않는다.
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: 집계 코드 자체 테스트
+        run: python -m unittest discover -s tools/gate/tests -t . -v
+      - name: 같은 run 의 결과 내려받기
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        continue-on-error: true
+        with:
+          pattern: result-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: downloaded
+      - name: 판정
+        env:
+          NEEDS_JSON: ${{ toJSON(needs) }}
+        run: |
+          mkdir -p downloaded
+          python tools/gate/gate.py \
+            --results downloaded \
+            --run-id "$GITHUB_RUN_ID" --run-attempt "$GITHUB_RUN_ATTEMPT" \
+            --head-sha "$HEAD_SHA" --base-sha "$BASE_SHA" \
+            --policy-revision "$(python tools/gate/result.py revision)" \
+            --repository "$GITHUB_REPOSITORY" --pr-number "$PR_NUMBER" \
+            --needs-json "$NEEDS_JSON" \
+            --summary "$GITHUB_STEP_SUMMARY" \
+            --out verdict.json \
+            --annotations
+      - name: 판정 업로드
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: verdict-${{ github.run_id }}-${{ github.run_attempt }}
+          path: verdict.json
+          if-no-files-found: ignore
+          retention-days: 30

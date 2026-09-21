@@ -1,0 +1,96 @@
+test_JUnit_결과가_없으면_실행_오류 (tools.gate.tests.test_app_check.AppCheckTest.test_JUnit_결과가_없으면_실행_오류) ... ok
+test_깨진_XML_은_빈_결과로_바꾸지_않는다 (tools.gate.tests.test_app_check.AppCheckTest.test_깨진_XML_은_빈_결과로_바꾸지_않는다) ... ok
+test_빌드와_테스트가_성공하면_completed_이고_finding_없음 (tools.gate.tests.test_app_check.AppCheckTest.test_빌드와_테스트가_성공하면_completed_이고_finding_없음) ... ok
+test_성공_종료인데_XML_에_실패가_있으면_불일치_오류 (tools.gate.tests.test_app_check.AppCheckTest.test_성공_종료인데_XML_에_실패가_있으면_불일치_오류) ... ok
+test_실패한_테스트는_이름별_BLOCK (tools.gate.tests.test_app_check.AppCheckTest.test_실패한_테스트는_이름별_BLOCK) ... ok
+test_컴파일_오류는_위치가_있는_BLOCK_이고_테스트는_skipped (tools.gate.tests.test_app_check.AppCheckTest.test_컴파일_오류는_위치가_있는_BLOCK_이고_테스트는_skipped) ... ok
+test_컴파일_외_빌드_실패는_실행_오류이고_코드_위반이_아니다 (tools.gate.tests.test_app_check.AppCheckTest.test_컴파일_외_빌드_실패는_실행_오류이고_코드_위반이_아니다) ... ok
+test_테스트_task_실패인데_실패_테스트가_없으면_실행_오류 (tools.gate.tests.test_app_check.AppCheckTest.test_테스트_task_실패인데_실패_테스트가_없으면_실행_오류) ... ok
+test_BLOCK_finding_이_있으면_POLICY_FAIL (tools.gate.tests.test_gate.GateTest.test_BLOCK_finding_이_있으면_POLICY_FAIL) ... ok
+test_CLI_는_PASS_일때만_종료코드_0 (tools.gate.tests.test_gate.GateTest.test_CLI_는_PASS_일때만_종료코드_0) ... ok
+test_JSON_파싱_오류는_CHECK_ERROR이고_빈_결과로_바꾸지_않는다 (tools.gate.tests.test_gate.GateTest.test_JSON_파싱_오류는_CHECK_ERROR이고_빈_결과로_바꾸지_않는다) ... ok
+test_WARN_만_있으면_통과하고_경고로_표시 (tools.gate.tests.test_gate.GateTest.test_WARN_만_있으면_통과하고_경고로_표시) ... ok
+test_cancelled_결과는_통과가_아니다 (tools.gate.tests.test_gate.GateTest.test_cancelled_결과는_통과가_아니다) ... ok
+test_job_이_cancelled_이면_artifact_가_있어도_통과하지_않는다 (tools.gate.tests.test_gate.GateTest.test_job_이_cancelled_이면_artifact_가_있어도_통과하지_않는다) ... ok
+test_needs_JSON_을_읽지_못하면_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_needs_JSON_을_읽지_못하면_CHECK_ERROR) ... needs JSON 파싱 실패: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+ok
+test_skipped_결과는_통과가_아니다 (tools.gate.tests.test_gate.GateTest.test_skipped_결과는_통과가_아니다) ... ok
+test_timeout_은_검사_오류로_구분된다 (tools.gate.tests.test_gate.GateTest.test_timeout_은_검사_오류로_구분된다) ... ok
+test_검사마다_tested_sha_가_다르면_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_검사마다_tested_sha_가_다르면_CHECK_ERROR) ... ok
+test_결과_누락은_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_결과_누락은_CHECK_ERROR) ... ok
+test_결과가_하나도_없으면_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_결과가_하나도_없으면_CHECK_ERROR) ... ok
+test_다른_attempt_의_결과는_사용하지_않는다 (tools.gate.tests.test_gate.GateTest.test_다른_attempt_의_결과는_사용하지_않는다) ... ok
+test_다른_run_의_결과는_사용하지_않는다 (tools.gate.tests.test_gate.GateTest.test_다른_run_의_결과는_사용하지_않는다) ... ok
+test_모든_필수_검사_완료_BLOCK_없음이면_PASS (tools.gate.tests.test_gate.GateTest.test_모든_필수_검사_완료_BLOCK_없음이면_PASS) ... ok
+test_스키마_필드_누락은_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_스키마_필드_누락은_CHECK_ERROR) ... ok
+test_알수없는_policy_action은_스키마_오류 (tools.gate.tests.test_gate.GateTest.test_알수없는_policy_action은_스키마_오류) ... ok
+test_오래된_head_sha_결과는_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_오래된_head_sha_결과는_CHECK_ERROR) ... ok
+test_요약의_파이프_문자는_이스케이프된다 (tools.gate.tests.test_gate.GateTest.test_요약의_파이프_문자는_이스케이프된다) ... ok
+test_위반과_검사오류가_함께_있으면_두_사유를_모두_기록 (tools.gate.tests.test_gate.GateTest.test_위반과_검사오류가_함께_있으면_두_사유를_모두_기록) ... ok
+test_정책_revision_불일치는_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_정책_revision_불일치는_CHECK_ERROR) ... ok
+test_중복_결과는_CHECK_ERROR (tools.gate.tests.test_gate.GateTest.test_중복_결과는_CHECK_ERROR) ... ok
+test_필수_목록에_없는_결과는_판정에_쓰지_않고_경고만 (tools.gate.tests.test_gate.GateTest.test_필수_목록에_없는_결과는_판정에_쓰지_않고_경고만) ... ok
+test_하위_검사가_skipped_이면_필수_미완료 (tools.gate.tests.test_gate.GateTest.test_하위_검사가_skipped_이면_필수_미완료) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.249s
+
+OK
+## quality-gate: ✅ PASS
+
+- PR head `hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh` / base `bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb` / tested `mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm`
+- run `1001` attempt `1` / policy `sha256:rev…`
+
+| 검사 | 실행 상태 |
+|---|---|
+| pr-info | completed |
+| app-check | completed |
+| quality-check | completed |
+| secret-check | completed |
+
+재검사: 코드를 수정해 새 커밋을 push 하거나, 코드 변경 없이 실패한 run 을 다시 실행합니다.
+사람 승인은 이 판정과 별개로 저장소 보호 규칙이 요구합니다.
+
+## quality-gate: ⚠️ CHECK_ERROR
+
+- PR head `hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh` / base `bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb` / tested `mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm`
+- run `1001` attempt `1` / policy `sha256:rev…`
+
+| 검사 | 실행 상태 |
+|---|---|
+| pr-info | missing |
+| app-check | completed |
+| quality-check | completed |
+| secret-check | completed |
+
+### 검사 오류 (코드 위반과 별개, 통과 금지)
+
+| 검사 | 코드 | 내용 |
+|---|---|---|
+| verdict | SCHEMA_ERROR | verdict.json: 필드 누락: schema_version; 필드 누락: repository; 필드 누락: pr_number; 필드 누락: head_sha; 필드 누락: base_sha; 필드 누락: run_id; 필드 누락: run_attempt; 필드 누락: check_id; 필드 누락: policy_revision; 필드 누락: tool; 필드 누락: execution_status; 필드 누락: started_at; 필드 누락: finished_at; 필드 누락: findings; 필드 누락: error; 필드 누락: raw_report |
+| pr-info | MISSING | 결과가 없습니다 (job 미실행·실패·artifact 누락). |
+
+재검사: 코드를 수정해 새 커밋을 push 하거나, 코드 변경 없이 실패한 run 을 다시 실행합니다.
+사람 승인은 이 판정과 별개로 저장소 보호 규칙이 요구합니다.
+
+## quality-gate: ⚠️ CHECK_ERROR
+
+- PR head `hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh` / base `bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb` / tested `mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm`
+- run `1001` attempt `1` / policy `sha256:rev…`
+
+| 검사 | 실행 상태 |
+|---|---|
+| pr-info | completed |
+| app-check | completed |
+| quality-check | completed |
+| secret-check | completed |
+
+### 검사 오류 (코드 위반과 별개, 통과 금지)
+
+| 검사 | 코드 | 내용 |
+|---|---|---|
+| * | NEEDS_PARSE_ERROR | job 결과 목록을 읽지 못했습니다. |
+
+재검사: 코드를 수정해 새 커밋을 push 하거나, 코드 변경 없이 실패한 run 을 다시 실행합니다.
+사람 승인은 이 판정과 별개로 저장소 보호 규칙이 요구합니다.
+

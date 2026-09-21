@@ -1,0 +1,105 @@
+Calculating task graph as no cached configuration is available for tasks: :app:assembleDebug :app:testDebugUnitTest :app:connectedDebugAndroidTest
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:desugarDebugFileDependencies
+> Task :app:mergeDebugJniLibFolders
+> Task :app:mapDebugSourceSetPaths
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:writeDebugAppMetadata
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugAndroidTestNavigationResources
+> Task :app:javaPreCompileDebugAndroidTest
+> Task :app:javaPreCompileDebug
+> Task :app:generateDebugAndroidTestResources
+> Task :app:extractDeepLinksDebug
+> Task :app:generateDebugResources
+> Task :app:validateSigningDebug
+> Task :app:checkDebugAarMetadata
+> Task :app:desugarDebugAndroidTestFileDependencies
+> Task :app:checkDebugDuplicateClasses
+> Task :app:packageDebugAndroidTestResources
+> Task :app:mergeDebugNativeLibs
+> Task :app:processDebugNavigationResources
+> Task :app:compileDebugNavigationResources
+> Task :app:mergeLibDexDebug
+> Task :app:mapDebugAndroidTestSourceSetPaths
+> Task :app:parseDebugAndroidTestLocalResources
+> Task :app:stripDebugDebugSymbols
+> Task :app:generateDebugAndroidTestGlobalSynthetics
+> Task :app:generateDebugGlobalSynthetics
+> Task :app:compileDebugAndroidTestNavigationResources
+> Task :app:validateSigningDebugAndroidTest
+> Task :app:writeDebugAndroidTestSigningConfigVersions
+> Task :app:mergeDebugAndroidTestJniLibFolders
+> Task :app:generateDebugAndroidTestRFile
+> Task :app:mergeDebugAndroidTestAssets
+> Task :app:compressDebugAndroidTestAssets
+> Task :app:checkDebugAndroidTestAarMetadata
+> Task :app:packageDebugResources
+> Task :app:mergeDebugAndroidTestManifest
+> Task :app:processDebugMainManifest
+> Task :app:processDebugAndroidTestManifest
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:generateDebugRFile
+> Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :app:checkDebugAndroidTestDuplicateClasses
+> Task :app:mergeLibDexDebugAndroidTest
+> Task :app:mergeExtDexDebugAndroidTest
+> Task :app:kspDebugKotlin
+> Task :app:mergeExtDexDebug
+> Task :app:mergeDebugAndroidTestResources
+> Task :app:mergeDebugResources
+> Task :app:processDebugAndroidTestResources
+> Task :app:processDebugResources
+> Task :app:compileDebugKotlin
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:kspDebugAndroidTestKotlin
+> Task :app:dexBuilderDebug
+> Task :app:mergeProjectDexDebug
+> Task :app:mergeDebugJavaResource
+> Task :app:compileDebugAndroidTestKotlin
+> Task :app:compileDebugAndroidTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugAndroidTestJavaRes
+> Task :app:packageDebug
+> Task :app:assembleDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:dexBuilderDebugAndroidTest
+> Task :app:mergeProjectDexDebugAndroidTest
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:mergeDebugAndroidTestJavaResource
+> Task :app:packageDebugAndroidTest
+> Task :app:createDebugAndroidTestApkListingFileRedirect
+> Task :app:testDebugUnitTest
+
+> Task :app:connectedDebugAndroidTest
+Running tests on devices: Pixel_9_ASCII(AVD) - 15
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/C:/GradleCache/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.25.5/5ae5c9ec39930ae9b5a61b32b93288818ec05ec1/protobuf-java-3.25.5.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.protobuf.UnsafeUtil$MemoryAccessor
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+
+BUILD SUCCESSFUL in 37s
+76 actionable tasks: 76 executed
+Configuration cache entry stored.
+
+real	0m37.897s
+user	0m0.121s
+sys	0m0.121s

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.aiprgate.ui.tasks.TaskListViewModelTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2026-09-21T09:02:55.295Z" hostname="DESKTOP-69G5GDV" time="0.065">
+  <properties/>
+  <testcase name="첫_조회_전에는_로딩_상태다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.012"/>
+  <testcase name="완료_변경에_실패하면_화면은_저장된_상태를_유지한다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.005"/>
+  <testcase name="추가_실패_후_재시도하면_저장된다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.004"/>
+  <testcase name="제목의_양끝_공백을_제거해_저장하고_입력을_비운다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.001"/>
+  <testcase name="삭제에_실패하면_항목이_남고_실패를_알린다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.003"/>
+  <testcase name="추가가_진행_중이면_같은_요청을_다시_보내지_않는다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.004"/>
+  <testcase name="같은_항목의_변경이_진행_중이면_추가_요청을_무시하고_다른_항목은_허용한다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.005"/>
+  <testcase name="항목이_없으면_빈_상태다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.002"/>
+  <testcase name="공백만_입력하면_저장하지_않고_안내한다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.001"/>
+  <testcase name="완료_변경_재시도는_처음_요청한_상태로_저장한다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.002"/>
+  <testcase name="저장된_항목을_ID_오름차순으로_표시한다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.003"/>
+  <testcase name="삭제_재시도가_성공하면_항목이_사라진다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.001"/>
+  <testcase name="조회에_실패하면_실패_상태가_되고_재시도로_복구한다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.005"/>
+  <testcase name="안내를_표시한_뒤에는_메시지가_지워진다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.002"/>
+  <testcase name="선택한_항목의_완료_상태만_바뀐다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.002"/>
+  <testcase name="완료된_항목을_토글하면_미완료가_된다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.002"/>
+  <testcase name="빈_입력도_저장하지_않고_안내한다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.001"/>
+  <testcase name="추가에_실패하면_입력을_보존하고_실패를_알린다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.001"/>
+  <testcase name="선택한_항목만_삭제되고_다른_항목은_유지된다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.002"/>
+  <testcase name="입력을_바꾸면_입력_오류가_사라진다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.001"/>
+  <testcase name="같은_제목도_별도_항목으로_추가된다" classname="com.example.aiprgate.ui.tasks.TaskListViewModelTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
