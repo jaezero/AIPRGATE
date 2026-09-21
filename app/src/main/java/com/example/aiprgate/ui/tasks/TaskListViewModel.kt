@@ -49,7 +49,7 @@ class TaskListViewModel(
         val state = _uiState.value
         if (state.isAdding) return
 
-        val title = state.input
+        val title = state.input.trim()
         if (title.isEmpty()) {
             _uiState.update { it.copy(inputError = InputError.BLANK_TITLE) }
             return
