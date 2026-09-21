@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -269,6 +268,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--needs-json", default="", help="workflow 의 toJSON(needs)")
     parser.add_argument("--summary", default="", help="Markdown 요약 출력 경로 (GITHUB_STEP_SUMMARY)")
     parser.add_argument("--out", default="", help="판정 JSON 출력 경로")
+    parser.add_argument("--annotations", action="store_true",
+                        help="GitHub 주석 출력. workflow 판정 단계에서만 지정한다 (테스트 출력이 주석으로 섞이지 않게)")
     args = parser.parse_args(argv)
 
     expected = Expected(run_id=args.run_id, run_attempt=args.run_attempt, head_sha=args.head_sha,
@@ -288,7 +289,7 @@ def main(argv: list[str] | None = None) -> int:
 
     summary = render_summary(v, expected)
     print(summary)
-    if os.environ.get("GITHUB_ACTIONS") == "true":
+    if args.annotations:
         print("\n".join(render_annotations(v)))
     if args.summary:
         with open(args.summary, "a", encoding="utf-8") as fh:

@@ -44,7 +44,11 @@ class GateTest(unittest.TestCase):
 
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
-        self.dir = Path(self._tmp.name)
+        self.dir = Path(self._tmp.name) / "results"
+        self.dir.mkdir()
+        # 판정 출력 파일은 결과 디렉터리 밖에 둔다. 안에 두면 다음 집계가 결과로 읽는다.
+        self.out = Path(self._tmp.name) / "out"
+        self.out.mkdir()
 
     def tearDown(self):
         self._tmp.cleanup()
@@ -219,9 +223,9 @@ class GateTest(unittest.TestCase):
         self.all_ok()
         args = ["--results", str(self.dir), "--run-id", "1001", "--run-attempt", "1",
                 "--head-sha", "h" * 40, "--base-sha", "b" * 40, "--policy-revision", "sha256:rev",
-                "--summary", str(self.dir / "summary.md"), "--out", str(self.dir / "verdict.json")]
+                "--summary", str(self.out / "summary.md"), "--out", str(self.out / "verdict.json")]
         self.assertEqual(0, gate.main(args))
-        self.assertIn("PASS", (self.dir / "summary.md").read_text(encoding="utf-8"))
+        self.assertIn("PASS", (self.out / "summary.md").read_text(encoding="utf-8"))
         (self.dir / "pr-info" / "pr-info.json").unlink()
         self.assertEqual(1, gate.main(args))
 
@@ -229,9 +233,9 @@ class GateTest(unittest.TestCase):
         self.all_ok()
         args = ["--results", str(self.dir), "--run-id", "1001", "--run-attempt", "1",
                 "--head-sha", "h" * 40, "--base-sha", "b" * 40, "--policy-revision", "sha256:rev",
-                "--needs-json", "{broken", "--out", str(self.dir / "verdict.json")]
+                "--needs-json", "{broken", "--out", str(self.out / "verdict.json")]
         self.assertEqual(1, gate.main(args))
-        verdict = json.loads((self.dir / "verdict.json").read_text(encoding="utf-8"))
+        verdict = json.loads((self.out / "verdict.json").read_text(encoding="utf-8"))
         self.assertEqual(gate.CHECK_ERROR, verdict["verdict"])
 
     def test_요약의_파이프_문자는_이스케이프된다(self):
@@ -259,6 +263,20 @@ class AnnotationTest(unittest.TestCase):
         self.assertIn("줄1%0A::error::주입", lines[1])
         self.assertIn("100%25 미연결", lines[2])
         self.assertEqual(3, len(lines))
+
+    def test_주석은_annotations_옵션이_있을_때만_출력한다(self):
+        import contextlib, io
+        with tempfile.TemporaryDirectory() as d:
+            base = ["--results", d, "--run-id", "1", "--run-attempt", "1", "--head-sha", "h",
+                    "--base-sha", "b", "--policy-revision", "r"]
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                gate.main(base)
+            self.assertNotIn("::error", buf.getvalue())
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                gate.main(base + ["--annotations"])
+            self.assertIn("::error title=quality-gate CHECK_ERROR::", buf.getvalue())
 
     def test_PASS_는_notice_로_표시한다(self):
         self.assertTrue(gate.render_annotations(gate.Verdict())[0].startswith("::notice "))
