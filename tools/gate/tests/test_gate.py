@@ -244,5 +244,25 @@ class GateTest(unittest.TestCase):
         self.assertIn("a\\|b c", text)
 
 
+class AnnotationTest(unittest.TestCase):
+
+    def test_주석은_판정과_사유를_담고_명령_문자를_이스케이프한다(self):
+        v = gate.Verdict(verdict=gate.CHECK_ERROR)
+        f = block()
+        f["message"] = "줄1\n::error::주입"
+        v.policy_violations.append({"check_id": "quality-check", **f})
+        v.check_errors.append({"check_id": "pr-info", "code": "NOT_CONNECTED", "message": "100% 미연결"})
+        lines = gate.render_annotations(v)
+        self.assertTrue(lines[0].startswith("::error title=quality-gate CHECK_ERROR::"))
+        self.assertIn("file=app/src/main/X.kt,line=3,", lines[1])
+        self.assertNotIn("\n", "".join(lines))
+        self.assertIn("줄1%0A::error::주입", lines[1])
+        self.assertIn("100%25 미연결", lines[2])
+        self.assertEqual(3, len(lines))
+
+    def test_PASS_는_notice_로_표시한다(self):
+        self.assertTrue(gate.render_annotations(gate.Verdict())[0].startswith("::notice "))
+
+
 if __name__ == "__main__":
     unittest.main()

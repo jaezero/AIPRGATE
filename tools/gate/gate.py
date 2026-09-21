@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -231,6 +232,30 @@ def render_summary(v: Verdict, expected: Expected) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _wf_escape(value: Any, prop: bool = False) -> str:
+    """GitHub workflow command 값 이스케이프. 리포트 내용이 명령으로 해석되지 않게 한다."""
+    s = str(value if value is not None else "").replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    if prop:
+        s = s.replace(":", "%3A").replace(",", "%2C")
+    return s
+
+
+def render_annotations(v: Verdict) -> list[str]:
+    """PR 화면과 check-run API 에 남길 주석. 판정 1줄과 사유별 1줄 (최대 GitHub 표시 한도 고려 20줄)."""
+    level = "notice" if v.verdict == PASS else "error"
+    lines = [f"::{level} title={_wf_escape('quality-gate ' + v.verdict, True)}::"
+             f"{_wf_escape(f'위반 {len(v.policy_violations)}건, 검사 오류 {len(v.check_errors)}건, 경고 {len(v.warnings)}건')}"]
+    for f in v.policy_violations[:10]:
+        props = f"title={_wf_escape('POLICY ' + f['check_id'] + ' ' + f['policy_id'], True)}"
+        if f.get("file") and "/" in str(f["file"]):
+            props = f"file={_wf_escape(f['file'], True)}," + (f"line={int(f['line'])}," if f.get("line") else "") + props
+        lines.append(f"::error {props}::{_wf_escape(f['rule_id'] + ': ' + str(f['message']))}")
+    for e in v.check_errors[:10]:
+        lines.append(f"::error title={_wf_escape('CHECK_ERROR ' + e['check_id'] + ' ' + e['code'], True)}::"
+                     f"{_wf_escape(e['message'])}")
+    return lines
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results", required=True)
@@ -263,6 +288,8 @@ def main(argv: list[str] | None = None) -> int:
 
     summary = render_summary(v, expected)
     print(summary)
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print("\n".join(render_annotations(v)))
     if args.summary:
         with open(args.summary, "a", encoding="utf-8") as fh:
             fh.write(summary)
