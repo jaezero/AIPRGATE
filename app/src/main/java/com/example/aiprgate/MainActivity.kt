@@ -4,13 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.aiprgate.data.InMemoryTaskRepository
+import com.example.aiprgate.ui.tasks.TaskListRoute
+import com.example.aiprgate.ui.tasks.TaskListViewModel
 import com.example.aiprgate.ui.theme.AIPRGATETheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +16,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AIPRGATETheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                // Step 1 임시 연결: 메모리 저장소라 앱 종료 시 데이터가 사라진다. Step 2 에서 Room 으로 교체.
+                val taskListViewModel: TaskListViewModel = viewModel(
+                    factory = TaskListViewModel.factory { InMemoryTaskRepository() },
+                )
+                TaskListRoute(taskListViewModel)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AIPRGATETheme {
-        Greeting("Android")
     }
 }
