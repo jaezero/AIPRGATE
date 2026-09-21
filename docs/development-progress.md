@@ -207,3 +207,56 @@ Step 3 최소 PR 검사 연결. 진입 조건:
 - Step 2 변경 커밋 여부 결정.
 - GitHub 저장소 소유 계정, 공개/비공개 여부, 보호 규칙 사용 가능 플랜 확인(ENV-05).
 - `gh` CLI 설치 여부 결정. 미설치 시 GitHub 웹에서 사용자가 저장소를 만들고 remote URL을 알려 주는 방식도 가능.
+
+---
+
+## 2026-09-21 — Step 3: 최소 PR 검사 연결 (진행 중)
+
+브랜치 `feature/step3-pr-check` (Step 2 `94d04d5` 기반). 원격 `https://github.com/jaezero/AIPRGATE` (공개 저장소, 사용자 제공).
+
+### 1. 구현한 기능과 요구사항 ID
+
+| 요구사항 | 구현 | 상태 |
+|---|---|---|
+| PR-02 | `.github/PULL_REQUEST_TEMPLATE.md`: 변경 요약, 관련 요구사항, AI 사용 여부, 생성 기록 위치, 작성자 설명, 테스트 근거, 수동 리뷰 체크리스트(PR-05 항목) | 작성 |
+| CI-01 | `pull_request` → main, opened·synchronize·reopened·edited·ready_for_review. path filter 없음 | 작성, 실제 실행 대기 |
+| CI-02 | `.github/workflows/pr-check.yml` 하나에 `pr-info`, `app-check`, `quality-check`, `secret-check`, `quality-gate` | 작성 |
+| CI-03 | `app-check`: debug 빌드 후 JVM 테스트. 빌드 실패 시 테스트는 skipped로 기록하고 필수 미완료 처리 | 로컬 모의 실행 확인 |
+| CI-04 | `quality-gate`는 `if: always()`로 선행 실패에도 실행. 누락·skipped·cancelled·error 는 CHECK_ERROR | 집계 테스트 확인 |
+| CI-05 | concurrency 로 같은 PR 이전 실행 취소 | 작성. 최신 PR 재조회(GAT-05)는 Step 5 |
+| CI-06 | head·base SHA(이벤트), tested SHA(checkout 후 `git rev-parse HEAD`) 기록 | 작성 |
+| CI-07 | check·run ID·attempt 를 포함한 artifact 이름, 같은 run 결과만 내려받기 | 작성 |
+| CI-08 | 판정을 job summary 와 `verdict.json` artifact 로 제공 | 작성 |
+| GAT-01~04 | PASS / POLICY_FAIL / CHECK_ERROR, 두 사유 동시 출력, WARN·REPORT 비차단 | 집계 테스트 확인 |
+| NFR-01·03 | `contents: read`만 부여, 비밀값 없음, `pull_request_target` 미사용, fork PR 은 job 미실행 → gate 통과 불가 | 작성 |
+| NFR-02 | PR 본문·제목을 run 스크립트에 넣지 않음. 리포트는 JSON 데이터로만 파싱 | 작성 |
+
+**미연결 검사는 성공으로 표시하지 않는다.** `pr-info`(Step 5), `quality-check`·`secret-check`(Step 4)는 `execution_status=skipped`, `error.code=NOT_CONNECTED` 결과를 남기고 job 을 실패시킨다. 따라서 Step 3 단계의 `quality-gate`는 정상 코드에서도 CHECK_ERROR 다. Step 3 의 "정상 통과"는 `app-check` job 의 통과를 뜻한다.
+
+### 2. 생성·수정 파일
+
+| 파일 | 내용 |
+|---|---|
+| `gradlew` | 실행 권한(100755) 부여. 이전에는 100644라 Linux CI 에서 실행 불가 |
+| `.gitattributes` | `gradlew`·`*.py`·`*.yml` LF, `gradlew.bat` CRLF |
+| `.github/PULL_REQUEST_TEMPLATE.md` | PR 템플릿 |
+| `.github/workflows/pr-check.yml` | 단일 workflow |
+| `tools/gate/result.py` | 정규화 JSON 공통 모듈, 미연결 결과 기록, policy_revision 계산 |
+| `tools/gate/app_check.py` | 빌드·테스트 결과 adapter. 컴파일 오류(BLOCK)와 빌드 실행 장애(error) 구분 |
+| `tools/gate/gate.py` | 집계·판정·요약 |
+| `tools/gate/tests/*` | 집계 24건, adapter 8건 |
+
+선정 근거:
+- 집계는 Python 표준 라이브러리만 쓴다. GitHub runner 와 로컬에 모두 있고 추가 패키지가 필요 없다.
+- Actions 는 2026-09-21 조회한 최신 릴리스 커밋 SHA 로 고정했다: checkout v7.0.1, setup-java v6.0.1, setup-python v7.0.0, upload-artifact v7.0.1, download-artifact v8.0.1.
+- runner 는 `ubuntu-24.04`, JDK 는 Temurin 25 (로컬 JBR 25 와 같은 주 버전, `gradle-daemon-jvm.properties` 요구와 일치).
+- 캐시(CI-09, S)는 아직 쓰지 않는다. 최초 실행 시간 측정을 먼저 한다.
+
+### 3. 검사 명령과 실제 결과
+
+| 명령 | 결과 |
+|---|---|
+| `python -m unittest discover -s tools/gate/tests -t .` | 32건 통과. [로그](results/step3-20260921/gate-unittest.log). 첫 실행에서 1건 실패(윈도우 경로 정규화 오류) → 수정 후 통과 |
+| 로컬 모의 파이프라인 | 실제 `assembleDebug`·`testDebugUnitTest` 결과(22건)로 `app-check` completed, 미연결 3건으로 gate CHECK_ERROR, 종료 코드 1. [판정](results/step3-20260921/local-sim-verdict.json) |
+| workflow YAML 문법 | 로컬 미검사(PyYAML 없음, 설치하지 않음). GitHub 첫 실행에서 확인 |
+| 실제 GitHub Actions 실행 | **대기.** PR 생성 후 확인 |

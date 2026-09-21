@@ -1,0 +1,29 @@
+{
+  "verdict": "CHECK_ERROR",
+  "checks": {
+    "pr-info": "skipped",
+    "app-check": "completed",
+    "quality-check": "skipped",
+    "secret-check": "skipped"
+  },
+  "tested_sha": "94d04d5842702a8a080b22694761b021335a1930",
+  "policy_violations": [],
+  "check_errors": [
+    {
+      "check_id": "pr-info",
+      "code": "NOT_CONNECTED",
+      "message": "sim"
+    },
+    {
+      "check_id": "quality-check",
+      "code": "NOT_CONNECTED",
+      "message": "sim"
+    },
+    {
+      "check_id": "secret-check",
+      "code": "NOT_CONNECTED",
+      "message": "sim"
+    }
+  ],
+  "warnings": []
+}

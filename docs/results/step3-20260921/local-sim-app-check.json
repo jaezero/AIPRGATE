@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "repository": "jaezero/AIPRGATE",
+  "pr_number": 1,
+  "head_sha": "94d04d5842702a8a080b22694761b021335a1930",
+  "base_sha": "e2ba127303a065a50f681711d3962ff9088dbfaf",
+  "tested_sha": "94d04d5842702a8a080b22694761b021335a1930",
+  "run_id": "42",
+  "run_attempt": 1,
+  "check_id": "app-check",
+  "policy_revision": "sha256:b018e00038e0ab97004a864e93b2027e45d80681cb6c5c0c6225cc7d0e3fa42f",
+  "tool": {
+    "name": "gradle",
+    "version": null,
+    "rule_revision": "tasks::app:assembleDebug,:app:testDebugUnitTest"
+  },
+  "execution_status": "completed",
+  "started_at": "2026-09-21T10:16:14+00:00",
+  "finished_at": "2026-09-21T10:16:14+00:00",
+  "findings": [],
+  "error": null,
+  "raw_report": "build.log, test.log, test-results/",
+  "subchecks": {
+    "build": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "test": {
+      "status": "completed",
+      "exit_code": 0,
+      "files": 2,
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}
