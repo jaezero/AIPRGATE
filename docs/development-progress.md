@@ -210,7 +210,7 @@ Step 3 최소 PR 검사 연결. 진입 조건:
 
 ---
 
-## 2026-09-21 — Step 3: 최소 PR 검사 연결 (진행 중)
+## 2026-09-21 — Step 3: 최소 PR 검사 연결
 
 브랜치 `feature/step3-pr-check` (Step 2 `94d04d5` 기반). 원격 `https://github.com/jaezero/AIPRGATE` (공개 저장소, 사용자 제공).
 
@@ -259,4 +259,39 @@ Step 3 최소 PR 검사 연결. 진입 조건:
 | `python -m unittest discover -s tools/gate/tests -t .` | 32건 통과. [로그](results/step3-20260921/gate-unittest.log). 첫 실행에서 1건 실패(윈도우 경로 정규화 오류) → 수정 후 통과 |
 | 로컬 모의 파이프라인 | 실제 `assembleDebug`·`testDebugUnitTest` 결과(22건)로 `app-check` completed, 미연결 3건으로 gate CHECK_ERROR, 종료 코드 1. [판정](results/step3-20260921/local-sim-verdict.json) |
 | workflow YAML 문법 | 로컬 미검사(PyYAML 없음, 설치하지 않음). GitHub 첫 실행에서 확인 |
-| 실제 GitHub Actions 실행 | **대기.** PR 생성 후 확인 |
+| 실제 GitHub Actions 실행 | PR #1 에서 6회. 정상 3회는 app-check 성공·gate CHECK_ERROR(미연결 3건), 컴파일 오류·테스트 실패 주입은 각각 APP-BUILD·APP-TEST 로 차단. [실행 기록](results/step3-20260921/ci-runs.md) |
+| workflow YAML | GitHub 가 모든 실행에서 정상 해석 |
+
+### 4. Step 3 중 추가 수정
+
+| 커밋 | 내용 | 이유 |
+|---|---|---|
+| `ab5e7cd` | 게이트가 판정 사유를 GitHub 주석으로도 출력 | 로그인 없이 API·PR 화면에서 사유 확인 (NFR-06). 요약 본문은 비인증 API 로 읽을 수 없음 |
+| `0061ee4` | 주석을 `--annotations` 지정 시에만 출력, 테스트 출력 파일 위치 분리 | CI 의 게이트 자체 테스트가 가짜 판정을 PR 주석으로 남긴 결함 수정 |
+| `a630d1b`, `56dd900` | 컴파일 오류 주입과 되돌림 | AC-06 검증용. 병합 금지 |
+| `621a9ad`, `ea12808` | 제목 공백 제거 누락 주입과 되돌림 | AC-06 검증용. 병합 금지 |
+
+실패·실수 기록:
+- 되돌림 커밋을 만들 때 `git revert -q`가 옵션 오류로 실패했다. 뒤이은 메시지 수정이 push 된 주입 커밋 자체에 적용되어, 로컬에 "revert" 이름으로 컴파일 오류를 담은 커밋이 생겼다. push 전에 발견해 로컬 브랜치를 원격과 같은 `a630d1b`로 되돌리고 다시 만들었다. 원격 이력은 바뀌지 않았다.
+- 결과 확인 스크립트가 처음에 짧은 커밋 해시를 넘겨 run 을 찾지 못했고, 이후 비인증 API 한도를 초과했다. 전체 해시와 90초 간격으로 수정했다.
+
+### 5. Android Studio·GitHub 에서 확인할 순서
+
+1. PR #1 화면 아래 검사 목록에서 `app-check` ✅, 나머지 ❌ 를 확인한다.
+2. `quality-gate` → Details → Summary 에서 판정 표를 확인한다.
+3. PR 의 Files changed 탭 또는 run 화면에서 S3-04 커밋의 `MainActivity.kt:18` 주석을 확인한다.
+4. PR #1 은 병합하지 않는다.
+
+### 6. 남은 문제
+
+- **PR 템플릿은 main 에 병합되기 전까지 자동으로 채워지지 않는다.** GitHub 가 기본 브랜치의 템플릿을 쓰기 때문이다. PR #1 본문은 사용자가 직접 붙여 넣었다.
+- `quality-gate` 는 Step 4·5 에서 세 검사를 연결하기 전까지 정상 코드에서도 통과하지 않는다. 따라서 PR #1 을 main 에 병합하려면 Step 5 까지 기다리거나, 병합 시점을 사용자가 정해야 한다.
+- ENV-05 저장소 보호 기능 사용 가능 여부는 사용자 확인 대기다.
+- 계측 테스트·에뮬레이터는 CI 에 넣지 않았다(TST-03 에 따라 필수 아님).
+- 캐시(CI-09, S) 미사용. 최초·캐시 시간 비교는 Step 6.
+
+### 7. 다음 Step 과 진입 조건
+
+Step 4 검사 정책 파일럿. 진입 조건:
+- 사용자의 Step 4 진행 지시.
+- gitleaks 실행 파일 사용 방식 결정. 기본안은 CI 에서 공식 릴리스를 고정 버전·체크섬으로 내려받는 것이다. 로컬 파일럿에도 실행 파일이 필요하며, 설치 없이 프로젝트 밖 임시 폴더에 받아 쓰는 방식을 제안한다.
