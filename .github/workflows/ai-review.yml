@@ -34,6 +34,20 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
+      # 커밋마다 새 의견이 쌓이므로, 이전 커밋을 대상으로 한 AI 의견은 지우지 않고
+      # GitHub의 OUTDATED 상태로 접는다. 봇 계정이 쓴 표식 댓글만 대상으로 한다.
+      - name: Collapse earlier AI review comments
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh api --paginate "repos/$REPO/issues/$PR_NUMBER/comments" \
+            --jq '.[] | select(.user.login == "github-actions[bot]") | select(.body | startswith("<!-- aiprgate:ai-review ")) | .node_id' |
+          while read -r node; do
+            gh api graphql -f query='mutation($id: ID!) { minimizeComment(input: {subjectId: $id, classifier: OUTDATED}) { clientMutationId } }' -f id="$node" >/dev/null
+          done
+
       - name: Claude advisory review
         uses: anthropics/claude-code-action@925afb53776cf1a2b738c6bdbed37b4d4000ef13 # v1.0.262
         env:
