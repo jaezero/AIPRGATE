@@ -15,4 +15,17 @@
     <string name="task_complete">%1$s 완료 처리</string>
     <string name="task_undo_completion">%1$s 완료 취소</string>
     <string name="task_delete_description">%1$s 삭제</string>
+    <string name="login_heading">샘플 앱 로그인</string>
+    <string name="login_register_heading">계정 만들기</string>
+    <string name="login_description">이 기기에만 저장되는 계정입니다. 비밀번호는 원문 대신 해시로 저장합니다.</string>
+    <string name="login_id_label">아이디</string>
+    <string name="login_id_rule">영문·숫자·밑줄 4~20자</string>
+    <string name="login_password_label">비밀번호</string>
+    <string name="login_password_rule">8자 이상</string>
+    <string name="login_submit">로그인</string>
+    <string name="login_register_submit">계정 만들고 시작</string>
+    <string name="login_checking">확인 중</string>
+    <string name="login_error_id">아이디는 영문·숫자·밑줄 4~20자로 입력해 주세요.</string>
+    <string name="login_error_password">비밀번호는 8자 이상이어야 합니다.</string>
+    <string name="login_error_invalid">아이디 또는 비밀번호가 올바르지 않습니다.</string>
 </resources>
