@@ -123,3 +123,21 @@ test("inaccessible protected branch does not become an unprotected success", asy
     return path.endsWith("/branches/main") ? { protected: true } : {};
   })).rejects.toThrow("HTTP 403");
 });
+
+test("AI review stays advisory: comment-only tools, not a required check", () => {
+  const review = Bun.YAML.parse(source(".github/workflows/ai-review.yml"));
+  expect(review.permissions).toEqual({ contents: "read", "pull-requests": "write" });
+  const job = review.jobs["ai-review"];
+  expect(job.if).toContain("github.event.pull_request.head.repo.full_name == github.repository");
+  const step = job.steps.find((s) => String(s.uses).startsWith("anthropics/claude-code-action@"));
+  expect(step.uses).toMatch(/@[0-9a-f]{40}$/);
+  // Exact allowlist: any added tool (Edit, MultiEdit, git push, gh pr review/merge ...) fails here.
+  const allowed = step.with.claude_args.match(/--allowedTools "([^"]*)"/)[1].split(",");
+  expect(allowed).toEqual([
+    "Read", "Grep", "Glob", "Bash(gh pr diff:*)", "Bash(gh pr view:*)", "Bash(gh pr comment:*)",
+  ]);
+  expect(step.with.claude_args).not.toContain("--dangerously-skip-permissions");
+  for (const policy of [protection, soloProtection]) {
+    expect(policy.required_status_checks.checks.map((c) => c.context)).toEqual(["quality-gate"]);
+  }
+});
