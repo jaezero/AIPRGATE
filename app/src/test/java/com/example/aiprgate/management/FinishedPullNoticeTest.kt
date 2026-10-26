@@ -16,7 +16,7 @@ class FinishedPullNoticeTest {
     fun closedUnmergedPullIsReportedAsClosed() {
         val closed = testPull().copy(state = "closed", merged = false)
 
-        assertEquals("닫힌 PR", finishedPullNotice(closed)?.first)
+        assertEquals("병합 없이 종료된 PR", finishedPullNotice(closed)?.first)
     }
 
     @Test

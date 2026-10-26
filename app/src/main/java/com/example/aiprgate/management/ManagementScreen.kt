@@ -85,7 +85,7 @@ fun ManagementScreen(
             }
             if (state.screen == ManagementScreen.LIST) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    listOf("open" to "열림", "closed" to "닫힘·병합", "all" to "전체").forEach { (key, title) ->
+                    listOf("open" to "검토 중", "closed" to "완료·종료", "all" to "전체").forEach { (key, title) ->
                         FilterChip(selected = state.filter == key, enabled = !busy && !state.loading,
                             colors = choiceColors(),
                             onClick = { onAction(ManagementAction.Filter(key)) }, label = { Text(title) })
@@ -199,10 +199,10 @@ private fun StatusLabel(text: String) {
 }
 
 private fun pullStatus(pr: PullRequest) = when {
-    pr.merged -> "병합됨"
-    pr.state == "closed" -> "닫힘"
-    pr.draft -> "초안"
-    else -> "열림"
+    pr.merged -> "병합 완료"
+    pr.state == "closed" -> "병합 없이 종료"
+    pr.draft -> "작성 중(초안)"
+    else -> "검토 중"
 }
 
 private fun localTime(iso: String): String = try {
