@@ -29,17 +29,34 @@ export function auditProtection(protection, { solo = false } = {}) {
   return { configured: missing.length === 0, missing };
 }
 
+// GitHub accepts review bypass allowances only for organization repositories.
+// An empty allowance grants nothing, so dropping it for a user-owned repository
+// sends the same rules; a non-empty allowance is never silently discarded.
+export function protectionPayload(policy, ownerType) {
+  const payload = structuredClone(policy);
+  const reviews = payload.required_pull_request_reviews;
+  const bypass = reviews?.bypass_pull_request_allowances;
+  if (ownerType !== "Organization" && bypass) {
+    if (["users", "teams", "apps"].some((key) => (bypass[key]?.length ?? 0) > 0)) {
+      throw new Error("Review bypass allowances require an organization repository");
+    }
+    delete reviews.bypass_pull_request_allowances;
+  }
+  return payload;
+}
+
 export async function inspectRepository(repository, request, options = {}) {
   if (!/^[\w.-]+\/[\w.-]+$/.test(repository)) throw new Error("Expected owner/repository");
   // Check the repository and branch first: a 404 for protection is not by
   // itself proof that protection is absent or that the account has access.
-  await request(`/repos/${repository}`);
+  const repo = await request(`/repos/${repository}`);
   const branch = await request(`/repos/${repository}/branches/main`);
+  const ownerType = repo?.owner?.type;
   if (branch.protected !== true) {
-    return { repository, protected: false, ...auditProtection(null, options) };
+    return { repository, ownerType, protected: false, ...auditProtection(null, options) };
   }
   const protection = await request(`/repos/${repository}/branches/main/protection`);
-  return { repository, protected: true, ...auditProtection(protection, options), protection };
+  return { repository, ownerType, protected: true, ...auditProtection(protection, options), protection };
 }
 
 if (import.meta.main) {
@@ -74,7 +91,10 @@ if (import.meta.main) {
           ...(body ? { body: JSON.stringify(body) } : {}),
           signal: AbortSignal.timeout(30_000),
         });
-        if (!response.ok) throw new Error(`GitHub ${method} failed: HTTP ${response.status}`);
+        if (!response.ok) {
+          const detail = await response.json().then((body) => body?.message, () => undefined);
+          throw new Error(`GitHub ${method} failed: HTTP ${response.status}${detail ? ` (${detail})` : ""}`);
+        }
         return response.json();
       };
       const options = { solo: values.solo };
@@ -84,7 +104,8 @@ if (import.meta.main) {
         if (state.protected) throw new Error("Existing protection differs; reconcile it manually without losing stronger rules");
         const policy = values.solo ? "main-protection-solo.json" : "main-protection.json";
         const expected = JSON.parse(await readFile(new URL(`../../policy/${policy}`, import.meta.url), "utf8"));
-        await request(`/repos/${values.repo}/branches/main/protection`, "PUT", expected);
+        await request(`/repos/${values.repo}/branches/main/protection`, "PUT",
+          protectionPayload(expected, state.ownerType));
         const applied = await inspectRepository(values.repo, request, options);
         console.log(JSON.stringify({ mode: "applied-and-read-back", ...applied }, null, 2));
         process.exitCode = applied.configured ? 0 : 1;
