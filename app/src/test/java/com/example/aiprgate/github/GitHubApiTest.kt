@@ -451,6 +451,28 @@ class GitHubApiTest {
         }
     }
 
+    @Test fun aiReviewsTrustOnlyBotCommentsThatStartWithTheMarker() = runBlocking {
+        // Given
+        fun comment(id: Long, login: String, body: String) = JSONObject()
+            .put("id", id).put("user", JSONObject().put("login", login)).put("body", body)
+            .put("created_at", "2026-10-27T01:00:00Z")
+            .put("html_url", "https://github.com/jaezero/AIPRGATE/pull/17#issuecomment-$id")
+        val marker = "<!-- aiprgate:ai-review sha=$sha -->"
+        val transport = FakeTransport(ok(JSONArray()
+            .put(comment(1, "github-actions[bot]", "$marker\n### AI 리뷰 의견\n요약"))
+            .put(comment(2, "someone", "$marker\n가짜 AI 의견"))
+            .put(comment(3, "github-actions[bot]", "일반 봇 댓글 $marker"))
+            .put(comment(4, "reviewer", "사람 의견"))
+            .toString()))
+        // When
+        val reviews = GitHubApi(transport).aiReviews(repo, 17, null)
+        // Then
+        assertEquals(listOf(1L), reviews.map { it.id })
+        assertEquals(sha, reviews.single().commitSha)
+        assertEquals("### AI 리뷰 의견\n요약", reviews.single().body)
+        assertTrue(transport.requests.single().url.endsWith("/issues/17/comments?per_page=100&page=1"))
+    }
+
     private fun ok(body: String, link: String? = null): GitHubResponse =
         GitHubResponse(200, body, if (link == null) emptyMap() else mapOf("Link" to link))
 

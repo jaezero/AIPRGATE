@@ -161,6 +161,25 @@ class GitHubApi(
             .distinctBy { it.id }
     }
 
+    /**
+     * Only comments by the workflow's bot account that start with the marker count.
+     * Anyone can write the marker text, so the author check is what makes it trustworthy.
+     */
+    override suspend fun aiReviews(repo: RepoId, number: Int, token: String?): List<AiReviewComment> = io {
+        validate(number > 0)
+        allPages("${repoPath(repo)}/issues/$number/comments", token) { json ->
+            val author = json.getJSONObject("user").string("login")
+            val body = json.nullableString("body") ?: ""
+            val marker = AI_REVIEW_MARKER.find(body.trimStart())
+            if (author != AI_REVIEW_AUTHOR || marker == null || marker.range.first != 0) null
+            else AiReviewComment(
+                json.positiveLong("id"), marker.groupValues[1],
+                body.trimStart().substring(marker.range.last + 1).trim(),
+                json.string("created_at"), json.string("html_url"),
+            )
+        }.filterNotNull().distinctBy { it.id }
+    }
+
     override suspend fun review(
         repo: RepoId, number: Int, token: String, sha: String, event: ReviewEvent, body: String,
     ): PullReview = io {
@@ -395,3 +414,6 @@ class GitHubApi(
         val SHA = Regex("[a-fA-F0-9]{40}")
     }
 }
+
+private const val AI_REVIEW_AUTHOR = "github-actions[bot]"
+private val AI_REVIEW_MARKER = Regex("""<!-- aiprgate:ai-review sha=([0-9a-f]{40}) -->""")
