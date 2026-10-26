@@ -1,7 +1,7 @@
 import { test, expect } from "bun:test";
 import { readFileSync } from "node:fs";
 import { CHECKS } from "./core.mjs";
-import { auditProtection, inspectRepository } from "./github-protection.mjs";
+import { auditProtection, inspectRepository, protectionPayload } from "./github-protection.mjs";
 
 const source = (path) => readFileSync(new URL(`../../${path}`, import.meta.url), "utf8");
 const workflow = Bun.YAML.parse(source(".github/workflows/pr-gate.yml"));
@@ -86,6 +86,24 @@ test("solo policy passes only the solo audit and keeps every non-approval rule",
     mutate(changed);
     expect(auditProtection(changed, { solo: true }).configured).toBe(false);
   }
+});
+
+test("policies use only the app-bound checks form GitHub accepts", () => {
+  for (const policy of [protection, soloProtection]) {
+    expect(policy.required_status_checks.contexts).toBeUndefined();
+  }
+});
+
+test("user-owned payload drops only an empty org-only bypass and keeps every audited rule", () => {
+  for (const [policy, solo] of [[protection, false], [soloProtection, true]]) {
+    const payload = protectionPayload(policy, "User");
+    expect(payload.required_pull_request_reviews.bypass_pull_request_allowances).toBeUndefined();
+    expect(auditProtection(payload, { solo })).toEqual({ configured: true, missing: [] });
+    expect(protectionPayload(policy, "Organization")).toEqual(policy);
+  }
+  const granted = structuredClone(protection);
+  granted.required_pull_request_reviews.bypass_pull_request_allowances.users = ["example"];
+  expect(() => protectionPayload(granted, "User")).toThrow("organization repository");
 });
 
 test("repository inspection performs reads only and distinguishes absent protection", async () => {
