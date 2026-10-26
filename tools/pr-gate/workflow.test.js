@@ -131,11 +131,12 @@ test("AI review stays advisory: comment-only tools, not a required check", () =>
   expect(job.if).toContain("github.event.pull_request.head.repo.full_name == github.repository");
   const step = job.steps.find((s) => String(s.uses).startsWith("anthropics/claude-code-action@"));
   expect(step.uses).toMatch(/@[0-9a-f]{40}$/);
-  const args = step.with.claude_args;
-  expect(args).toContain("Bash(gh pr comment:*)");
-  expect(args).not.toContain("gh pr review");
-  expect(args).not.toContain("gh pr merge");
-  expect(args).not.toMatch(/\b(Edit|Write)\b/);
+  // Exact allowlist: any added tool (Edit, MultiEdit, git push, gh pr review/merge ...) fails here.
+  const allowed = step.with.claude_args.match(/--allowedTools "([^"]*)"/)[1].split(",");
+  expect(allowed).toEqual([
+    "Read", "Grep", "Glob", "Bash(gh pr diff:*)", "Bash(gh pr view:*)", "Bash(gh pr comment:*)",
+  ]);
+  expect(step.with.claude_args).not.toContain("--dangerously-skip-permissions");
   for (const policy of [protection, soloProtection]) {
     expect(policy.required_status_checks.checks.map((c) => c.context)).toEqual(["quality-gate"]);
   }
