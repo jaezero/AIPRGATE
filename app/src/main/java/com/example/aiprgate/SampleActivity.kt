@@ -9,6 +9,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.aiprgate.login.LocalAuth
+import com.example.aiprgate.login.LoginScreen
+import com.example.aiprgate.login.LoginViewModel
+import com.example.aiprgate.login.PrefsAccountStore
 import com.example.aiprgate.ui.TaskScreen
 import com.example.aiprgate.ui.TaskViewModel
 import com.example.aiprgate.ui.theme.AiPrGateTheme
@@ -20,6 +24,19 @@ class SampleActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AiPrGateTheme {
+                val login: LoginViewModel = viewModel(
+                    factory = viewModelFactory {
+                        initializer { LoginViewModel(LocalAuth(PrefsAccountStore(applicationContext))) }
+                    },
+                )
+                val loginState by login.uiState.collectAsStateWithLifecycle()
+                if (!loginState.loggedIn) {
+                    LoginScreen(
+                        state = loginState, onIdChange = login::onIdChange,
+                        onPasswordChange = login::onPasswordChange, onSubmit = login::submit,
+                    )
+                    return@AiPrGateTheme
+                }
                 val model: TaskViewModel = viewModel(
                     factory = viewModelFactory {
                         initializer { TaskViewModel((application as TaskApplication).repository) }
