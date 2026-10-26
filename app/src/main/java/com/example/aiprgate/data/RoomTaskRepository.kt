@@ -11,8 +11,7 @@ class RoomTaskRepository(private val dao: TaskDao) : TaskRepository {
     }
 
     override suspend fun add(title: String): AddTaskResult {
-        // [검증용 수작업 주입 S2] 앞뒤 공백 제거 누락. 다음 커밋에서 되돌림.
-        val trimmed = title
+        val trimmed = title.trim()
         if (trimmed.isEmpty()) return AddTaskResult.EMPTY_TITLE
         dao.insert(TaskEntity(title = trimmed))
         return AddTaskResult.ADDED
