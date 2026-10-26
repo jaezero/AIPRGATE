@@ -67,6 +67,7 @@ class RoomTaskRepositoryTest {
             listOf(LearningTask(1L, "복습", false), LearningTask(2L, "복습", false)),
             repository.awaitTasks { it.size == 2 },
         )
+        assertEquals(2, dao.writeCount)
     }
 
     @Test
