@@ -1,0 +1,5 @@
+{
+  "message": "Required status check \"quality-gate\" is failing.",
+  "documentation_url": "https://docs.github.com/articles/about-protected-branches",
+  "status": "405"
+}
