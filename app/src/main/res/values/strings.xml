@@ -28,4 +28,6 @@
     <string name="login_error_id">아이디는 영문·숫자·밑줄 4~20자로 입력해 주세요.</string>
     <string name="login_error_password">비밀번호는 8자 이상이어야 합니다.</string>
     <string name="login_error_invalid">아이디 또는 비밀번호가 올바르지 않습니다.</string>
+    <string name="login_error_account_changed">저장된 계정 상태가 바뀌었습니다. 화면의 안내에 따라 다시 시도해 주세요.</string>
+    <string name="login_error_storage">저장된 계정 정보를 읽지 못했습니다. 앱 데이터를 확인해 주세요.</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.aiprgate.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-enum class LoginError { ID_FORMAT, PASSWORD_TOO_SHORT, INVALID_CREDENTIALS }
+enum class LoginError { ID_FORMAT, PASSWORD_TOO_SHORT, INVALID_CREDENTIALS, ACCOUNT_CHANGED, STORAGE_FAILED }
 
 data class LoginUiState(
     val hasAccount: Boolean = false,
@@ -44,15 +45,25 @@ class LoginViewModel(
         mutableState.update { it.copy(isBusy = true, error = null) }
         viewModelScope.launch {
             // Key derivation is deliberately slow, so keep it off the main thread.
-            val result = withContext(worker) {
-                if (current.hasAccount) auth.login(current.id, current.password)
-                else auth.register(current.id, current.password)
+            val result = try {
+                withContext(worker) {
+                    if (current.hasAccount) auth.login(current.id, current.password)
+                    else auth.register(current.id, current.password)
+                }
+            } catch (error: Exception) {
+                // A corrupted stored salt/hash or a missing algorithm must not crash the app.
+                if (error is CancellationException) throw error
+                null
             }
             mutableState.update {
-                if (result == AuthResult.SUCCESS) {
-                    it.copy(isBusy = false, password = "", hasAccount = true, loggedIn = true)
-                } else {
-                    it.copy(isBusy = false, password = "", error = LoginError.INVALID_CREDENTIALS)
+                val done = it.copy(isBusy = false, password = "")
+                when (result) {
+                    AuthResult.SUCCESS -> done.copy(hasAccount = true, loggedIn = true)
+                    AuthResult.INVALID_CREDENTIALS -> done.copy(error = LoginError.INVALID_CREDENTIALS)
+                    // The stored account changed while this screen was open: switch to the right mode.
+                    AuthResult.NO_ACCOUNT -> done.copy(hasAccount = false, error = LoginError.ACCOUNT_CHANGED)
+                    AuthResult.ACCOUNT_EXISTS -> done.copy(hasAccount = true, error = LoginError.ACCOUNT_CHANGED)
+                    null -> done.copy(error = LoginError.STORAGE_FAILED)
                 }
             }
         }

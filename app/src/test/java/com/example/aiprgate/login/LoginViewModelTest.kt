@@ -63,4 +63,48 @@ class LoginViewModelTest {
         assertEquals("", next.uiState.value.password)
         assertFalse(next.uiState.value.loggedIn)
     }
+
+    @Test
+    fun registeredUserLogsInAndDuplicateSubmitIsIgnored() = runTest(dispatcher) {
+        LocalAuth(store, iterations = 1_000).register("user_01", "correct-pass")
+        val model = model()
+        model.onIdChange("user_01")
+        model.onPasswordChange("correct-pass")
+        model.submit()
+        assertTrue(model.uiState.value.isBusy)
+        model.submit()
+        advanceUntilIdle()
+
+        assertTrue(model.uiState.value.loggedIn)
+        assertFalse(model.uiState.value.isBusy)
+        assertNull(model.uiState.value.error)
+    }
+
+    @Test
+    fun corruptedStoredAccountShowsStorageErrorInsteadOfCrashing() = runTest(dispatcher) {
+        store.account = StoredAccount("user_01", "not-hex", "zz")
+        val model = model()
+        model.onIdChange("user_01")
+        model.onPasswordChange("correct-pass")
+        model.submit()
+        advanceUntilIdle()
+
+        assertEquals(LoginError.STORAGE_FAILED, model.uiState.value.error)
+        assertFalse(model.uiState.value.loggedIn)
+        assertFalse(model.uiState.value.isBusy)
+    }
+
+    @Test
+    fun accountRemovedWhileOpenSwitchesToRegistration() = runTest(dispatcher) {
+        LocalAuth(store, iterations = 1_000).register("user_01", "correct-pass")
+        val model = model()
+        store.account = null
+        model.onIdChange("user_01")
+        model.onPasswordChange("correct-pass")
+        model.submit()
+        advanceUntilIdle()
+
+        assertEquals(LoginError.ACCOUNT_CHANGED, model.uiState.value.error)
+        assertFalse(model.uiState.value.hasAccount)
+    }
 }

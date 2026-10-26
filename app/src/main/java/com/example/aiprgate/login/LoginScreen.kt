@@ -95,6 +95,8 @@ fun LoginScreen(
                             LoginError.ID_FORMAT -> R.string.login_error_id
                             LoginError.PASSWORD_TOO_SHORT -> R.string.login_error_password
                             LoginError.INVALID_CREDENTIALS -> R.string.login_error_invalid
+                            LoginError.ACCOUNT_CHANGED -> R.string.login_error_account_changed
+                            LoginError.STORAGE_FAILED -> R.string.login_error_storage
                         }),
                         color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.bodyLarge,
