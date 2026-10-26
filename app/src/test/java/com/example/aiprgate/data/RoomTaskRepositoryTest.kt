@@ -88,6 +88,20 @@ class RoomTaskRepositoryTest {
     }
 
     @Test
+    fun completionChangeOnlyAffectsTargetTask() = runTest {
+        repository.add("First")
+        repository.add("Second")
+        val (first, second) = repository.awaitTasks { it.size == 2 }
+
+        repository.setCompleted(second.id, true)
+
+        assertEquals(
+            listOf(first, second.copy(isCompleted = true)),
+            repository.awaitTasks { it.getOrNull(1)?.isCompleted == true },
+        )
+    }
+
+    @Test
     fun deletionPreservesOtherTaskAndDoesNotReuseDeletedId() = runTest {
         repository.add("Keep")
         repository.add("Delete")
