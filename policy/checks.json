@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "checks": {
+    "pr-info": {
+      "timeoutSeconds": 30,
+      "rationale": "AI 사용 여부, 작성자의 설명, 테스트 근거를 리뷰어가 확인할 수 있게 한다."
+    },
+    "build-test": {
+      "timeoutSeconds": 1200,
+      "rationale": "컴파일 가능한 앱과 실행된 핵심 단위 테스트를 PR 변경에서 확인한다."
+    },
+    "quality": {
+      "timeoutSeconds": 900,
+      "rationale": "Android Lint 결과를 수집하고 실제 위험·정상 파일럿을 거친 룰만 차단한다."
+    },
+    "secrets": {
+      "timeoutSeconds": 180,
+      "rationale": "저장소 파일에 포함된 키·토큰 후보를 탐지하며 탐지 한계를 사람 리뷰로 보완한다."
+    }
+  },
+  "defaults": {
+    "quality": "warn",
+    "secrets": "warn"
+  },
+  "rules": {
+    "PR_REQUIRED": {
+      "check": "pr-info",
+      "decision": "block",
+      "rationale": "필수 정보 누락은 의미 있는 사람 리뷰의 전제 조건을 충족하지 못한다.",
+      "pilot": "tools/pr-gate/core.test.js"
+    },
+    "BUILD_DEBUG": {
+      "check": "build-test",
+      "decision": "block",
+      "rationale": "debug 앱 빌드가 실패하면 병합 가능한 변경으로 취급할 수 없다.",
+      "pilot": "tools/pr-gate/reports.test.js"
+    },
+    "UNIT_TESTS": {
+      "check": "build-test",
+      "decision": "block",
+      "rationale": "요구사항 회귀 테스트 실패 또는 테스트 생략을 통과로 취급하지 않는다.",
+      "pilot": "tools/pr-gate/reports.test.js"
+    },
+    "lint:TrustAllX509TrustManager": {
+      "check": "quality",
+      "decision": "block",
+      "rationale": "서버 인증서 검증을 비우는 구현은 안전한 TLS 검증을 무력화한다. 기본 TrustManagerFactory 사용과 비교해 적용 범위를 검증한다.",
+      "pilot": "tools/pr-gate/LINT-PILOT.md"
+    },
+    "gitleaks:generic-api-key": {
+      "check": "secrets",
+      "decision": "block",
+      "rationale": "키 이름과 고엔트로피 리터럴이 결합된 시크릿 후보를 차단한다. 무효 시험 문자열과 환경 변수 참조 반례로 탐지 범위를 검증한다.",
+      "pilot": "tools/pr-gate/SECRET-PILOT.md"
+    }
+  },
+  "exceptions": []
+}

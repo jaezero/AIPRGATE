@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.aiprgate.management.ManagementViewModelTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-25T15:16:45.501Z" hostname="DESKTOP-69G5GDV" time="0.09">
+  <properties/>
+  <testcase name="validMergeUsesExpectedHeadAndWaitsForServerResult" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.027"/>
+  <testcase name="authorCannotApproveOrRequestChangesOnOwnPull" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.005"/>
+  <testcase name="mergeRevalidatesChecksAndRequiresLatestApproval" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.006"/>
+  <testcase name="staleWriteIsRejectedAndDoesNotSubmitReview" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.004"/>
+  <testcase name="publicListAndDetailsDoNotRequireCredentialOrPerformWrites" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.004"/>
+  <testcase name="deviceFlowWaitsProtocolIntervalBeforeFirstPollAndCanCancel" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.01"/>
+  <testcase name="failedInitialDetailCanBeRetriedWithoutReturningToList" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.005"/>
+  <testcase name="verifiedTokenIsStoredAndLogoutDeletesSession" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.004"/>
+  <testcase name="cancelledOldRepositoryCannotOverwriteNewList" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.006"/>
+  <testcase name="pushDuringDetailFetchInvalidatesSnapshot" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.003"/>
+  <testcase name="duplicateWriteAndNavigationCannotChangeInFlightTarget" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.006"/>
+  <testcase name="rejectedTokenAndFailedStorageNeverCreateAuthenticatedState" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.004"/>
+  <testcase name="reviewIsExplicitAndPreservesBodyAndConfirmedCommit" classname="com.example.aiprgate.management.ManagementViewModelTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

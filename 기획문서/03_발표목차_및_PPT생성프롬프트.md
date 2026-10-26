@@ -149,7 +149,7 @@ GitHub Actions 기반 PR 검증 파이프라인 다이어그램을 한 장으로
 **코드 비교 슬라이드(4장)만:**
 ```
 Kotlin/안드로이드 코드 좌우 비교 슬라이드 3세트를 만들어 주세요. 좌측 "❌ AI가 생성한 코드", 우측 "✅ 게이트가 요구하는 형태", 각 세트 아래에 "검출 도구: ___" 한 줄.
-세트1 하드코딩 키: const val API_KEY = "sk-live-abc123" ↔ BuildConfig.API_KEY (local.properties + Secrets), 검출: gitleaks
+세트1 하드코딩 키: const val API_KEY = "<무효 예시 키 — 2026-10-26 시크릿 검사 탐지로 값 제거>" ↔ BuildConfig.API_KEY (local.properties + Secrets), 검출: gitleaks
 세트2 예외 삼킴: try { api.fetch() } catch (e: Exception) { } ↔ runCatching { … }.onFailure { Log.e(TAG, "fetch failed", it); _uiState.value = Error }, 검출: Detekt EmptyCatchBlock
 세트3 인증서 우회: X509TrustManager의 checkServerTrusted를 빈 구현으로 두고 모든 인증서 신뢰 ↔ 기본 OkHttpClient + network_security_config.xml, 검출: Semgrep
 코드는 6줄 이내로 압축, 핵심 줄만 하이라이트.

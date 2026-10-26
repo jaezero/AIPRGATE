@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="5" failures="0" errors="0" skipped="0" time="0.000" timestamp="2026-10-25T08:50:10" hostname="localhost">
+  <testsuite name="com.example.aiprgate.ExampleInstrumentedTest" tests="1" failures="0" errors="0" skipped="0" time="0.001" timestamp="2026-10-25T08:50:10" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="useAppContext" classname="com.example.aiprgate.ExampleInstrumentedTest" time="0.001" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.data.TaskDatabaseTest" tests="2" failures="0" errors="0" skipped="0" time="0.112" timestamp="2026-10-25T08:50:10" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="inMemoryDatabaseObservesCrudThroughRepository" classname="com.example.aiprgate.data.TaskDatabaseTest" time="0.075" />
+    <testcase name="diskDatabaseRetainsCompletionAndDeletionAfterCloseAndReopen" classname="com.example.aiprgate.data.TaskDatabaseTest" time="0.037" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.ui.TaskScreenTest" tests="2" failures="0" errors="0" skipped="0" time="3.393" timestamp="2026-10-25T08:50:10" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="inputAndKeyboardSubmitReportCurrentTitle" classname="com.example.aiprgate.ui.TaskScreenTest" time="2.222" />
+    <testcase name="checkboxSupportsCompletionUndoAndDeleteTargetsSelectedItem" classname="com.example.aiprgate.ui.TaskScreenTest" time="1.171" />
+  </testsuite>
+</testsuites>

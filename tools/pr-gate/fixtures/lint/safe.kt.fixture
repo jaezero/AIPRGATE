@@ -1,0 +1,15 @@
+package com.example.aiprgate.gatepilot
+
+import java.security.KeyStore
+import javax.net.ssl.TrustManager
+import javax.net.ssl.TrustManagerFactory
+
+// Manually constructed normal counterexample, not observed AI output.
+// Uses platform trust evaluation; never connects to a network.
+class TrustPolicy {
+    fun trustManagers(): Array<TrustManager> {
+        val factory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+        factory.init(null as KeyStore?)
+        return factory.trustManagers
+    }
+}

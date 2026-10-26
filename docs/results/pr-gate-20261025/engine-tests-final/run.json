@@ -1,0 +1,9 @@
+{
+  "command": "bun test ./tools/pr-gate",
+  "startedAt": "2026-10-25T14:25:33.027Z",
+  "finishedAt": "2026-10-25T14:25:38.747Z",
+  "exitCode": 0,
+  "elapsedMs": 4368,
+  "passed": 103,
+  "failed": 0
+}

@@ -1,0 +1,395 @@
+{
+  "inputs": [
+    {
+      "path": "tools/pr-gate/bootstrap-gitleaks.mjs",
+      "sha256": "3F4CADE5AFBB676FE872807038472F1FFC115E9D06D8ECF09807C78497770DE0"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/auth/GitHubDeviceAuth.kt",
+      "sha256": "A43E8834C3FF2086988180FED4173F76498F64A03828BD617E3728FF68C6C86F"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+      "sha256": "58AE87FA0C5B5D1562D27FD648D2C061553FE20E3ED570BDE588162D01EA7A27"
+    },
+    {
+      "path": "policy/main-protection.json",
+      "sha256": "FE9B86577D69000BFE96ACF3F4B999F42625052004FAC8CA11AC51C3F498FAF9"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/SampleActivity.kt",
+      "sha256": "D37C81CE510932EB9CA5BF0DC24DB4D445B8E79ACA227D3AC2CAF5BAC96FCC2A"
+    },
+    {
+      "path": "tools/pr-gate/secrets.test.js",
+      "sha256": "0D83DC607CAF6EE9775DD3785F520527DAE09B5DB352EC39BBC579F99DC6FB37"
+    },
+    {
+      "path": "tools/pr-gate/verify.mjs",
+      "sha256": "40552D475193534079218D978E529EE7317BEDAB5B2D22C7ED507D75CFF9589C"
+    },
+    {
+      "path": "tools/pr-gate/process.mjs",
+      "sha256": "6BC522EA797A9FE34C5C70BA612DB3264199753DB2F0F88019C791EA631A2031"
+    },
+    {
+      "path": "tools/pr-gate/windows-gradle.ps1",
+      "sha256": "3CEAC33189862166A847036A050EC73F608CA5294B7A26BD8967172A10596CF5"
+    },
+    {
+      "path": "tools/pr-gate/fixtures/pr-valid.json",
+      "sha256": "B0E5DE6044F713D6DA315101D499ABA3BC099C1C1034D5776CC91F79E164C5DA"
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "6CF1A27E6807B1D24E41D3FBE7DDC1BFE1F42226027964F6EAF477D71B43B283"
+    },
+    {
+      "path": "tools/pr-gate/pilot-gate.mjs",
+      "sha256": "DDAFF214F73F8CF6123B71A5F5BC367D09D3EA14BE27BB6C6AFDF9C88C0CE53F"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/aiprgate/management/ManagementScreenTest.kt",
+      "sha256": "B974B6EEA8C3E6E101ABA734491B1D938AB907E8445B5A152630667226CEC4E6"
+    },
+    {
+      "path": "app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+      "sha256": "846219E6F72FE9A6C104CA8919CBEE36A101E7D2FF8DA9DA67B689A5888F060D"
+    },
+    {
+      "path": "app/src/test/java/com/example/aiprgate/auth/GitHubDeviceAuthTest.kt",
+      "sha256": "F10D9F469AB6F427EC4EB8169FD22624376164F589C0836C172D227F2C71A736"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+      "sha256": "5FAF033745C8C882C43BB1B372D4E4A5890CAEC63D9892A2E756C954108B85DC"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/model/LearningTask.kt",
+      "sha256": "ACC23A683423AAE279E642976F798DF2C6CAC0BCC6BD7D55129D64A9B8811743"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/ui/theme/Theme.kt",
+      "sha256": "3E0970CC05174592F36426EAAA0FDA3DDD94855EAF10D251F99BCC04626C6065"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/management/ManagementState.kt",
+      "sha256": "DE38AE3C80CF9ACA81A47605B7873C7693696FCDF07CF9CA74F1BD78256E50ED"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "sha256": "88F7653499EF524126EA5018A99BAF9CC3269E7E584D6205DFDD76DB39F39CC0"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "CB1FC47AB4A984530ED60E0E6EE638929C3038290E7E7E0B4B03A3A30FBE7381"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "E3DBB4FE96313342101BBAD58B7B1D787AE18F1ADD14644F7C6CD0333808A650"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/auth/KeystoreSessionStore.kt",
+      "sha256": "5BBADA2AD1AEBCAC589598876A1ABE0012758ED5FB6809CBF6B6853FE3637378"
+    },
+    {
+      "path": "policy/checks.json",
+      "sha256": "7D33D242805E4328C09A8D7D21BAD8C1577A05BD383A8950510BEA8294A18C23"
+    },
+    {
+      "path": "tools/pr-gate/process.test.js",
+      "sha256": "5F72D780A4B5465141370A95CAB7B84377C3EF75148DFA1163597EAD6DD16C52"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/data/local/TaskDao.kt",
+      "sha256": "5B302A77E45D20EB470850E9E8438DC55E0EC7BE84480763BE28B07FC28B360E"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/ui/theme/Type.kt",
+      "sha256": "9720893BD47191E8F8794A2999BD8E0E9B73C232E46E5F6DC52DB66EE41FD5EA"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "sha256": "01D1A6A6C1234EB7FE270D097EB283D72B9C95AE5118886F1B6573AAD280F1F7"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/aiprgate/data/TaskDatabaseTest.kt",
+      "sha256": "3D42CB977F7EFA374ABBE82F280B3D0B1662AB811DBF35CF6B5615B87B8638B7"
+    },
+    {
+      "path": ".github/actions/run-check/action.yml",
+      "sha256": "EAD31563207956E297E93B474A5AD90D22AB3E4FD73621D026051CDA666C90AA"
+    },
+    {
+      "path": "tools/pr-gate/core.test.js",
+      "sha256": "EF9CCC67E342A99995B42BF89F9300DC91E1BF40EE4D1D5F6AEDD952C6032B68"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/ui/TaskScreen.kt",
+      "sha256": "3E4131857640346688DC5E3958579D35E5802BEB6803450E6681B2207FF28560"
+    },
+    {
+      "path": "tools/pr-gate/reports.mjs",
+      "sha256": "2B4316FE04336E7582DDF9F589DB84971B5691DE64AC4347040EEFBAA251B61F"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/TaskApplication.kt",
+      "sha256": "8993EECFB65B78F46634964BD9F88772AC2CC5D3AF718175C9A151C880D96704"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/aiprgate/auth/KeystoreSessionStoreTest.kt",
+      "sha256": "AF3D000D4CCC6F34B9E3DB1450EF029D3B670E91CA73B27FB77ED33BABA89E4B"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/data/local/TaskEntity.kt",
+      "sha256": "12AFB69B9F5F39E6CE965DEAD36ECDB88487F511BDF0EF949D63E0A6E900F6F3"
+    },
+    {
+      "path": "scripts/verify-local.ps1",
+      "sha256": "1E04BCE4BBF56434EC47C3B6BA6610C1E35723216F3B3250F9B5790521F96524"
+    },
+    {
+      "path": "scripts/verify-management.ps1",
+      "sha256": "7169B2104E18F4A6BBDB871C1ACAFD6F8AE9E00BB324540334D622EA7C960A66"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp",
+      "sha256": "91B490AEF86574901137F0A252272E1F1ADD99C1AD709E0696ED68929B88D261"
+    },
+    {
+      "path": "app/src/main/res/values/colors.xml",
+      "sha256": "B5626527D503417F0D8E5B1E08F338DE7B31173BF0E122815F03E64932ADBD88"
+    },
+    {
+      "path": "app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+      "sha256": "4E2C58B91DE01130E6479E00CBBAAF6E77CD961DD2C8E303CF13CD077FA92632"
+    },
+    {
+      "path": "app/src/test/java/com/example/aiprgate/management/ManagementViewModelTest.kt",
+      "sha256": "AE3DC175A04DEEA4E2E95983882F1002C0A81A4D7DD55B203DAD8329E7F999A3"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "9B21E08AC7606D107316F87B4DE59157FCC6E106E0D59CED9D3E6BB9A7C6123D"
+    },
+    {
+      "path": "tools/pr-gate/fixtures/lint/unsafe.kt.fixture",
+      "sha256": "066FFD453701DB70CBAA4F68A86B87C33CD72EA75B8498463AB1A7B282EEDF29"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/ui/theme/Color.kt",
+      "sha256": "4BC1A36CE92F6BD295EF5807AFACA2520A19387D0BCD5098ECC3AF2AB1E4FEF9"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+      "sha256": "3009FAD079F5772F30ECD767F98924367FBE0F81C30048D672D4FDA2D5CA7D12"
+    },
+    {
+      "path": "gradle/gradle-daemon-jvm.properties",
+      "sha256": "6C13AA5BA36690CCFBBB25A8807D01D98C15833E446D7AE82DDC726472CB8EF7"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/ui/TaskViewModel.kt",
+      "sha256": "15FDBDBD63999C35E53BA8C561B4D22FB15C9E9B32BBF89A9039D69A9E6244B4"
+    },
+    {
+      "path": "tools/pr-gate/SECRET-PILOT.md",
+      "sha256": "7AF9CFB8F1ED3946DB9424CEB650ECF535A3717437E9C9A6C40B91F54A79F92D"
+    },
+    {
+      "path": "tools/pr-gate/workflow.test.js",
+      "sha256": "72F8593A8B2B4C367A4851F112D15180A2FA27C14B06CE021DB824DC80E18694"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/aiprgate/ui/TaskScreenTest.kt",
+      "sha256": "3DFEEDB4F8085AA203EE97FD68373C02016717A12DD8FAABED86B28479024B49"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/data/RoomTaskRepository.kt",
+      "sha256": "2016C64E889EC6B5255447BCBCD1359BD0EA2AAC1DEA0D2C66DA0D69D8284F27"
+    },
+    {
+      "path": "app/src/test/java/com/example/aiprgate/ExampleUnitTest.kt",
+      "sha256": "CB45826212FA07B744493EDC891F488E03A6C0BB93CC9D9C9F881336818434B5"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "76805E32C009C0CF0DD5D206BDDC9FB22EA42E84DB904B764F3047DE095493F3"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/data/local/TaskDatabase.kt",
+      "sha256": "6C104BE0EBF326C7929B3765B7488A95A3836AE890CD077522E04AF2BA0D5C16"
+    },
+    {
+      "path": "tools/pr-gate/pilot-lint.ps1",
+      "sha256": "57892D11D2B68C625DC780A779B683F3868833E644F12074713DC2E1220E3A9D"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "6E806551F74A9698D6EA1197B87F5A592F2CAFFBABDE4AB84E699DC85008B91B"
+    },
+    {
+      "path": "tools/pr-gate/fixtures/lint/safe.kt.fixture",
+      "sha256": "098556146F255DDB801D6A4070DED54AF2E212215C085B380E65C6F381B43F71"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "FAA11BD7AB64E7339B39291B6F5A627BD19F58D55ACBFC6426A9096763250FEB"
+    },
+    {
+      "path": "app/src/main/keepRules/rules.keep",
+      "sha256": "CD9F36ADE2D8604E1B7CF24EFF5B171F9C0816C0AA013BA7EB55BE4FE2E1DAC7"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/management/ManagementScreen.kt",
+      "sha256": "A9E75B0A792EFEA18A5B7795827AC39510001F21F33D8FFC3278D0A8E7BED863"
+    },
+    {
+      "path": "tools/pr-gate/core.mjs",
+      "sha256": "A99C4C867E34CEC7E935AD94315CB1F5EF739A94358835A5ED09A90D99459209"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/auth/SessionStore.kt",
+      "sha256": "4A83EF8BEBA255C22CB49F905C12B019360B307365F33201CCD34E581FB140A3"
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "440B95755AAD9542DF85D251302B06E3402EC3A08BFF469D134552A76B2B3D46"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/github/GitHubModels.kt",
+      "sha256": "93644E90590C835BF0859088D5D23C4CAE39EBFDCF5C48B530383C8D57071CD7"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+      "sha256": "398340DAD816FC9A6338CB151A8CF1E45B926F9BFB70628B24C4BD2523CC94D4"
+    },
+    {
+      "path": "tools/pr-gate/LINT-PILOT.md",
+      "sha256": "FEB70FA59F8956C7E22A21CB6F3C2057B8C73D0C7CB5FD23B592C84F522FA729"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/data/TaskRepository.kt",
+      "sha256": "6479A88A847E2B40BCD92962B2AA422E54E06B572938C244B380CFB43BAE681C"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "BEAF14EC9C0BA34C11B01F39C88DE3B11796B59F95660D07A5116EC2D8BBE4D9"
+    },
+    {
+      "path": "policy/gitleaks.ignore",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "path": "app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+      "sha256": "DD00996198640ED28FBC09CDCD7A3807CF8707F3EB255B659634DA3CA6A6FF01"
+    },
+    {
+      "path": "app/src/test/java/com/example/aiprgate/auth/HttpDeviceAuthTransportTest.kt",
+      "sha256": "9D15A76D361E7B83DC1BE987F34BC5A9DF29E8AB16E578C021DE49413F36F4DF"
+    },
+    {
+      "path": "app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+      "sha256": "1ED73F5341A69D3B41C7E02E126803F50CC8C3284ADF4BBB737F0C93577AEF07"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "sha256": "88F7653499EF524126EA5018A99BAF9CC3269E7E584D6205DFDD76DB39F39CC0"
+    },
+    {
+      "path": "scripts/capture-evidence.ps1",
+      "sha256": "65BE83750E9F8C534F4B968CB88E27456078899F4A1AA90D85BA86550491D4EA"
+    },
+    {
+      "path": "app/src/test/java/com/example/aiprgate/data/RoomTaskRepositoryTest.kt",
+      "sha256": "1AEB9F6C6D3AD33BBEECAFB376B180215AA83C788E7CB49C0720424101877702"
+    },
+    {
+      "path": "policy/gitleaks.toml",
+      "sha256": "0DEEFC29467021B77F97945667EC2FA6B66F44CC658B74831D498CC2980B2286"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/aiprgate/ExampleInstrumentedTest.kt",
+      "sha256": "4ADBF639BC1790AB3847F7AEC254EC54130D2B55AED6E0DD13E98E236ABA95E2"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/auth/DeviceAuth.kt",
+      "sha256": "A1CA561FF4028169277924EC106EA22986AB4557254C925EB0BDD920795DBDB9"
+    },
+    {
+      "path": "tools/pr-gate/cli.mjs",
+      "sha256": "05360C6E6134ABC09C7D275027B88E220B1490EA6651D5B1507332CE3182DEC0"
+    },
+    {
+      "path": "scripts/collect-management-evidence.ps1",
+      "sha256": "E7FCE2FF4D32DB5A0C831D837D3465A1DBC81B47999B198ABD888BC08FFA369F"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/management/ManagementViewModel.kt",
+      "sha256": "C675F802292CE46C5C76108AD44184D1DC4E93A28B721561071FCE77AAC2B4A7"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "ED423C73A6F40A4D2909F0901E60527B3A807CD59E1B5593BCAAE1808B1C6321"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+      "sha256": "F98FEF5BC3BFE5B65692C40AD1CBAE2BEC4FAF9F1B249C397626740DB71B62D8"
+    },
+    {
+      "path": "tools/pr-gate/secrets.mjs",
+      "sha256": "CD1538430BE007D35F25EA3BA67B414877E44E239356B2AFCDA828C0A1DE64A6"
+    },
+    {
+      "path": "app/src/test/java/com/example/aiprgate/ui/TaskViewModelTest.kt",
+      "sha256": "7DD563007E1A3DEB6CDFC6901B3BBB6C6D7688AF7132C86D194840B4E2414075"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/github/GitHubApi.kt",
+      "sha256": "055C91B941E20341646261C20AD1CF947FC9E4655A5150182E13B8440345ACED"
+    },
+    {
+      "path": ".github/workflows/pr-gate.yml",
+      "sha256": "EFC3558105CF014B9BD5CC5541DA13875BAB02F7E57A3BB56908854DBF0173A2"
+    },
+    {
+      "path": "tools/pr-gate/reports.test.js",
+      "sha256": "5F660B16A64389CF289FCC96FF4AF0262E15846CED952DF08BB949F378CCD0C7"
+    },
+    {
+      "path": "app/src/main/java/com/example/aiprgate/MainActivity.kt",
+      "sha256": "9FE9EFC003AE2C3CD17C45164229B8F6C17BBE6BC99F5ABEA7B824651C118A62"
+    },
+    {
+      "path": "tools/pr-gate/github-protection.mjs",
+      "sha256": "4285CDD6CBFF3440353D3951AE448482CD556E144EDC1ABB15D0384AAC3E9720"
+    },
+    {
+      "path": "app/src/test/java/com/example/aiprgate/github/GitHubApiTest.kt",
+      "sha256": "2D5E23231BBBD7C2B9759D7E60B21698B5D60DF8C50A84EFCDAB6E4CA9436510"
+    }
+  ],
+  "apk": {
+    "path": "C:\\Users\\박재영\\Desktop\\기업 모둠학습\\AiPrGate\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "sha256": "C2DDD7C77BBC0931128F036D15AD883D03AEBA9E83D67C61135D56FA12A2604F",
+    "bytes": 12457843
+  },
+  "note": "Copies generated evidence only. This command does not run tests or prove live reviews/merges.",
+  "tests": {
+    "unit": {
+      "skipped": 0,
+      "errors": 0,
+      "tests": 68,
+      "failures": 0
+    },
+    "device": {
+      "skipped": 0,
+      "errors": 0,
+      "tests": 15,
+      "failures": 0
+    }
+  },
+  "capturedAt": "2026-10-26T00:38:19.3638620+09:00",
+  "schemaVersion": 2,
+  "formatNote": "Hash metadata was reformatted as explicit path/sha256 records after the generic credential rule mistook auth filenames used as keys. Original timestamps, test results, APK metadata and all 92 source fingerprints are unchanged."
+}

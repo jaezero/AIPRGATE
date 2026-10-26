@@ -1,0 +1,323 @@
+Initialized native services in: C:\Users\���翵\.gradle\native
+Initialized jansi services in: C:\Users\���翵\.gradle\native
+The client will now receive all logging from the daemon (pid: 7008). The daemon log file: C:\Users\박재영\.gradle\daemon\9.6.0\daemon-7008.out.log
+Starting 4th build in daemon [uptime: 16 mins 11.453 secs, performance: 99%, GC rate: 0.00/s, heap usage: 0% of 2 GiB]
+Using 12 worker leases.
+Operational build model parameters: {cachingModelBuilding=false, configurationCache=true, configurationCacheDisabledReason=null, configurationCacheParallelLoad=true, configurationCacheParallelStore=false, configureOnDemand=false, invalidateCoupledProjects=false, isolatedProjects=false, isolatedProjectsDiagnostics=false, modelAsProjectDependency=false, modelBuilding=false, parallelModelBuilding=false, parallelProjectConfiguration=false, parallelProjectExecution=false, resilientModelBuilding=false, vintage=false}
+Encryption key source: default Gradle keystore (pkcs12)
+Calculating task graph as no cached configuration is available for tasks: :app:testDebugUnitTest
+Now considering [C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '1.0.0']
+Settings evaluated using settings file 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\settings.gradle.kts'.
+Projects loaded. Root project using build file 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\build.gradle.kts'.
+Included projects: [root project 'AiPrGate', project ':app']
+
+> Configure project :
+Evaluating root project 'AiPrGate' using build file 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '9.4.1', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.2.10', apply: false]
+
+> Configure project :app
+Evaluating project ':app' using build file 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '9.4.1']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.2.10']
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Add android.sync.suppressAgpWarnings=UNSUPPORTED_PROJECT_OPTION_USE to the gradle.properties file to suppress this warning.
+Build a3d4676e-9636-4873-9c4d-fa41d1264df9 is started
+Using default execution profile
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+All projects evaluated.
+Task path ':app:testDebugUnitTest' matched project ':app'
+Task name matched 'testDebugUnitTest'
+Selected primary task 'testDebugUnitTest' from project :app
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :app:compileDebugKotlin
+Tasks to be executed: [task ':app:preBuild', task ':app:preDebugBuild', task ':app:generateDebugResources', task ':app:packageDebugResources', task ':app:processDebugNavigationResources', task ':app:parseDebugLocalResources', task ':app:generateDebugRFile', task ':app:compileDebugKotlin', task ':app:javaPreCompileDebug', task ':app:compileDebugJavaWithJavac', task ':app:checkDebugAarMetadata', task ':app:mapDebugSourceSetPaths', task ':app:compileDebugNavigationResources', task ':app:mergeDebugResources', task ':app:createDebugCompatibleScreenManifests', task ':app:extractDeepLinksDebug', task ':app:processDebugMainManifest', task ':app:processDebugManifest', task ':app:processDebugManifestForPackage', task ':app:processDebugResources', task ':app:bundleDebugClassesToRuntimeJar', task ':app:bundleDebugClassesToCompileJar', task ':app:preDebugUnitTestBuild', task ':app:compileDebugUnitTestKotlin', task ':app:javaPreCompileDebugUnitTest', task ':app:compileDebugUnitTestJavaWithJavac', task ':app:processDebugJavaRes', task ':app:processDebugUnitTestJavaRes', task ':app:testDebugUnitTest']
+Tasks that were excluded: []
+Build a3d4676e-9636-4873-9c4d-fa41d1264df9 is closed
+Ignoring listeners of task graph ready event, as this build (:) has already executed work.
+Resolve mutations for :app:preBuild (Thread[#455,Execution worker,5,main]) started.
+:app:preBuild (Thread[#455,Execution worker,5,main]) started.
+
+> Task :app:preBuild UP-TO-DATE
+Skipping task ':app:preBuild' as it has no actions.
+Resolve mutations for :app:preDebugBuild (Thread[#455,Execution worker,5,main]) started.
+Resolve mutations for :app:preDebugUnitTestBuild (Thread[#454,included builds,5,main]) started.
+:app:preDebugUnitTestBuild (Thread[#454,included builds,5,main]) started.
+:app:preDebugBuild (Thread[#455,Execution worker,5,main]) started.
+
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+Skipping task ':app:preDebugUnitTestBuild' as it has no actions.
+Resolve mutations for :app:javaPreCompileDebugUnitTest (Thread[#454,included builds,5,main]) started.
+
+> Task :app:preDebugBuild UP-TO-DATE
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :app:generateDebugResources (Thread[#455,Execution worker,5,main]) started.
+Resolve mutations for :app:processDebugNavigationResources (Thread[#461,Execution worker Thread 7,5,main]) started.
+Resolve mutations for :app:javaPreCompileDebug (Thread[#465,Execution worker Thread 11,5,main]) started.
+Resolve mutations for :app:checkDebugAarMetadata (Thread[#458,Execution worker Thread 4,5,main]) started.
+Resolve mutations for :app:mapDebugSourceSetPaths (Thread[#459,Execution worker Thread 5,5,main]) started.
+Resolve mutations for :app:createDebugCompatibleScreenManifests (Thread[#460,Execution worker Thread 6,5,main]) started.
+Resolve mutations for :app:extractDeepLinksDebug (Thread[#462,Execution worker Thread 8,5,main]) started.
+:app:processDebugNavigationResources (Thread[#463,Execution worker Thread 9,5,main]) started.
+:app:javaPreCompileDebug (Thread[#464,Execution worker Thread 10,5,main]) started.
+:app:createDebugCompatibleScreenManifests (Thread[#456,Execution worker Thread 2,5,main]) started.
+:app:javaPreCompileDebugUnitTest (Thread[#454,included builds,5,main]) started.
+:app:checkDebugAarMetadata (Thread[#458,Execution worker Thread 4,5,main]) started.
+:app:generateDebugResources (Thread[#455,Execution worker,5,main]) started.
+:app:mapDebugSourceSetPaths (Thread[#459,Execution worker Thread 5,5,main]) started.
+:app:extractDeepLinksDebug (Thread[#462,Execution worker Thread 8,5,main]) started.
+
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+Caching disabled for task ':app:createDebugCompatibleScreenManifests' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:createDebugCompatibleScreenManifests' as it is up-to-date.
+
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+Caching disabled for task ':app:javaPreCompileDebugUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:javaPreCompileDebugUnitTest' as it is up-to-date.
+
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+Caching disabled for task ':app:mapDebugSourceSetPaths' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:mapDebugSourceSetPaths' as it is up-to-date.
+
+> Task :app:javaPreCompileDebug UP-TO-DATE
+Caching disabled for task ':app:javaPreCompileDebug' because:
+  Build cache is disabled
+Skipping task ':app:javaPreCompileDebug' as it is up-to-date.
+
+> Task :app:generateDebugResources UP-TO-DATE
+Caching disabled for task ':app:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugResources' as it is up-to-date.
+Resolve mutations for :app:packageDebugResources (Thread[#455,Execution worker,5,main]) started.
+Resolve mutations for :app:mergeDebugResources (Thread[#461,Execution worker Thread 7,5,main]) started.
+:app:packageDebugResources (Thread[#455,Execution worker,5,main]) started.
+:app:mergeDebugResources (Thread[#461,Execution worker Thread 7,5,main]) started.
+
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+Caching disabled for task ':app:extractDeepLinksDebug' because:
+  Build cache is disabled
+Skipping task ':app:extractDeepLinksDebug' as it is up-to-date.
+Resolve mutations for :app:processDebugMainManifest (Thread[#462,Execution worker Thread 8,5,main]) started.
+:app:processDebugMainManifest (Thread[#462,Execution worker Thread 8,5,main]) started.
+
+> Task :app:packageDebugResources UP-TO-DATE
+Caching disabled for task ':app:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:packageDebugResources' as it is up-to-date.
+
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':app:checkDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:checkDebugAarMetadata' as it is up-to-date.
+
+> Task :app:processDebugNavigationResources UP-TO-DATE
+Caching disabled for task ':app:processDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:processDebugNavigationResources' as it is up-to-date.
+Resolve mutations for :app:parseDebugLocalResources (Thread[#463,Execution worker Thread 9,5,main]) started.
+Resolve mutations for :app:compileDebugNavigationResources (Thread[#465,Execution worker Thread 11,5,main]) started.
+:app:parseDebugLocalResources (Thread[#463,Execution worker Thread 9,5,main]) started.
+:app:compileDebugNavigationResources (Thread[#465,Execution worker Thread 11,5,main]) started.
+
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+Caching disabled for task ':app:compileDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:compileDebugNavigationResources' as it is up-to-date.
+
+> Task :app:mergeDebugResources UP-TO-DATE
+Caching disabled for task ':app:mergeDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:mergeDebugResources' as it is up-to-date.
+
+> Task :app:parseDebugLocalResources UP-TO-DATE
+Caching disabled for task ':app:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':app:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :app:generateDebugRFile (Thread[#463,Execution worker Thread 9,5,main]) started.
+:app:generateDebugRFile (Thread[#463,Execution worker Thread 9,5,main]) started.
+
+> Task :app:generateDebugRFile UP-TO-DATE
+Caching disabled for task ':app:generateDebugRFile' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugRFile' as it is up-to-date.
+Resolve mutations for :app:compileDebugKotlin (Thread[#463,Execution worker Thread 9,5,main]) started.
+:app:compileDebugKotlin (Thread[#463,Execution worker Thread 9,5,main]) started.
+
+> Task :app:processDebugMainManifest UP-TO-DATE
+Caching disabled for task ':app:processDebugMainManifest' because:
+  Build cache is disabled
+Skipping task ':app:processDebugMainManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifest (Thread[#462,Execution worker Thread 8,5,main]) started.
+:app:processDebugManifest (Thread[#462,Execution worker Thread 8,5,main]) started.
+
+> Task :app:processDebugManifest UP-TO-DATE
+Caching disabled for task ':app:processDebugManifest' because:
+  Build cache is disabled
+Skipping task ':app:processDebugManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifestForPackage (Thread[#462,Execution worker Thread 8,5,main]) started.
+:app:processDebugManifestForPackage (Thread[#462,Execution worker Thread 8,5,main]) started.
+
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+Caching disabled for task ':app:processDebugManifestForPackage' because:
+  Build cache is disabled
+Skipping task ':app:processDebugManifestForPackage' as it is up-to-date.
+Resolve mutations for :app:processDebugResources (Thread[#462,Execution worker Thread 8,5,main]) started.
+:app:processDebugResources (Thread[#462,Execution worker Thread 8,5,main]) started.
+
+> Task :app:processDebugResources UP-TO-DATE
+Caching disabled for task ':app:processDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:processDebugResources' as it is up-to-date.
+
+> Task :app:compileDebugKotlin UP-TO-DATE
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\main\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\main\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\main\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\java', not found
+Caching disabled for task ':app:compileDebugKotlin' because:
+  Build cache is disabled
+Skipping task ':app:compileDebugKotlin' as it is up-to-date.
+Resolve mutations for :app:compileDebugJavaWithJavac (Thread[#463,Execution worker Thread 9,5,main]) started.
+Resolve mutations for :app:processDebugJavaRes (Thread[#462,Execution worker Thread 8,5,main]) started.
+:app:processDebugJavaRes (Thread[#462,Execution worker Thread 8,5,main]) started.
+:app:compileDebugJavaWithJavac (Thread[#463,Execution worker Thread 9,5,main]) started.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+Skipping task ':app:compileDebugJavaWithJavac' as it has no source files and no previous output files.
+Resolve mutations for :app:bundleDebugClassesToRuntimeJar (Thread[#454,included builds,5,main]) started.
+Resolve mutations for :app:bundleDebugClassesToCompileJar (Thread[#459,Execution worker Thread 5,5,main]) started.
+:app:bundleDebugClassesToRuntimeJar (Thread[#454,included builds,5,main]) started.
+:app:bundleDebugClassesToCompileJar (Thread[#459,Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugJavaRes UP-TO-DATE
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\main\resources', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\debug\resources', not found
+Caching disabled for task ':app:processDebugJavaRes' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:processDebugJavaRes' as it is up-to-date.
+work action resolve out (project ':app') (Thread[#462,Execution worker Thread 8,5,main]) started.
+
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+Caching disabled for task ':app:bundleDebugClassesToCompileJar' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:bundleDebugClassesToCompileJar' as it is up-to-date.
+work action resolve classes.jar (project ':app') (Thread[#459,Execution worker Thread 5,5,main]) started.
+Resolve mutations for :app:compileDebugUnitTestKotlin (Thread[#459,Execution worker Thread 5,5,main]) started.
+
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+Caching disabled for task ':app:bundleDebugClassesToRuntimeJar' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:bundleDebugClassesToRuntimeJar' as it is up-to-date.
+work action resolve classes.jar (project ':app') (Thread[#454,included builds,5,main]) started.
+:app:compileDebugUnitTestKotlin (Thread[#459,Execution worker Thread 5,5,main]) started.
+
+> Task :app:compileDebugUnitTestKotlin UP-TO-DATE
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\test\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\test\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\test\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\java', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\kotlin', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\java', not found
+Caching disabled for task ':app:compileDebugUnitTestKotlin' because:
+  Build cache is disabled
+Skipping task ':app:compileDebugUnitTestKotlin' as it is up-to-date.
+Resolve mutations for :app:compileDebugUnitTestJavaWithJavac (Thread[#458,Execution worker Thread 4,5,main]) started.
+Resolve mutations for :app:processDebugUnitTestJavaRes (Thread[#455,Execution worker,5,main]) started.
+:app:processDebugUnitTestJavaRes (Thread[#455,Execution worker,5,main]) started.
+:app:compileDebugUnitTestJavaWithJavac (Thread[#458,Execution worker Thread 4,5,main]) started.
+
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+Skipping task ':app:compileDebugUnitTestJavaWithJavac' as it has no source files and no previous output files.
+
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\test\resources', not found
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\resources', not found
+Caching disabled for task ':app:processDebugUnitTestJavaRes' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:processDebugUnitTestJavaRes' as it is up-to-date.
+Resolve mutations for :app:testDebugUnitTest (Thread[#455,Execution worker,5,main]) started.
+:app:testDebugUnitTest (Thread[#455,Execution worker,5,main]) started.
+Could not write standard input to Gradle Test Executor 2.
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.implWriteBytes(Unknown Source)
+	at java.base/java.io.FileOutputStream.write(Unknown Source)
+	at java.base/java.lang.Process$PipeOutputStream.write(Unknown Source)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.base/java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.gradle.process.internal.streams.ExecOutputHandleRunner.writeBuffer(ExecOutputHandleRunner.java:98)
+	at org.gradle.process.internal.streams.ExecOutputHandleRunner.forwardContent(ExecOutputHandleRunner.java:85)
+	at org.gradle.process.internal.streams.ExecOutputHandleRunner.run(ExecOutputHandleRunner.java:64)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+����: �⺻ Ŭ���� worker.org.gradle.process.internal.worker.GradleWorkerMain��(��) ã�ų� �ε��� �� �����ϴ�.
+����: java.lang.ClassNotFoundException: worker.org.gradle.process.internal.worker.GradleWorkerMain
+
+> Task :app:testDebugUnitTest FAILED
+Caching disabled for task ':app:testDebugUnitTest' because:
+  Build cache is disabled
+Task ':app:testDebugUnitTest' is not up-to-date because:
+  Task has failed previously.
+file or directory 'C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\build\intermediates\javac\debugUnitTest\compileDebugUnitTestJavaWithJavac\classes', not found
+Starting process 'Gradle Test Executor 2'. Working directory: C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app Command: C:\Program Files\Android\Android Studio1\jbr\bin\java.exe -Djava.awt.headless=true -Djava.library.path=C:\Program Files\Android\Android Studio1\jbr\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;C:\Users\박재영\.codex\tmp\arg0\codex-arg0cLcomX;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\libheif\libheif\bin;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\jxrlib\jxrlib\bin;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\override;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\cursor\resources\app\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\PuTTY\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\nodejs\;C:\Users\박재영\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\박재영\AppData\Local\Programs\Python\Python311\;C:\Users\박재영\AppData\Local\Programs\OpenAI\Codex\bin;C:\Users\박재영\.local\bin;C:\Users\박재영\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\박재영\AppData\Local\Programs\Python\Python312\;C:\Users\박재영\AppData\Local\Programs\Python\Launcher\;C:\Program Files\Android\Android Studio\jbr\bin;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;C:\Users\박재영\AppData\Local\Microsoft\WindowsApps;C:\Users\박재영\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\박재영\AppData\Local\GitHubDesktop\bin;C:\Users\박재영\.dotnet\tools;C:\src\flutter\bin;C:\Android\Sdk\platform-tools;C:\Android\Sdk\cmdline-tools\latest\bin;C:\Android\Sdk\emulator;C:\Users\박재영\AppData\Roaming\npm;C:\Users\박재영\.local\bin;C:\Users\박재영\.dotnet\tools;C:\Users\박재영\.bun\bin;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin;C:\Users\박재영\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;C:\Users\박재영\AppData\Local\OpenAI\Codex\bin\6dd87ad08d6ff997;C:\Users\박재영\AppData\Local\OpenAI\Codex\bin\cdef5aaf3e41ab53;.;C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\testDebug\jniLibs;C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\src\test\jniLibs -Dorg.gradle.internal.worker.tmpdir=C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\build\tmp\testDebugUnitTest\work --add-opens=java.base/java.io=ALL-UNNAMED @C:\Users\박재영\.gradle\.tmp\gradle-worker-classpath10271107348009038025txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=KR -Duser.language=ko -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 2'
+Successfully started process 'Gradle Test Executor 2'
+Generating HTML test report...
+Finished generating test html results (0.007 secs) into: C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\build\reports\tests\testDebugUnitTest
+Finished generating test XML results (0.0 secs) into: C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate\app\build\test-results\testDebugUnitTest
+Build 39f6f716-8fb6-4617-a23a-9ec47c6e549a is started
+Build 39f6f716-8fb6-4617-a23a-9ec47c6e549a is closed
+
+See the complete report at file:///C:/Users/%EB%B0%95%EC%9E%AC%EC%98%81/Desktop/%EA%B8%B0%EC%97%85%20%EB%AA%A8%EB%91%A0%ED%95%99%EC%8A%B5/AiPrGate/build/reports/configuration-cache/ccu0qp6nz2scm67dno01portu/2iore1nkakmiofh2l4uu07r87/configuration-cache-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest' (registered by plugin 'com.android.internal.application').
+> Test process encountered an unexpected problem.
+   > Process 'Gradle Test Executor 2' finished with non-zero exit value 1
+
+* Try:
+> Check common problems https://docs.gradle.org/9.6.0/userguide/java_testing.html#sec:java_testing_troubleshooting.
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2s
+24 actionable tasks: 1 executed, 23 up-to-date
+Watched directory hierarchies: [C:\Users\박재영\Desktop\기업 모둠학습\AiPrGate]
+Configuration cache entry stored.

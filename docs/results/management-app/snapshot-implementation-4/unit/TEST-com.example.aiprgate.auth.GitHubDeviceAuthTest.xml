@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.aiprgate.auth.GitHubDeviceAuthTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T15:16:45.301Z" hostname="DESKTOP-69G5GDV" time="0.119">
+  <properties/>
+  <testcase name="oauthConfigurationFailuresAreTyped" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.056"/>
+  <testcase name="pollEncodesDeviceGrantWithoutClientSecret" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.003"/>
+  <testcase name="cancellationPropagatesAndBlankInputsNeverReachTransport" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.012"/>
+  <testcase name="pollReturnsAuthorizedTokenForBearerResponse" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.003"/>
+  <testcase name="malformedOrContradictoryPollResponsesNeverAuthorize" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.007"/>
+  <testcase name="httpAndNetworkFailuresAreTypedWithoutResponseOrCauseDisclosure" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.007"/>
+  <testcase name="startRejectsUnsafeVerificationUrisAndInvalidFields" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.023"/>
+  <testcase name="startEncodesOnlySuppliedClientIdAndParsesDeviceCode" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.003"/>
+  <testcase name="pollReturnsEveryProtocolStateWithoutSchedulingAnotherRequest" classname="com.example.aiprgate.auth.GitHubDeviceAuthTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

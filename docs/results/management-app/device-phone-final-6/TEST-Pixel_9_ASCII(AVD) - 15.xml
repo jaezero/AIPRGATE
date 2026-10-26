@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="17" failures="0" errors="0" skipped="0" time="0.000" timestamp="2026-10-25T20:12:56" hostname="localhost">
+  <testsuite name="com.example.aiprgate.ExampleInstrumentedTest" tests="1" failures="0" errors="0" skipped="0" time="0.000" timestamp="2026-10-25T20:12:56" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="useAppContext" classname="com.example.aiprgate.ExampleInstrumentedTest" time="0.000" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.auth.KeystoreSessionStoreTest" tests="6" failures="0" errors="0" skipped="0" time="0.085" timestamp="2026-10-25T20:12:56" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="truncatedCiphertextThrowsAndCanBeCleared" classname="com.example.aiprgate.auth.KeystoreSessionStoreTest" time="0.009" />
+    <testcase name="realKeystoreRoundTripSurvivesNewStoreWithoutPlaintextFiles" classname="com.example.aiprgate.auth.KeystoreSessionStoreTest" time="0.026" />
+    <testcase name="atomicReplacementUsesFreshIvAndLeavesOnlyEncryptedLatestToken" classname="com.example.aiprgate.auth.KeystoreSessionStoreTest" time="0.012" />
+    <testcase name="logoutRemovesCiphertextAndDoesNotRestoreAtomicBackup" classname="com.example.aiprgate.auth.KeystoreSessionStoreTest" time="0.016" />
+    <testcase name="replacementPersistsNewTokenAndRejectingBlankPreservesPreviousSession" classname="com.example.aiprgate.auth.KeystoreSessionStoreTest" time="0.013" />
+    <testcase name="tamperedCiphertextFailsAuthenticationInsteadOfReturningSession" classname="com.example.aiprgate.auth.KeystoreSessionStoreTest" time="0.009" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.data.TaskDatabaseTest" tests="2" failures="0" errors="0" skipped="0" time="0.148" timestamp="2026-10-25T20:12:56" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="inMemoryDatabaseObservesCrudThroughRepository" classname="com.example.aiprgate.data.TaskDatabaseTest" time="0.110" />
+    <testcase name="diskDatabaseRetainsCompletionAndDeletionAfterCloseAndReopen" classname="com.example.aiprgate.data.TaskDatabaseTest" time="0.038" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.management.ManagementScreenTest" tests="6" failures="0" errors="0" skipped="0" time="21.488" timestamp="2026-10-25T20:12:56" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="listNavigationAndSampleEmitActualActions" classname="com.example.aiprgate.management.ManagementScreenTest" time="1.862" />
+    <testcase name="mergeNeedsConfirmationAndFailedCheckDisablesIt" classname="com.example.aiprgate.management.ManagementScreenTest" time="1.632" />
+    <testcase name="captureEveryManagementSurfaceInBothThemes" classname="com.example.aiprgate.management.ManagementScreenTest" time="14.347" />
+    <testcase name="retargetingClosesOldMergeConfirmationWithoutSubmitting" classname="com.example.aiprgate.management.ManagementScreenTest" time="1.204" />
+    <testcase name="deviceCodeCanBeReadOpenedAndCancelledWithoutExternalAuthentication" classname="com.example.aiprgate.management.ManagementScreenTest" time="1.248" />
+    <testcase name="approvalRequiresExplicitConfirmationAndUsesDisplayedSha" classname="com.example.aiprgate.management.ManagementScreenTest" time="1.195" />
+  </testsuite>
+  <testsuite name="com.example.aiprgate.ui.TaskScreenTest" tests="2" failures="0" errors="0" skipped="0" time="2.814" timestamp="2026-10-25T20:12:56" hostname="localhost">
+    <properties>
+      <property name="device" value="emulator-5554" />
+    </properties>
+    <testcase name="inputAndKeyboardSubmitReportCurrentTitle" classname="com.example.aiprgate.ui.TaskScreenTest" time="1.674" />
+    <testcase name="checkboxSupportsCompletionUndoAndDeleteTargetsSelectedItem" classname="com.example.aiprgate.ui.TaskScreenTest" time="1.140" />
+  </testsuite>
+</testsuites>

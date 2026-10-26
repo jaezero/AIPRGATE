@@ -1,0 +1,185 @@
+{
+    "note":  "Snapshot of current inputs and already generated reports, not a new test execution.",
+    "sourceFiles":  [
+                        {
+                            "sha256":  "4ADBF639BC1790AB3847F7AEC254EC54130D2B55AED6E0DD13E98E236ABA95E2",
+                            "path":  "app\\src\\androidTest\\java\\com\\example\\aiprgate\\ExampleInstrumentedTest.kt"
+                        },
+                        {
+                            "sha256":  "3D42CB977F7EFA374ABBE82F280B3D0B1662AB811DBF35CF6B5615B87B8638B7",
+                            "path":  "app\\src\\androidTest\\java\\com\\example\\aiprgate\\data\\TaskDatabaseTest.kt"
+                        },
+                        {
+                            "sha256":  "3DFEEDB4F8085AA203EE97FD68373C02016717A12DD8FAABED86B28479024B49",
+                            "path":  "app\\src\\androidTest\\java\\com\\example\\aiprgate\\ui\\TaskScreenTest.kt"
+                        },
+                        {
+                            "sha256":  "B64A0F61A9B57E799A1B0F70CB6CBE08FB34D4E4B93903462E0B3C671E233B50",
+                            "path":  "app\\src\\main\\AndroidManifest.xml"
+                        },
+                        {
+                            "sha256":  "A80483F4F0014F34FC9BA5D941EAFFF0F4E076739A9537475A39BBC136EBCD39",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\MainActivity.kt"
+                        },
+                        {
+                            "sha256":  "8993EECFB65B78F46634964BD9F88772AC2CC5D3AF718175C9A151C880D96704",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\TaskApplication.kt"
+                        },
+                        {
+                            "sha256":  "2016C64E889EC6B5255447BCBCD1359BD0EA2AAC1DEA0D2C66DA0D69D8284F27",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\data\\RoomTaskRepository.kt"
+                        },
+                        {
+                            "sha256":  "6479A88A847E2B40BCD92962B2AA422E54E06B572938C244B380CFB43BAE681C",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\data\\TaskRepository.kt"
+                        },
+                        {
+                            "sha256":  "5B302A77E45D20EB470850E9E8438DC55E0EC7BE84480763BE28B07FC28B360E",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\data\\local\\TaskDao.kt"
+                        },
+                        {
+                            "sha256":  "6C104BE0EBF326C7929B3765B7488A95A3836AE890CD077522E04AF2BA0D5C16",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\data\\local\\TaskDatabase.kt"
+                        },
+                        {
+                            "sha256":  "12AFB69B9F5F39E6CE965DEAD36ECDB88487F511BDF0EF949D63E0A6E900F6F3",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\data\\local\\TaskEntity.kt"
+                        },
+                        {
+                            "sha256":  "ACC23A683423AAE279E642976F798DF2C6CAC0BCC6BD7D55129D64A9B8811743",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\model\\LearningTask.kt"
+                        },
+                        {
+                            "sha256":  "3E4131857640346688DC5E3958579D35E5802BEB6803450E6681B2207FF28560",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\ui\\TaskScreen.kt"
+                        },
+                        {
+                            "sha256":  "15FDBDBD63999C35E53BA8C561B4D22FB15C9E9B32BBF89A9039D69A9E6244B4",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\ui\\TaskViewModel.kt"
+                        },
+                        {
+                            "sha256":  "4BC1A36CE92F6BD295EF5807AFACA2520A19387D0BCD5098ECC3AF2AB1E4FEF9",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\ui\\theme\\Color.kt"
+                        },
+                        {
+                            "sha256":  "B384F935C16D18661F07719664155FE98C0426E4334B8903ECC10680D14D0C21",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\ui\\theme\\Theme.kt"
+                        },
+                        {
+                            "sha256":  "9720893BD47191E8F8794A2999BD8E0E9B73C232E46E5F6DC52DB66EE41FD5EA",
+                            "path":  "app\\src\\main\\java\\com\\example\\aiprgate\\ui\\theme\\Type.kt"
+                        },
+                        {
+                            "sha256":  "CD9F36ADE2D8604E1B7CF24EFF5B171F9C0816C0AA013BA7EB55BE4FE2E1DAC7",
+                            "path":  "app\\src\\main\\keepRules\\rules.keep"
+                        },
+                        {
+                            "sha256":  "ED423C73A6F40A4D2909F0901E60527B3A807CD59E1B5593BCAAE1808B1C6321",
+                            "path":  "app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+                        },
+                        {
+                            "sha256":  "01D1A6A6C1234EB7FE270D097EB283D72B9C95AE5118886F1B6573AAD280F1F7",
+                            "path":  "app\\src\\main\\res\\drawable\\ic_launcher_foreground.xml"
+                        },
+                        {
+                            "sha256":  "88F7653499EF524126EA5018A99BAF9CC3269E7E584D6205DFDD76DB39F39CC0",
+                            "path":  "app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+                        },
+                        {
+                            "sha256":  "88F7653499EF524126EA5018A99BAF9CC3269E7E584D6205DFDD76DB39F39CC0",
+                            "path":  "app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+                        },
+                        {
+                            "sha256":  "DD00996198640ED28FBC09CDCD7A3807CF8707F3EB255B659634DA3CA6A6FF01",
+                            "path":  "app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
+                        },
+                        {
+                            "sha256":  "1ED73F5341A69D3B41C7E02E126803F50CC8C3284ADF4BBB737F0C93577AEF07",
+                            "path":  "app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.webp"
+                        },
+                        {
+                            "sha256":  "846219E6F72FE9A6C104CA8919CBEE36A101E7D2FF8DA9DA67B689A5888F060D",
+                            "path":  "app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
+                        },
+                        {
+                            "sha256":  "4E2C58B91DE01130E6479E00CBBAAF6E77CD961DD2C8E303CF13CD077FA92632",
+                            "path":  "app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
+                        },
+                        {
+                            "sha256":  "398340DAD816FC9A6338CB151A8CF1E45B926F9BFB70628B24C4BD2523CC94D4",
+                            "path":  "app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp"
+                        },
+                        {
+                            "sha256":  "91B490AEF86574901137F0A252272E1F1ADD99C1AD709E0696ED68929B88D261",
+                            "path":  "app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
+                        },
+                        {
+                            "sha256":  "58AE87FA0C5B5D1562D27FD648D2C061553FE20E3ED570BDE588162D01EA7A27",
+                            "path":  "app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
+                        },
+                        {
+                            "sha256":  "3009FAD079F5772F30ECD767F98924367FBE0F81C30048D672D4FDA2D5CA7D12",
+                            "path":  "app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.webp"
+                        },
+                        {
+                            "sha256":  "F98FEF5BC3BFE5B65692C40AD1CBAE2BEC4FAF9F1B249C397626740DB71B62D8",
+                            "path":  "app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
+                        },
+                        {
+                            "sha256":  "5FAF033745C8C882C43BB1B372D4E4A5890CAEC63D9892A2E756C954108B85DC",
+                            "path":  "app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+                        },
+                        {
+                            "sha256":  "B5626527D503417F0D8E5B1E08F338DE7B31173BF0E122815F03E64932ADBD88",
+                            "path":  "app\\src\\main\\res\\values\\colors.xml"
+                        },
+                        {
+                            "sha256":  "E3DBB4FE96313342101BBAD58B7B1D787AE18F1ADD14644F7C6CD0333808A650",
+                            "path":  "app\\src\\main\\res\\values\\strings.xml"
+                        },
+                        {
+                            "sha256":  "BEAF14EC9C0BA34C11B01F39C88DE3B11796B59F95660D07A5116EC2D8BBE4D9",
+                            "path":  "app\\src\\main\\res\\values\\themes.xml"
+                        },
+                        {
+                            "sha256":  "6CF1A27E6807B1D24E41D3FBE7DDC1BFE1F42226027964F6EAF477D71B43B283",
+                            "path":  "app\\src\\main\\res\\xml\\backup_rules.xml"
+                        },
+                        {
+                            "sha256":  "CB1FC47AB4A984530ED60E0E6EE638929C3038290E7E7E0B4B03A3A30FBE7381",
+                            "path":  "app\\src\\main\\res\\xml\\data_extraction_rules.xml"
+                        },
+                        {
+                            "sha256":  "CB45826212FA07B744493EDC891F488E03A6C0BB93CC9D9C9F881336818434B5",
+                            "path":  "app\\src\\test\\java\\com\\example\\aiprgate\\ExampleUnitTest.kt"
+                        },
+                        {
+                            "sha256":  "1AEB9F6C6D3AD33BBEECAFB376B180215AA83C788E7CB49C0720424101877702",
+                            "path":  "app\\src\\test\\java\\com\\example\\aiprgate\\data\\RoomTaskRepositoryTest.kt"
+                        },
+                        {
+                            "sha256":  "7DD563007E1A3DEB6CDFC6901B3BBB6C6D7688AF7132C86D194840B4E2414075",
+                            "path":  "app\\src\\test\\java\\com\\example\\aiprgate\\ui\\TaskViewModelTest.kt"
+                        },
+                        {
+                            "sha256":  "5107E39F8B2FCDCEB1CB437020585D32F19A6B871F81BEDBC73695976F8D790C",
+                            "path":  "app\\build.gradle.kts"
+                        },
+                        {
+                            "sha256":  "CE4A47634D8621CE3CAE8A43364305753944AAF6C3FCE67B8A61D8670D240249",
+                            "path":  "build.gradle.kts"
+                        },
+                        {
+                            "sha256":  "0636EFF1C3F9948E7AD8FA3CD5C42436059140EB29ECC09B2D5C857FBD020674",
+                            "path":  "gradle\\libs.versions.toml"
+                        },
+                        {
+                            "sha256":  "186F187253AFB5FC68566B1D3A5E4FE2E6492EE245C0377521D8FC08AEBA5E14",
+                            "path":  "gradle.properties"
+                        }
+                    ],
+    "capturedAt":  "2026-10-25T18:00:08.6943310+09:00",
+    "apkBytes":  12129191,
+    "apkSha256":  "010EB943C285E82F28C04C145449D62E211C2EB1BBCF533E0AFAA852820AE2DA",
+    "apkPath":  "C:\\Users\\박재영\\Desktop\\기업 모둠학습\\AiPrGate\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+}

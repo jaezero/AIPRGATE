@@ -1,0 +1,12 @@
+{
+  "simulation": true,
+  "number": 1,
+  "repository": { "full_name": "example/ai-pr-gate" },
+  "pull_request": {
+    "title": "로컬 검증용 합성 PR — 실제 GitHub PR 아님",
+    "body": "<!-- aiprgate:purpose -->\n샘플 앱으로 자동 검사 흐름을 로컬 검증한다.\n\n<!-- aiprgate:self-review -->\n입력 검증과 Room 저장 경로를 읽고 테스트 결과를 확인했다.\n\n<!-- aiprgate:test-evidence -->\n이 실행에서 Gradle 빌드·단위 테스트·Android Lint를 실제 수행하며 결과를 출력 폴더에 보존한다.\n\n<!-- aiprgate:ai-used -->\nyes\n\n<!-- aiprgate:ai-evidence -->\ndocs/ai-usage-20261025.md 및 현재 대화의 프로세스 구현 요청·생성 기록.\n\n<!-- aiprgate:end -->\n",
+    "user": { "login": "example-author" },
+    "head": { "sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ref": "feature/local-simulation" },
+    "base": { "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "ref": "main" }
+  }
+}

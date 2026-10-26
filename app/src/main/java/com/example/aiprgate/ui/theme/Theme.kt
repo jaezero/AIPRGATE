@@ -10,6 +10,9 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.LineBreak
+import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.unit.sp
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -34,10 +37,11 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun AIPRGATETheme(
+fun AiPrGateTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
+    management: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -50,9 +54,22 @@ fun AIPRGATETheme(
         else -> LightColorScheme
     }
 
+    val typography = if (management) {
+        val locale = LocaleList("ko-KR")
+        val koreanBreak = LineBreak(LineBreak.Strategy.HighQuality, LineBreak.Strictness.Normal,
+            LineBreak.WordBreak.Phrase)
+        Typography.copy(
+            bodyLarge = Typography.bodyLarge.copy(fontSize = 17.sp, lineBreak = koreanBreak, localeList = locale),
+            bodyMedium = Typography.bodyMedium.copy(fontSize = 15.sp, lineBreak = koreanBreak, localeList = locale),
+            titleLarge = Typography.titleLarge.copy(lineBreak = koreanBreak, localeList = locale),
+            titleMedium = Typography.titleMedium.copy(lineBreak = koreanBreak, localeList = locale),
+            headlineSmall = Typography.headlineSmall.copy(lineBreak = koreanBreak, localeList = locale),
+        )
+    } else Typography
+
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = typography,
         content = content
     )
 }

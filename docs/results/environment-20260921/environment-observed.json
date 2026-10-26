@@ -1,0 +1,13 @@
+{
+  "ObservedAt": "2026-09-21T16:51:14.8167043+09:00",
+  "InstalledIde": "AI-261.26222.65.2614.16204760",
+  "IdeDataDirectory": "AndroidStudio2026.1.4",
+  "JavaHomeInherited": "C:\\Program Files\\Android\\Android Studio\\jbr",
+  "JavaHomeValid": false,
+  "JavaUsed": "C:\\Program Files\\Android\\Android Studio1\\jbr",
+  "Sdk": "C:\\Android\\Sdk",
+  "Gpu": "NVIDIA GeForce RTX 3050",
+  "GpuMemoryMiB": 8192,
+  "DriverVersion": "560.94",
+  "SourceFilesUnchanged": true
+}

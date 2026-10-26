@@ -1,0 +1,122 @@
+bun test v1.4.3 (c6da4a4d3)
+PILOT binary=/tmp/aiprgate-tools-1000/gitleaks-8.30.1/gitleaks version=8.30.1
+PILOT risk exit=1 findings=[{"ruleId":"generic-api-key","file":"Credential.kt","line":1}]
+PILOT safe exit=0 findings=0
+
+
+tools/pr-gate/core.test.js:
+(pass) PR metadata > AI use with evidence is accepted [0.22ms]
+(pass) PR metadata > no AI use does not require AI evidence [0.03ms]
+(pass) PR metadata > missing purpose blocks [0.07ms]
+(pass) PR metadata > missing self-review blocks [0.04ms]
+(pass) PR metadata > missing test-evidence blocks [0.02ms]
+(pass) PR metadata > missing ai-used blocks [0.01ms]
+(pass) PR metadata > missing ai-evidence blocks [0.02ms]
+(pass) PR metadata > template TODO is not evidence [0.05ms]
+(pass) PR metadata > next heading cannot fill an empty field [0.06ms]
+(pass) PR metadata > AI flag must be yes or no [0.02ms]
+(pass) PR metadata > duplicate machine marker is an error [0.05ms]
+(pass) policy and scoped exceptions > shipped policy validates [0.20ms]
+(pass) policy and scoped exceptions > invalid required policy fails closed [0.04ms]
+(pass) policy and scoped exceptions > invalid required policy fails closed [0.03ms]
+(pass) policy and scoped exceptions > invalid required policy fails closed [0.04ms]
+(pass) policy and scoped exceptions > invalid required policy fails closed [0.02ms]
+(pass) policy and scoped exceptions > unexpired exact file exception warns and records reviewer [0.21ms]
+(pass) policy and scoped exceptions > incomplete or broad exception is rejected [0.21ms]
+(pass) policy and scoped exceptions > incomplete or broad exception is rejected [0.05ms]
+(pass) policy and scoped exceptions > incomplete or broad exception is rejected [0.04ms]
+(pass) policy and scoped exceptions > incomplete or broad exception is rejected [0.03ms]
+(pass) policy and scoped exceptions > incomplete or broad exception is rejected [0.03ms]
+(pass) policy and scoped exceptions > incomplete or broad exception is rejected [0.02ms]
+(pass) four-result fail-closed gate > all checks pass, but human approval is not fabricated [0.16ms]
+(pass) four-result fail-closed gate > validated violation blocks even though the tool can exit zero [0.15ms]
+(pass) four-result fail-closed gate > unknown Lint issue is warning, not an invented blocking rule [0.14ms]
+(pass) four-result fail-closed gate > missing extra or invalid result collection fails [0.38ms]
+(pass) four-result fail-closed gate > missing extra or invalid result collection fails [0.05ms]
+(pass) four-result fail-closed gate > missing extra or invalid result collection fails [0.09ms]
+(pass) four-result fail-closed gate > missing extra or invalid result collection fails [0.05ms]
+(pass) four-result fail-closed gate > missing extra or invalid result collection fails [0.06ms]
+(pass) four-result fail-closed gate > duplicate result cannot replace a missing check [0.11ms]
+(pass) four-result fail-closed gate > job failure cannot look successful [0.17ms]
+(pass) four-result fail-closed gate > job skipped cannot look successful [0.09ms]
+(pass) four-result fail-closed gate > job cancelled cannot look successful [0.12ms]
+(pass) four-result fail-closed gate > job timed_out cannot look successful [0.08ms]
+(pass) four-result fail-closed gate > job undefined cannot look successful [0.04ms]
+(pass) four-result fail-closed gate > old or mismatched headSha cannot be reused [0.11ms]
+(pass) four-result fail-closed gate > old or mismatched baseSha cannot be reused [0.16ms]
+(pass) four-result fail-closed gate > old or mismatched metadataDigest cannot be reused [0.09ms]
+(pass) four-result fail-closed gate > old or mismatched policyDigest cannot be reused [0.06ms]
+(pass) four-result fail-closed gate > old or mismatched runId cannot be reused [0.10ms]
+(pass) four-result fail-closed gate > old or mismatched runAttempt cannot be reused [0.12ms]
+(pass) four-result fail-closed gate > new live PR headSha invalidates the run [0.06ms]
+(pass) four-result fail-closed gate > new live PR baseSha invalidates the run [0.06ms]
+(pass) four-result fail-closed gate > new live PR metadataDigest invalidates the run [0.05ms]
+(pass) four-result fail-closed gate > body edit changes metadata digest even with the same commit [0.02ms]
+(pass) four-result fail-closed gate > artifact supplied warning cannot downgrade a block [0.07ms]
+(pass) four-result fail-closed gate > tool execution error is different from a policy violation [0.08ms]
+(pass) four-result fail-closed gate > malformed receipt does not pass [0.05ms]
+
+tools/pr-gate/process.test.js:
+(pass) command success and failure retain actual exit and output [10.75ms]
+(pass) execution deadline kills a never-ending child instead of passing [101.69ms]
+
+tools/pr-gate/reports.test.js:
+(pass) JUnit counts prove execution, failure and skips separately [0.18ms]
+(pass) malformed JUnit cannot stand in for executed tests [0.03ms]
+(pass) malformed JUnit cannot stand in for executed tests
+(pass) malformed JUnit cannot stand in for executed tests
+(pass) malformed JUnit cannot stand in for executed tests [0.01ms]
+(pass) malformed JUnit cannot stand in for executed tests [0.01ms]
+(pass) Lint parser keeps machine rule and location without source text [0.09ms]
+(pass) legitimate empty Lint report is accepted [0.01ms]
+(pass) missing malformed or operational Lint report is error [0.01ms]
+(pass) missing malformed or operational Lint report is error
+(pass) missing malformed or operational Lint report is error
+(pass) missing malformed or operational Lint report is error
+(pass) missing malformed or operational Lint report is error
+(pass) missing malformed or operational Lint report is error
+(pass) missing malformed or operational Lint report is error
+(pass) report roots are normalized to repository-relative paths [0.03ms]
+
+tools/pr-gate/secrets.test.js:
+(pass) pinned Gitleaks pilot (actual executable) > official archive hash and path-only bootstrap CLI [108.72ms]
+(pass) pinned Gitleaks pilot (actual executable) > invalid literal detected despite inline allow and untrusted config/ignore [989.02ms]
+(pass) pinned Gitleaks pilot (actual executable) > similar environment-variable reference is safe [496.95ms]
+(pass) pinned Gitleaks pilot (actual executable) > only named generated directories are excluded, not source [989.57ms]
+(pass) pinned Gitleaks pilot (actual executable) > invalid trusted configuration is an execution error [390.19ms]
+(pass) execution and report boundaries > projects metadata only, enforces critical flags, removes temporary report [12.82ms]
+(pass) execution and report boundaries > invalid JSON [10.06ms]
+(pass) execution and report boundaries > wrong report shape [10.61ms]
+(pass) execution and report boundaries > missing report [10.07ms]
+(pass) execution and report boundaries > exit one without findings [10.85ms]
+(pass) execution and report boundaries > unexpected exit [10.90ms]
+(pass) execution and report boundaries > unsupported critical flag [12.00ms]
+(pass) execution and report boundaries > invalid finding fields [10.97ms]
+(pass) execution and report boundaries > outside root [9.84ms]
+(pass) execution and report boundaries > clean exit with findings [9.87ms]
+(pass) execution and report boundaries > missing executable is an execution error [4.08ms]
+(pass) execution and report boundaries > never-returning process is killed by the timeout [1012.56ms]
+(pass) execution and report boundaries > nonempty trusted ignore is rejected [0.43ms]
+
+tools/pr-gate/workflow.test.js:
+(pass) four independent jobs precede an always-running stable required gate [0.09ms]
+(pass) push and body changes rerun while old runs are cancelled [0.04ms]
+(pass) PR execution is read-only and is not pull_request_target [0.04ms]
+(pass) external actions are commit-pinned and failed checks are not ignored [0.15ms]
+(pass) receipts are uploaded after failure and scoped to the run attempt [0.04ms]
+(pass) desired branch policy enforces humans latest push and checks [0.08ms]
+(pass) weakened branch policy is not configured [0.04ms]
+(pass) weakened branch policy is not configured [0.01ms]
+(pass) weakened branch policy is not configured [0.01ms]
+(pass) weakened branch policy is not configured [0.01ms]
+(pass) weakened branch policy is not configured [0.01ms]
+(pass) weakened branch policy is not configured [0.01ms]
+(pass) weakened branch policy is not configured [0.01ms]
+(pass) weakened branch policy is not configured [0.03ms]
+(pass) repository inspection performs reads only and distinguishes absent protection [0.20ms]
+(pass) inaccessible protected branch does not become an unprotected success [0.08ms]
+
+ 102 pass
+ 0 fail
+ 190 expect() calls
+Ran 102 tests across 5 files. [7.21s]

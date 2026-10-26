@@ -1,0 +1,15 @@
+{
+    "finishedAt":  "2026-10-25T17:49:22.2096314+09:00",
+    "exitCode":  0,
+    "arguments":  [
+                      ":app:assembleDebug",
+                      ":app:testDebugUnitTest",
+                      ":app:lintDebug",
+                      ":app:assembleDebugAndroidTest",
+                      "-Dorg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=COMPAT",
+                      "--no-configuration-cache",
+                      "--console=plain"
+                  ],
+    "mode":  "compat",
+    "javaHome":  "C:\\Program Files\\Android\\Android Studio1\\jbr"
+}

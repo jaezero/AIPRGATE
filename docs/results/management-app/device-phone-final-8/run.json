@@ -1,0 +1,12 @@
+{
+    "finishedAt":  "2026-10-26T11:43:20.2199739+09:00",
+    "exitCode":  0,
+    "arguments":  [
+                      ":app:connectedDebugAndroidTest",
+                      "-Dorg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=COMPAT",
+                      "--no-configuration-cache",
+                      "--console=plain"
+                  ],
+    "startedAt":  "2026-10-26T11:42:31.4748146+09:00",
+    "mode":  "device"
+}

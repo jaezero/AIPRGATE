@@ -1,0 +1,169 @@
+{
+    "case":  "unsafe",
+    "provenance":  "Manually constructed defect injection / normal counterexample; not spontaneous AI output",
+    "startedAt":  "2026-10-25T18:38:25.5491585+09:00",
+    "finishedAt":  "2026-10-25T18:39:00.6730438+09:00",
+    "workingDirectory":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe",
+    "command":  "gradlew.bat \":app:compileDebugKotlin\" \":app:lintDebug\" \"-Dorg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=COMPAT\" \"--no-configuration-cache\" \"--no-daemon\" \"--offline\" \"--console=plain\" 2\u003e\u00261",
+    "arguments":  [
+                      ":app:compileDebugKotlin",
+                      ":app:lintDebug",
+                      "-Dorg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=COMPAT",
+                      "--no-configuration-cache",
+                      "--no-daemon",
+                      "--offline",
+                      "--console=plain"
+                  ],
+    "javaHome":  "C:\\Program Files\\Android\\Android Studio1\\jbr",
+    "exitCode":  0,
+    "fixtureSha256":  "066FFD453701DB70CBAA4F68A86B87C33CD72EA75B8498463AB1A7B282EEDF29",
+    "compiledClassPresent":  true,
+    "compiledClassPath":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\build\\intermediates\\built_in_kotlinc\\debug\\compileDebugKotlin\\classes\\com\\example\\aiprgate\\gatepilot\\TrustPolicy.class",
+    "reports":  {
+                    "txt":  "C:\\Users\\박재영\\Desktop\\기업 모둠학습\\AiPrGate\\docs\\results\\pr-gate-20261025\\lint-pilot\\20261025-183824-2ffa5fe647724ef7b7dec7505358030e\\unsafe\\lint-results-debug.txt",
+                    "xml":  "C:\\Users\\박재영\\Desktop\\기업 모둠학습\\AiPrGate\\docs\\results\\pr-gate-20261025\\lint-pilot\\20261025-183824-2ffa5fe647724ef7b7dec7505358030e\\unsafe\\lint-results-debug.xml",
+                    "html":  "C:\\Users\\박재영\\Desktop\\기업 모둠학습\\AiPrGate\\docs\\results\\pr-gate-20261025\\lint-pilot\\20261025-183824-2ffa5fe647724ef7b7dec7505358030e\\unsafe\\lint-results-debug.html"
+                },
+    "reportValidated":  true,
+    "validationError":  null,
+    "selectedRule":  "TrustAllX509TrustManager",
+    "selectedCount":  1,
+    "fixtureSelectedCount":  1,
+    "totalIssues":  11,
+    "issueCounts":  [
+                        {
+                            "id":  "RedundantLabel",
+                            "count":  1
+                        },
+                        {
+                            "id":  "GradleDependency",
+                            "count":  1
+                        },
+                        {
+                            "id":  "TrustAllX509TrustManager",
+                            "count":  1
+                        },
+                        {
+                            "id":  "CustomX509TrustManager",
+                            "count":  1
+                        },
+                        {
+                            "id":  "UnusedResources",
+                            "count":  7
+                        }
+                    ],
+    "otherFindings":  [
+                          {
+                              "message":  "Redundant label can be removed",
+                              "locations":  [
+                                                {
+                                                    "line":  "18",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\AndroidManifest.xml"
+                                                }
+                                            ],
+                              "id":  "RedundantLabel",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "A newer version of androidx.core:core-ktx than 1.10.1 is available: 1.19.0",
+                              "locations":  [
+                                                {
+                                                    "line":  "3",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\gradle\\libs.versions.toml"
+                                                }
+                                            ],
+                              "id":  "GradleDependency",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "Implementing a custom `X509TrustManager` is error-prone and likely to be insecure. It is likely to disable certificate validation altogether, and is non-trivial to implement correctly without calling Android\u0027s default implementation.",
+                              "locations":  [
+                                                {
+                                                    "line":  "9",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\java\\com\\example\\aiprgate\\gatepilot\\TrustPolicy.kt"
+                                                }
+                                            ],
+                              "id":  "CustomX509TrustManager",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "The resource `R.color.purple_200` appears to be unused",
+                              "locations":  [
+                                                {
+                                                    "line":  "3",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\res\\values\\colors.xml"
+                                                }
+                                            ],
+                              "id":  "UnusedResources",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "The resource `R.color.purple_500` appears to be unused",
+                              "locations":  [
+                                                {
+                                                    "line":  "4",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\res\\values\\colors.xml"
+                                                }
+                                            ],
+                              "id":  "UnusedResources",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "The resource `R.color.purple_700` appears to be unused",
+                              "locations":  [
+                                                {
+                                                    "line":  "5",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\res\\values\\colors.xml"
+                                                }
+                                            ],
+                              "id":  "UnusedResources",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "The resource `R.color.teal_200` appears to be unused",
+                              "locations":  [
+                                                {
+                                                    "line":  "6",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\res\\values\\colors.xml"
+                                                }
+                                            ],
+                              "id":  "UnusedResources",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "The resource `R.color.teal_700` appears to be unused",
+                              "locations":  [
+                                                {
+                                                    "line":  "7",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\res\\values\\colors.xml"
+                                                }
+                                            ],
+                              "id":  "UnusedResources",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "The resource `R.color.black` appears to be unused",
+                              "locations":  [
+                                                {
+                                                    "line":  "8",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\res\\values\\colors.xml"
+                                                }
+                                            ],
+                              "id":  "UnusedResources",
+                              "severity":  "Warning"
+                          },
+                          {
+                              "message":  "The resource `R.color.white` appears to be unused",
+                              "locations":  [
+                                                {
+                                                    "line":  "9",
+                                                    "file":  "C:\\Android\\AiPrGateLintPilot-5a198b1e292945e3b3ad8a0927bfe495\\unsafe\\app\\src\\main\\res\\values\\colors.xml"
+                                                }
+                                            ],
+                              "id":  "UnusedResources",
+                              "severity":  "Warning"
+                          }
+                      ],
+    "executionError":  false,
+    "expectedDetection":  true
+}

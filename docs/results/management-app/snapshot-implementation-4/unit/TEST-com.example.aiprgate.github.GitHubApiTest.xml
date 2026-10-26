@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.aiprgate.github.GitHubApiTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-10-25T15:16:45.032Z" hostname="DESKTOP-69G5GDV" time="0.264">
+  <properties/>
+  <testcase name="rateLimit403IsDifferentFromPermission403" classname="com.example.aiprgate.github.GitHubApiTest" time="0.119"/>
+  <testcase name="mergeSendsConfirmedShaAndMethodAndUsesServerMergedBoolean" classname="com.example.aiprgate.github.GitHubApiTest" time="0.014"/>
+  <testcase name="httpErrorsHaveTypedSanitizedFailures" classname="com.example.aiprgate.github.GitHubApiTest" time="0.005"/>
+  <testcase name="invalidBoundariesNeverReachTransport" classname="com.example.aiprgate.github.GitHubApiTest" time="0.019"/>
+  <testcase name="malformedPullFieldsFailRatherThanInventIdentity" classname="com.example.aiprgate.github.GitHubApiTest" time="0.006"/>
+  <testcase name="malformedRequiredFieldsFailRatherThanCoerceOrDefault" classname="com.example.aiprgate.github.GitHubApiTest" time="0.004"/>
+  <testcase name="defaultTransportRejectsNonGitHubOriginsBeforeOpeningNetwork" classname="com.example.aiprgate.github.GitHubApiTest" time="0.007"/>
+  <testcase name="explicitReviewPreservesEventHeadShaAndExactBody" classname="com.example.aiprgate.github.GitHubApiTest" time="0.004"/>
+  <testcase name="pullListUsesThirtyItemsAndServerNextLink" classname="com.example.aiprgate.github.GitHubApiTest" time="0.011"/>
+  <testcase name="eachReviewEventIsExplicitRatherThanPending" classname="com.example.aiprgate.github.GitHubApiTest" time="0.003"/>
+  <testcase name="reviewsReadAllPagesWithoutCollapsingDifferentReviewEvents" classname="com.example.aiprgate.github.GitHubApiTest" time="0.007"/>
+  <testcase name="malformedMergeCannotClaimSuccessWithoutSha" classname="com.example.aiprgate.github.GitHubApiTest" time="0.004"/>
+  <testcase name="checksReadAllPagesFilterShaAndDedupeByAppAndName" classname="com.example.aiprgate.github.GitHubApiTest" time="0.004"/>
+  <testcase name="fullPageWithoutLinkDoesNotInventAnotherPage" classname="com.example.aiprgate.github.GitHubApiTest" time="0.004"/>
+  <testcase name="publicRepositoryWithoutAdministrativeCapabilitiesRemainsReadable" classname="com.example.aiprgate.github.GitHubApiTest" time="0.002"/>
+  <testcase name="missingPermissionsNeverGrantPush" classname="com.example.aiprgate.github.GitHubApiTest" time="0.001"/>
+  <testcase name="viewerUsesAuthenticatedVersionedGet" classname="com.example.aiprgate.github.GitHubApiTest" time="0.002"/>
+  <testcase name="filesPreservePatchAndMissingBinaryPatch" classname="com.example.aiprgate.github.GitHubApiTest" time="0.003"/>
+  <testcase name="statusesReadAllPagesAndChooseNewestIdForEachContext" classname="com.example.aiprgate.github.GitHubApiTest" time="0.002"/>
+  <testcase name="publicRepositoryHasNoAuthorizationAndParsesCapabilities" classname="com.example.aiprgate.github.GitHubApiTest" time="0.001"/>
+  <testcase name="cancellationIsNotMappedToNetworkOrServerError" classname="com.example.aiprgate.github.GitHubApiTest" time="0.02"/>
+  <testcase name="foreignAndRepeatingPaginationLinksFailWithoutFollowingThem" classname="com.example.aiprgate.github.GitHubApiTest" time="0.004"/>
+  <testcase name="ioExceptionIsNetworkWithoutOriginalExceptionLeakage" classname="com.example.aiprgate.github.GitHubApiTest" time="0.002"/>
+  <testcase name="successfulHttpDoesNotImplySuccessfulMerge" classname="com.example.aiprgate.github.GitHubApiTest" time="0.001"/>
+  <testcase name="actionRunLinkPrefersDetailsUrlOverGenericCheckPage" classname="com.example.aiprgate.github.GitHubApiTest" time="0.001"/>
+  <testcase name="detailPreservesMergeIdentityAndNullableBody" classname="com.example.aiprgate.github.GitHubApiTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

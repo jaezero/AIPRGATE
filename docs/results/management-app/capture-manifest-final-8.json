@@ -1,0 +1,713 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-26T02:51:04.451Z",
+  "build": "implementation-8",
+  "captureRoot": "/mnt/c/Android/AiPrGateManagementQa/final-8",
+  "runs": [
+    "device-phone-final-8",
+    "device-tablet-final-8"
+  ],
+  "note": "Complete native Android capture set. PNG input type and original dimensions validated via image read tool. 92 full frames use device bounds; eight dialog captures intentionally crop the modal node. Static waitForIdle/PixelCopy evidence does not prove normal animation timing or live GitHub write acceptance.",
+  "files": [
+    {
+      "file": "phone-pixelcopy/approval-dialog-dark.png",
+      "mime": "image/png",
+      "width": 735,
+      "height": 555,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/approval-dialog-light.png",
+      "mime": "image/png",
+      "width": 735,
+      "height": 555,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/checks-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/checks-end-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/checks-end-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/checks-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/connection-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/connection-end-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/connection-end-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/connection-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/device-code-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/device-code-end-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/device-code-end-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/device-code-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/device-code-value-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/device-code-value-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/empty-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/empty-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/error-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/error-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/failed-checks-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/failed-checks-end-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/failed-checks-end-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/failed-checks-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/files-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/files-end-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/files-end-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/files-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/list-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/list-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/loading-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/loading-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/merge-dialog-dark.png",
+      "mime": "image/png",
+      "width": 735,
+      "height": 608,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/merge-dialog-light.png",
+      "mime": "image/png",
+      "width": 735,
+      "height": 608,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/public-reviews-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/public-reviews-end-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/public-reviews-end-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/public-reviews-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/reviews-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/reviews-end-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/reviews-end-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/reviews-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/self-review-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/self-review-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/signed-in-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/signed-in-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/summary-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/summary-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/writing-dark.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "phone-pixelcopy/writing-light.png",
+      "mime": "image/png",
+      "width": 1080,
+      "height": 2424,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/approval-dialog-dark.png",
+      "mime": "image/png",
+      "width": 420,
+      "height": 316,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/approval-dialog-light.png",
+      "mime": "image/png",
+      "width": 420,
+      "height": 316,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/checks-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/checks-end-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/checks-end-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/checks-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/connection-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/connection-end-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/connection-end-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/connection-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/device-code-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/device-code-end-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/device-code-end-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/device-code-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/device-code-value-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/device-code-value-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/empty-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/empty-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/error-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/error-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/failed-checks-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/failed-checks-end-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/failed-checks-end-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/failed-checks-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/files-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/files-end-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/files-end-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/files-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/list-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/list-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/loading-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/loading-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/merge-dialog-dark.png",
+      "mime": "image/png",
+      "width": 420,
+      "height": 346,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/merge-dialog-light.png",
+      "mime": "image/png",
+      "width": 420,
+      "height": 346,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/public-reviews-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/public-reviews-end-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/public-reviews-end-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/public-reviews-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/reviews-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/reviews-end-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/reviews-end-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/reviews-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/self-review-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/self-review-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/signed-in-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/signed-in-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/summary-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/summary-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/writing-dark.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    },
+    {
+      "file": "tablet-pixelcopy/writing-light.png",
+      "mime": "image/png",
+      "width": 1920,
+      "height": 1200,
+      "pngPreview": true
+    }
+  ]
+}

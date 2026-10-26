@@ -1,0 +1,10 @@
+{
+    "finishedAt":  "2026-10-25T17:48:35.4243994+09:00",
+    "exitCode":  1,
+    "arguments":  [
+                      ":app:testDebugUnitTest",
+                      "--console=plain"
+                  ],
+    "mode":  "baseline",
+    "javaHome":  "C:\\Program Files\\Android\\Android Studio1\\jbr"
+}

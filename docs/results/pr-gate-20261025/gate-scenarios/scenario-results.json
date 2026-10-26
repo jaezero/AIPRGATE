@@ -1,0 +1,166 @@
+{
+  "recordedAt": "2026-10-25T09:54:27.210Z",
+  "context": {
+    "repository": "example/ai-pr-gate",
+    "prNumber": 1,
+    "headSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "baseSha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "metadataDigest": "44b4403a09683ad6e8c9ad6eabb9094975e76eec0de481a45f51665b89f345c7",
+    "policyDigest": "a35564083b317c234fa72074e580cb0d6cb14c69d924061628d17f20b1f75e13",
+    "runId": "2",
+    "runAttempt": "1"
+  },
+  "actualCheckElapsedMs": {
+    "pr-info": 0,
+    "build-test": 10314,
+    "quality": 11063,
+    "secrets": 877
+  },
+  "scenarios": [
+    {
+      "name": "normal-real-local-receipts",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "evaluationMs": 0.157,
+      "provenance": "Real local check receipts; synthetic PR identity, not GitHub.",
+      "errors": []
+    },
+    {
+      "name": "missing-check-result",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.031,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "exactly-four-receipts-required",
+        "secrets:missing-result"
+      ]
+    },
+    {
+      "name": "cancelled-job",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.03,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "quality:job-missing-skipped-cancelled-or-timed-out"
+      ]
+    },
+    {
+      "name": "skipped-job",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.041,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "quality:job-missing-skipped-cancelled-or-timed-out"
+      ]
+    },
+    {
+      "name": "timeout-without-receipt",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.183,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "exactly-four-receipts-required",
+        "secrets:missing-result"
+      ]
+    },
+    {
+      "name": "latest-commit-changed",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.131,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "pr-info:receipt-context-mismatch:headSha",
+        "build-test:receipt-context-mismatch:headSha",
+        "quality:receipt-context-mismatch:headSha",
+        "secrets:receipt-context-mismatch:headSha"
+      ]
+    },
+    {
+      "name": "body-edited-same-commit",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.029,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "pr-info:receipt-context-mismatch:metadataDigest",
+        "build-test:receipt-context-mismatch:metadataDigest",
+        "quality:receipt-context-mismatch:metadataDigest",
+        "secrets:receipt-context-mismatch:metadataDigest"
+      ]
+    },
+    {
+      "name": "previous-run-result",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.073,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "pr-info:receipt-context-mismatch:runId"
+      ]
+    },
+    {
+      "name": "previous-attempt-result",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "matched": true,
+      "evaluationMs": 0.038,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": [
+        "pr-info:receipt-context-mismatch:runAttempt"
+      ]
+    },
+    {
+      "name": "required-metadata-missing",
+      "expected": "BLOCK",
+      "actual": "BLOCK",
+      "matched": true,
+      "evaluationMs": 0.045,
+      "provenance": "Synthetic gate-input mutation, not a GitHub run or merge.",
+      "errors": []
+    }
+  ],
+  "lintCases": [
+    {
+      "name": "unsafe",
+      "expected": "BLOCK",
+      "actual": "BLOCK",
+      "matched": true,
+      "toolExitCode": 0,
+      "blocks": [
+        {
+          "ruleId": "lint:TrustAllX509TrustManager",
+          "file": "app/src/main/java/com/example/aiprgate/gatepilot/TrustPolicy.kt",
+          "line": 10,
+          "detail": "lint-severity:Warning",
+          "decision": "block"
+        }
+      ],
+      "warnings": 10,
+      "provenance": "Policy classification of actual compiled fixture Lint report; not a PR gate run."
+    },
+    {
+      "name": "safe",
+      "expected": "PASS",
+      "actual": "PASS",
+      "matched": true,
+      "toolExitCode": 0,
+      "blocks": [],
+      "warnings": 9,
+      "provenance": "Policy classification of actual compiled fixture Lint report; not a PR gate run."
+    }
+  ],
+  "matched": true
+}

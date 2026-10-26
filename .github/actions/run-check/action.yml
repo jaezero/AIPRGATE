@@ -1,0 +1,59 @@
+name: Run one AI PR check
+description: Run a check against the PR head using gate code and policy from the base commit.
+inputs:
+  check:
+    description: pr-info, build-test, quality, or secrets
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+      with:
+        bun-version: 1.4.3
+    - name: Checkout exact PR head
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.sha }}
+        path: candidate
+        persist-credentials: false
+    - name: Set up matching Gradle JDK
+      if: inputs.check == 'build-test' || inputs.check == 'quality'
+      uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+      with:
+        distribution: temurin
+        java-version: '25'
+    - name: Install exact Android SDK packages
+      if: inputs.check == 'build-test' || inputs.check == 'quality'
+      shell: bash
+      run: |
+        "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install \
+          "platforms;android-37.0" "build-tools;37.0.0"
+    - name: Test trusted gate implementation
+      if: inputs.check == 'pr-info'
+      shell: bash
+      run: bun test ./.control/tools/pr-gate
+    - name: Execute selected check
+      shell: bash
+      env:
+        CHECK_NAME: ${{ inputs.check }}
+      run: |
+        bun ./.control/tools/pr-gate/cli.mjs check "$CHECK_NAME" \
+          --root candidate --control .control \
+          --out "gate-results/$CHECK_NAME"
+    - name: Preserve machine receipt
+      if: always()
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: check-${{ github.run_id }}-${{ github.run_attempt }}-${{ inputs.check }}
+        path: gate-results/${{ inputs.check }}/${{ inputs.check }}.json
+        if-no-files-found: error
+        retention-days: 14
+    - name: Preserve check evidence
+      if: always()
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: evidence-${{ github.run_id }}-${{ github.run_attempt }}-${{ inputs.check }}
+        path: gate-results/${{ inputs.check }}/
+        if-no-files-found: warn
+        retention-days: 14

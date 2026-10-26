@@ -1,0 +1,10 @@
+title = "AiPrGate directory secret scan"
+
+[extend]
+useDefault = true
+
+# Only generated metadata/cache/output directory segments, at any depth.
+# Source, tests, documentation, and policy files remain in scope.
+[[allowlists]]
+description = "Generated Git, IDE, Kotlin, and Gradle directories only"
+paths = ['''(^|/)(\.git|\.gradle|\.idea|\.kotlin|build)/''']

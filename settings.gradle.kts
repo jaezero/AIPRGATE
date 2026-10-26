@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AIPRGATE"
+rootProject.name = "AiPrGate"
 include(":app")

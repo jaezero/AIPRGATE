@@ -1,0 +1,15 @@
+{
+    "finishedAt":  "2026-10-26T00:16:55.0895043+09:00",
+    "exitCode":  0,
+    "arguments":  [
+                      ":app:assembleDebug",
+                      ":app:testDebugUnitTest",
+                      ":app:lintDebug",
+                      ":app:assembleDebugAndroidTest",
+                      "-Dorg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=COMPAT",
+                      "--no-configuration-cache",
+                      "--console=plain"
+                  ],
+    "startedAt":  "2026-10-26T00:16:38.3328713+09:00",
+    "mode":  "build"
+}

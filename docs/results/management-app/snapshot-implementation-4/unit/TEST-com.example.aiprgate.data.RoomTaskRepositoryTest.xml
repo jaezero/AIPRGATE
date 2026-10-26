@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.aiprgate.data.RoomTaskRepositoryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-25T15:16:45.437Z" hostname="DESKTOP-69G5GDV" time="0.045">
+  <properties/>
+  <testcase name="tasksMapsAllEntityFieldsAndEmitsLaterDaoChangesInIdOrder" classname="com.example.aiprgate.data.RoomTaskRepositoryTest" time="0.024"/>
+  <testcase name="completionCanBeSetTrueAndThenFalse" classname="com.example.aiprgate.data.RoomTaskRepositoryTest" time="0.004"/>
+  <testcase name="deletionPreservesOtherTaskAndDoesNotReuseDeletedId" classname="com.example.aiprgate.data.RoomTaskRepositoryTest" time="0.004"/>
+  <testcase name="addCreatesIncompleteTaskWithGeneratedId" classname="com.example.aiprgate.data.RoomTaskRepositoryTest" time="0.003"/>
+  <testcase name="addTrimsKoreanTitleWithoutChangingInternalSpacing" classname="com.example.aiprgate.data.RoomTaskRepositoryTest" time="0.003"/>
+  <testcase name="emptyAndWhitespaceTitlesAreRejectedWithoutDaoWrites" classname="com.example.aiprgate.data.RoomTaskRepositoryTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

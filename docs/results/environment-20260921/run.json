@@ -1,0 +1,7 @@
+{
+  "StartedAt": "2026-09-21T16:48:33.2896126+09:00",
+  "FinishedAt": "2026-09-21T16:48:44.3813361+09:00",
+  "ExitCode": 1,
+  "Command": "gradlew.bat :app:assembleDebug :app:testDebugUnitTest --rerun-tasks --console=plain",
+  "JavaHome": "C:\\Program Files\\Android\\Android Studio1\\jbr"
+}
