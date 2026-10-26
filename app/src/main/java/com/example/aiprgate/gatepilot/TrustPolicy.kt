@@ -1,0 +1,18 @@
+package com.example.aiprgate.gatepilot
+
+import java.security.cert.CertificateException
+import java.security.cert.X509Certificate
+import javax.net.ssl.X509TrustManager
+
+// [검증용 수작업 주입 S4] Manually constructed defect injection, not observed AI-generated insecure code.
+// Never used by the app or connected to a network.
+class TrustPolicy : X509TrustManager {
+    override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
+    }
+
+    override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
+        throw CertificateException("Client certificates are not supported by this fixture")
+    }
+
+    override fun getAcceptedIssuers(): Array<X509Certificate> = emptyArray()
+}
