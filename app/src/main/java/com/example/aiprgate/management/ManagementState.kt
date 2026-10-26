@@ -45,6 +45,7 @@ data class PullDetails(
     val checks: List<CheckRun>,
     val statuses: List<CommitStatus>,
     val reviews: List<PullReview>,
+    val aiReviews: List<AiReviewComment> = emptyList(),
 )
 
 data class ManagementState(
@@ -129,16 +130,28 @@ fun gateBlockers(detail: PullDetails): List<String> = buildList {
     }
 }
 
+// A finished PR is not "blocked": showing merge blockers after a successful
+// merge would read as a failure, so the merge area reports the final state.
+fun finishedPullNotice(pr: PullRequest): Pair<String, String>? = when {
+    pr.merged -> "병합 완료" to "이 PR은 GitHub에서 병합되었습니다.\n병합 기록은 GitHub에서 확인하세요."
+    pr.state != "open" -> "병합 없이 종료된 PR" to "병합하지 않고 종료한 PR입니다."
+    else -> null
+}
+
 fun mergeBlockers(
     detail: PullDetails, viewer: GitHubUser?, repository: RepositoryInfo?,
 ): List<String> = buildList {
     val pr = detail.pull
     if (viewer == null) add("GitHub 사용자 인증이 필요합니다.")
     if (repository?.canPush != true) add("저장소 쓰기 권한을 확인할 수 없습니다.")
-    if (pr.state != "open" || pr.merged) add("열린 PR만 병합할 수 있습니다.")
+    if (pr.state != "open" || pr.merged) add("검토 중인 PR만 병합할 수 있습니다.")
     if (pr.draft) add("초안 PR을 리뷰 가능한 상태로 전환하세요.")
     if (pr.mergeable != true) add("GitHub가 병합 가능 여부를 확인하지 못했거나 충돌이 있습니다.")
-    if (pr.mergeableState != "clean") add("GitHub 병합 조건이 미충족입니다.")
+    when (pr.mergeableState) {
+        "clean" -> Unit
+        "behind" -> add("main의 최신 변경이 반영되지 않았습니다. 브랜치를 갱신한 뒤 다시 검사·검토하세요.")
+        else -> add("GitHub 병합 조건이 미충족입니다.")
+    }
     addAll(gateBlockers(detail))
     if (latestApprovals(detail).isEmpty() && latestSelfReviews(detail).isEmpty()) {
         add("최신 커밋에 다른 리뷰어 승인 또는 작성자 자기 검토가 필요합니다.")

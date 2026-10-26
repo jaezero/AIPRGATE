@@ -1,7 +1,7 @@
 import { test, expect } from "bun:test";
 import { readFileSync } from "node:fs";
 import { CHECKS } from "./core.mjs";
-import { auditProtection, inspectRepository } from "./github-protection.mjs";
+import { auditProtection, inspectRepository, protectionPayload } from "./github-protection.mjs";
 
 const source = (path) => readFileSync(new URL(`../../${path}`, import.meta.url), "utf8");
 const workflow = Bun.YAML.parse(source(".github/workflows/pr-gate.yml"));
@@ -88,6 +88,24 @@ test("solo policy passes only the solo audit and keeps every non-approval rule",
   }
 });
 
+test("policies use only the app-bound checks form GitHub accepts", () => {
+  for (const policy of [protection, soloProtection]) {
+    expect(policy.required_status_checks.contexts).toBeUndefined();
+  }
+});
+
+test("user-owned payload drops only an empty org-only bypass and keeps every audited rule", () => {
+  for (const [policy, solo] of [[protection, false], [soloProtection, true]]) {
+    const payload = protectionPayload(policy, "User");
+    expect(payload.required_pull_request_reviews.bypass_pull_request_allowances).toBeUndefined();
+    expect(auditProtection(payload, { solo })).toEqual({ configured: true, missing: [] });
+    expect(protectionPayload(policy, "Organization")).toEqual(policy);
+  }
+  const granted = structuredClone(protection);
+  granted.required_pull_request_reviews.bypass_pull_request_allowances.users = ["example"];
+  expect(() => protectionPayload(granted, "User")).toThrow("organization repository");
+});
+
 test("repository inspection performs reads only and distinguishes absent protection", async () => {
   const paths = [];
   const state = await inspectRepository("example/repo", async (path) => {
@@ -104,4 +122,22 @@ test("inaccessible protected branch does not become an unprotected success", asy
     if (path.endsWith("/protection")) throw new Error("HTTP 403");
     return path.endsWith("/branches/main") ? { protected: true } : {};
   })).rejects.toThrow("HTTP 403");
+});
+
+test("AI review stays advisory: comment-only tools, not a required check", () => {
+  const review = Bun.YAML.parse(source(".github/workflows/ai-review.yml"));
+  expect(review.permissions).toEqual({ contents: "read", "pull-requests": "write" });
+  const job = review.jobs["ai-review"];
+  expect(job.if).toContain("github.event.pull_request.head.repo.full_name == github.repository");
+  const step = job.steps.find((s) => String(s.uses).startsWith("anthropics/claude-code-action@"));
+  expect(step.uses).toMatch(/@[0-9a-f]{40}$/);
+  // Exact allowlist: any added tool (Edit, MultiEdit, git push, gh pr review/merge ...) fails here.
+  const allowed = step.with.claude_args.match(/--allowedTools "([^"]*)"/)[1].split(",");
+  expect(allowed).toEqual([
+    "Read", "Grep", "Glob", "Bash(gh pr diff:*)", "Bash(gh pr view:*)", "Bash(gh pr comment:*)",
+  ]);
+  expect(step.with.claude_args).not.toContain("--dangerously-skip-permissions");
+  for (const policy of [protection, soloProtection]) {
+    expect(policy.required_status_checks.checks.map((c) => c.context)).toEqual(["quality-gate"]);
+  }
 });

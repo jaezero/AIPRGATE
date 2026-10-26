@@ -85,7 +85,7 @@ fun ManagementScreen(
             }
             if (state.screen == ManagementScreen.LIST) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    listOf("open" to "열림", "closed" to "닫힘·병합", "all" to "전체").forEach { (key, title) ->
+                    listOf("open" to "검토 중", "closed" to "완료·종료", "all" to "전체").forEach { (key, title) ->
                         FilterChip(selected = state.filter == key, enabled = !busy && !state.loading,
                             colors = choiceColors(),
                             onClick = { onAction(ManagementAction.Filter(key)) }, label = { Text(title) })
@@ -199,10 +199,10 @@ private fun StatusLabel(text: String) {
 }
 
 private fun pullStatus(pr: PullRequest) = when {
-    pr.merged -> "병합됨"
-    pr.state == "closed" -> "닫힘"
-    pr.draft -> "초안"
-    else -> "열림"
+    pr.merged -> "병합 완료"
+    pr.state == "closed" -> "병합 없이 종료"
+    pr.draft -> "작성 중(초안)"
+    else -> "검토 중"
 }
 
 private fun localTime(iso: String): String = try {
@@ -483,6 +483,23 @@ private fun LazyListScope.reviews(
             "승인은 작성자 외 리뷰어가 현재 커밋에 제출한 것만 집계합니다.\n" +
                 "1인 운영에서는 현재 커밋의 작성자 자기 검토도 병합 조건으로 봅니다.")
     }
+    detail.aiReviews.maxByOrNull { it.id }?.let { ai ->
+        item(key = "ai-review") {
+            Card {
+                Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text("AI 리뷰 의견", style = MaterialTheme.typography.titleMedium)
+                    Text("참고용입니다. 승인으로 집계하지 않으며 최종 판단은 사람이 합니다.",
+                        style = MaterialTheme.typography.bodyMedium)
+                    Text(localTime(ai.createdAt), style = MaterialTheme.typography.bodyMedium)
+                    StatusLabel(if (ai.commitSha == detail.pull.headSha) "현재 커밋 대상" else "이전 커밋 대상")
+                    SelectionContainer {
+                        Text(plainMarkdown(ai.body), style = MaterialTheme.typography.bodyLarge)
+                    }
+                    TextButton(onClick = { onOpenUrl(ai.url) }) { Text("GitHub 댓글 열기") }
+                }
+            }
+        }
+    }
     item { ReviewForm(state, detail, onAction) }
     item { MergeForm(state, detail, onAction) }
     item { Text("리뷰 이력", style = MaterialTheme.typography.titleLarge) }
@@ -502,6 +519,13 @@ private fun LazyListScope.reviews(
         }
     }
 }
+
+/** Drops heading/bold markers and HTML tags so the comment reads as plain text. */
+internal fun plainMarkdown(body: String): String = body
+    .replace(Regex("</?h[1-6]>"), "")
+    .replace(Regex("(?m)^#{1,6}\\s*"), "")
+    .replace("**", "")
+    .trim()
 
 private fun reviewLabel(value: String) = when (value) {
     "APPROVED" -> "승인"
@@ -593,6 +617,14 @@ private fun MergeForm(
     var method by remember(detail.pull.headSha, methods) { mutableStateOf(methods.firstOrNull() ?: "merge") }
     var confirm by remember(detail.pull.target(state.repo)) {
         mutableStateOf<Pair<PullTarget, String>?>(null)
+    }
+    val finished = finishedPullNotice(detail.pull)
+    if (finished != null) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("병합", style = MaterialTheme.typography.titleLarge)
+            NoticeCard(finished.first, finished.second)
+        }
+        return
     }
     val blockers = mergeBlockers(detail, state.viewer, state.repository)
     val enabled = blockers.isEmpty() && !state.writing && !state.loading && state.error == null

@@ -59,6 +59,18 @@ class RoomTaskRepositoryTest {
     }
 
     @Test
+    fun sameTitleCanBeAddedAsSeparateTasks() = runTest {
+        assertEquals(AddTaskResult.ADDED, repository.add("복습"))
+        assertEquals(AddTaskResult.ADDED, repository.add(" 복습 "))
+
+        assertEquals(
+            listOf(LearningTask(1L, "복습", false), LearningTask(2L, "복습", false)),
+            repository.awaitTasks { it.size == 2 },
+        )
+        assertEquals(2, dao.writeCount)
+    }
+
+    @Test
     fun completionCanBeSetTrueAndThenFalse() = runTest {
         repository.add("Prepare")
         val original = repository.awaitTasks { it.size == 1 }.single()
@@ -73,6 +85,20 @@ class RoomTaskRepositoryTest {
         assertEquals(
             listOf(original),
             repository.awaitTasks { it.singleOrNull()?.isCompleted == false },
+        )
+    }
+
+    @Test
+    fun completionChangeOnlyAffectsTargetTask() = runTest {
+        repository.add("First")
+        repository.add("Second")
+        val (first, second) = repository.awaitTasks { it.size == 2 }
+
+        repository.setCompleted(second.id, true)
+
+        assertEquals(
+            listOf(first, second.copy(isCompleted = true)),
+            repository.awaitTasks { it.getOrNull(1)?.isCompleted == true },
         )
     }
 
