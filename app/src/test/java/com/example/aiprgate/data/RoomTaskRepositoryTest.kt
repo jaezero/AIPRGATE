@@ -59,6 +59,17 @@ class RoomTaskRepositoryTest {
     }
 
     @Test
+    fun sameTitleCanBeAddedAsSeparateTasks() = runTest {
+        assertEquals(AddTaskResult.ADDED, repository.add("복습"))
+        assertEquals(AddTaskResult.ADDED, repository.add(" 복습 "))
+
+        assertEquals(
+            listOf(LearningTask(1L, "복습", false), LearningTask(2L, "복습", false)),
+            repository.awaitTasks { it.size == 2 },
+        )
+    }
+
+    @Test
     fun completionCanBeSetTrueAndThenFalse() = runTest {
         repository.add("Prepare")
         val original = repository.awaitTasks { it.size == 1 }.single()
