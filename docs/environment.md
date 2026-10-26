@@ -109,6 +109,13 @@ APK: `app/build/outputs/apk/debug/app-debug.apk`
 
 참고: [Android JDK 선택](https://developer.android.com/build/jdks), [Gradle 비ASCII 경로 테스트 이슈](https://github.com/gradle/gradle/issues/30391), [Java 25 실행 명령·인자 파일](https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html). 공식 자료 확인일 2026-09-21. 현재 PC 결과는 외부 자료 대신 보존한 로그를 우선한다.
 
+### 한글 경로의 Gradle 증분 빌드 (2026-10-27 관찰)
+
+`git merge`로 소스가 바뀐 뒤 `assembleDebug`가 `compileDebugKotlin UP-TO-DATE`로 끝나
+이전 코드의 APK가 만들어졌다. APK의 dex에 새 코드가 없는 것으로 확인했다.
+`--no-configuration-cache --no-watch-fs --rerun-tasks`로 다시 빌드해 해결했다.
+설치 전에 새 코드가 들어갔는지 확인한다. GitHub Actions(Linux, ASCII 경로)에서는 관찰되지 않았다.
+
 ## 5. Android Studio에서 확인할 순서
 
 1. 기존 `AiPrGate` 프로젝트를 연다.

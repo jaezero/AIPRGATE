@@ -1,0 +1,756 @@
+{
+  "repository": "jaezero/AIPRGATE",
+  "collected_note": "GitHub REST API 조회 결과(읽기 전용)",
+  "main_protection": {
+    "required_checks": [
+      {
+        "context": "quality-gate",
+        "app_id": 15368
+      }
+    ],
+    "strict": true,
+    "enforce_admins": true,
+    "required_approving_review_count": 0,
+    "dismiss_stale_reviews": true
+  },
+  "pull_requests": [
+    {
+      "number": 1,
+      "title": "Feature/step3 pr check",
+      "state": "closed",
+      "merged": false,
+      "merged_at": null,
+      "merge_commit_sha": null,
+      "head_ref": "feature/step3-pr-check",
+      "head_sha": "bb7370db89a7a8b7b6e76ff376da3233654bcc7c",
+      "changed_files": 60,
+      "additions": 3818,
+      "deletions": 30,
+      "runs": [
+        {
+          "id": 35592271199,
+          "workflow": "pr-check",
+          "event": "pull_request",
+          "head_sha": "bb7370db89a7a8b7b6e76ff376da3233654bcc7c",
+          "conclusion": "failure",
+          "started": "2026-09-21T11:06:23Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/35592271199"
+        },
+        {
+          "id": 35591800043,
+          "workflow": "pr-check",
+          "event": "pull_request",
+          "head_sha": "ea128087f7f7b97a159f5a33bda53dae6dad8ec1",
+          "conclusion": "failure",
+          "started": "2026-09-21T11:01:10Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/35591800043"
+        },
+        {
+          "id": 35591390980,
+          "workflow": "pr-check",
+          "event": "pull_request",
+          "head_sha": "621a9ad000f7013cad419a21f8b285313a7b4d19",
+          "conclusion": "failure",
+          "started": "2026-09-21T10:56:27Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/35591390980"
+        },
+        {
+          "id": 35590468138,
+          "workflow": "pr-check",
+          "event": "pull_request",
+          "head_sha": "a630d1be8aa572a4ba1dbd018d1eaea3a2ea5fdc",
+          "conclusion": "failure",
+          "started": "2026-09-21T10:45:47Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/35590468138"
+        },
+        {
+          "id": 35590085666,
+          "workflow": "pr-check",
+          "event": "pull_request",
+          "head_sha": "0061ee439156b4c22448e0829f78de0df97e25fc",
+          "conclusion": "failure",
+          "started": "2026-09-21T10:41:34Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/35590085666"
+        },
+        {
+          "id": 35589105270,
+          "workflow": "pr-check",
+          "event": "pull_request",
+          "head_sha": "ab5e7cd3841e34661daa93fc2406767974580f4f",
+          "conclusion": "failure",
+          "started": "2026-09-21T10:30:26Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/35589105270"
+        },
+        {
+          "id": 35588697741,
+          "workflow": "pr-check",
+          "event": "pull_request",
+          "head_sha": "47aa463e2a0d061ac1fdd699ac590daf9349c507",
+          "conclusion": "failure",
+          "started": "2026-09-21T10:25:50Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/35588697741"
+        }
+      ],
+      "reviews": [],
+      "ai_review_comments": []
+    },
+    {
+      "number": 2,
+      "title": "[S1 정상] 완료 변경 대상 한정 회귀 테스트 추가",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-26T13:54:45Z",
+      "merge_commit_sha": "ff70ab4d469b4b04ce38d5a38f55b58ae559ee1e",
+      "head_ref": "scenario/normal-test",
+      "head_sha": "053b43d8f564ba68936b5c6fa0c8dd8033db492c",
+      "changed_files": 1,
+      "additions": 14,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40325462148,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "053b43d8f564ba68936b5c6fa0c8dd8033db492c",
+          "conclusion": "success",
+          "started": "2026-10-26T12:49:09Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40325462148"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5653031679,
+          "state": "COMMENTED",
+          "commit_id": "053b43d8f564ba68936b5c6fa0c8dd8033db492c",
+          "submitted_at": "2026-10-26T13:52:32Z",
+          "self_review": true
+        }
+      ],
+      "ai_review_comments": []
+    },
+    {
+      "number": 3,
+      "title": "[S2 테스트 실패] 같은 제목 할 일 추가 테스트",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-26T14:27:03Z",
+      "merge_commit_sha": "a20b9fcff29ed263fbb82a69bed237e41b7b1283",
+      "head_ref": "scenario/test-failure",
+      "head_sha": "98bf4a75bb4d6b4bdb2ec9c8cad970fbaf855d89",
+      "changed_files": 1,
+      "additions": 12,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40338491185,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "98bf4a75bb4d6b4bdb2ec9c8cad970fbaf855d89",
+          "conclusion": "success",
+          "started": "2026-10-26T14:18:53Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40338491185"
+        },
+        {
+          "id": 40336615274,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "df444614d80cfb62132675a7bfd3b6129540b997",
+          "conclusion": "success",
+          "started": "2026-10-26T14:06:57Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40336615274"
+        },
+        {
+          "id": 40334923251,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "4f4c9a73226cdc792dbe15b9ea3dfe74fb8d7ac9",
+          "conclusion": "success",
+          "started": "2026-10-26T13:55:45Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40334923251"
+        },
+        {
+          "id": 40325989563,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "ba02f857b6abfa91ab442f1a3ad0db950b579144",
+          "conclusion": "failure",
+          "started": "2026-10-26T12:53:13Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40325989563"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5653239242,
+          "state": "COMMENTED",
+          "commit_id": "4f4c9a73226cdc792dbe15b9ea3dfe74fb8d7ac9",
+          "submitted_at": "2026-10-26T14:06:19Z",
+          "self_review": true
+        },
+        {
+          "id": 5653576675,
+          "state": "COMMENTED",
+          "commit_id": "98bf4a75bb4d6b4bdb2ec9c8cad970fbaf855d89",
+          "submitted_at": "2026-10-26T14:26:51Z",
+          "self_review": true
+        }
+      ],
+      "ai_review_comments": []
+    },
+    {
+      "number": 4,
+      "title": "[S3 PR 정보 누락] 실제 PR 검증 시나리오 문서",
+      "state": "open",
+      "merged": false,
+      "merged_at": null,
+      "merge_commit_sha": null,
+      "head_ref": "scenario/pr-info-missing",
+      "head_sha": "1d9ef0e9034e8f9f37b1929befa63f8b63f8a07d",
+      "changed_files": 1,
+      "additions": 18,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40334908860,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "1d9ef0e9034e8f9f37b1929befa63f8b63f8a07d",
+          "conclusion": "success",
+          "started": "2026-10-26T13:55:39Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40334908860"
+        },
+        {
+          "id": 40325994294,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "1d9ef0e9034e8f9f37b1929befa63f8b63f8a07d",
+          "conclusion": "failure",
+          "started": "2026-10-26T12:53:15Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40325994294"
+        }
+      ],
+      "reviews": [],
+      "ai_review_comments": []
+    },
+    {
+      "number": 5,
+      "title": "[S4 Lint 차단] 인증서 검증 정책 클래스",
+      "state": "closed",
+      "merged": false,
+      "merged_at": null,
+      "merge_commit_sha": null,
+      "head_ref": "scenario/lint-trust-all",
+      "head_sha": "925938ebb363636cae5c2dad70110816d8cd12bd",
+      "changed_files": 0,
+      "additions": 0,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40334935136,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "925938ebb363636cae5c2dad70110816d8cd12bd",
+          "conclusion": "success",
+          "started": "2026-10-26T13:55:50Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40334935136"
+        },
+        {
+          "id": 40325998750,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "5e46e65d4f8c96e0d6374c168adb30f7b6faa51b",
+          "conclusion": "failure",
+          "started": "2026-10-26T12:53:17Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40325998750"
+        }
+      ],
+      "reviews": [],
+      "ai_review_comments": []
+    },
+    {
+      "number": 6,
+      "title": "[S5 시크릿] 동기화 설정 상수",
+      "state": "closed",
+      "merged": false,
+      "merged_at": null,
+      "merge_commit_sha": null,
+      "head_ref": "scenario/secret-literal",
+      "head_sha": "706d8a7196f8d9b18b4188bfbab5e4b3f09bb0f2",
+      "changed_files": 0,
+      "additions": 0,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40334939665,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "706d8a7196f8d9b18b4188bfbab5e4b3f09bb0f2",
+          "conclusion": "success",
+          "started": "2026-10-26T13:55:51Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40334939665"
+        },
+        {
+          "id": 40326000915,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "adf2813a3a8b0fc4b23ab1822e2f9580cd8138b6",
+          "conclusion": "failure",
+          "started": "2026-10-26T12:53:18Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40326000915"
+        }
+      ],
+      "reviews": [],
+      "ai_review_comments": []
+    },
+    {
+      "number": 7,
+      "title": "보호 설정 적용 형식 수정 (실제 HTTP 422 대응)",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-26T14:17:55Z",
+      "merge_commit_sha": "03a5b43a6628c7f70db6df6bc19e6e2b5727005e",
+      "head_ref": "fix/protection-payload",
+      "head_sha": "5d9dafc37ee1c2a87c207721a93506fefff8a690",
+      "changed_files": 4,
+      "additions": 45,
+      "deletions": 8,
+      "runs": [
+        {
+          "id": 40337003581,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "5d9dafc37ee1c2a87c207721a93506fefff8a690",
+          "conclusion": "success",
+          "started": "2026-10-26T14:09:26Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40337003581"
+        },
+        {
+          "id": 40334965280,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "c32de530645643f7b82bf5de6fcbb973af2780e2",
+          "conclusion": "success",
+          "started": "2026-10-26T13:56:01Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40334965280"
+        },
+        {
+          "id": 40326248097,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "0b1b0c42e231d942967cb7f8cce65fda17b0f8d5",
+          "conclusion": "success",
+          "started": "2026-10-26T12:55:11Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40326248097"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5653248154,
+          "state": "COMMENTED",
+          "commit_id": "c32de530645643f7b82bf5de6fcbb973af2780e2",
+          "submitted_at": "2026-10-26T14:06:53Z",
+          "self_review": true
+        },
+        {
+          "id": 5653262608,
+          "state": "COMMENTED",
+          "commit_id": "c32de530645643f7b82bf5de6fcbb973af2780e2",
+          "submitted_at": "2026-10-26T14:07:51Z",
+          "self_review": true
+        },
+        {
+          "id": 5653266340,
+          "state": "COMMENTED",
+          "commit_id": "c32de530645643f7b82bf5de6fcbb973af2780e2",
+          "submitted_at": "2026-10-26T14:08:05Z",
+          "self_review": true
+        },
+        {
+          "id": 5653415290,
+          "state": "COMMENTED",
+          "commit_id": "5d9dafc37ee1c2a87c207721a93506fefff8a690",
+          "submitted_at": "2026-10-26T14:17:44Z",
+          "self_review": true
+        }
+      ],
+      "ai_review_comments": []
+    },
+    {
+      "number": 8,
+      "title": "병합된 PR에 '병합할 수 없습니다'가 표시되는 문제 수정",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-26T14:07:24Z",
+      "merge_commit_sha": "207ead7bbacfff579caffdb32af5f193d9c455cb",
+      "head_ref": "fix/app-merged-state",
+      "head_sha": "ad2e0be67f3448dd061b1ca7ed64660e46016d68",
+      "changed_files": 3,
+      "additions": 42,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40335177872,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "ad2e0be67f3448dd061b1ca7ed64660e46016d68",
+          "conclusion": "success",
+          "started": "2026-10-26T13:57:25Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40335177872"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5653253022,
+          "state": "COMMENTED",
+          "commit_id": "ad2e0be67f3448dd061b1ca7ed64660e46016d68",
+          "submitted_at": "2026-10-26T14:07:12Z",
+          "self_review": true
+        }
+      ],
+      "ai_review_comments": []
+    },
+    {
+      "number": 9,
+      "title": "AI 1차 리뷰 의견 워크플로우 추가 (참고용)",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-26T15:17:59Z",
+      "merge_commit_sha": "c78e9f054d959a9ce13b143aa2f35ceca6468b04",
+      "head_ref": "feat/ai-review-bot",
+      "head_sha": "01dcc3b40dee72220d5b237308803cfb53c1baaa",
+      "changed_files": 2,
+      "additions": 111,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40346839837,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "01dcc3b40dee72220d5b237308803cfb53c1baaa",
+          "conclusion": "success",
+          "started": "2026-10-26T15:11:16Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40346839837"
+        },
+        {
+          "id": 40346839806,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "01dcc3b40dee72220d5b237308803cfb53c1baaa",
+          "conclusion": "success",
+          "started": "2026-10-26T15:11:16Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40346839806"
+        },
+        {
+          "id": 40345041268,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "7d8b6578c88703ecbbb92ab67f320253e6a4baa1",
+          "conclusion": "success",
+          "started": "2026-10-26T15:00:27Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40345041268"
+        },
+        {
+          "id": 40345041323,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "7d8b6578c88703ecbbb92ab67f320253e6a4baa1",
+          "conclusion": "success",
+          "started": "2026-10-26T15:00:27Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40345041323"
+        },
+        {
+          "id": 40340545753,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "5cd7f2b214f4636005aebd1379f5afecbaa35184",
+          "conclusion": "success",
+          "started": "2026-10-26T14:32:33Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40340545753"
+        },
+        {
+          "id": 40340544960,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "5cd7f2b214f4636005aebd1379f5afecbaa35184",
+          "conclusion": "success",
+          "started": "2026-10-26T14:32:32Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40340544960"
+        },
+        {
+          "id": 40340096510,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "a6ea1deb5b4df38b56f8cd328fb7cf7fac6fccd9",
+          "conclusion": "cancelled",
+          "started": "2026-10-26T14:29:55Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40340096510"
+        },
+        {
+          "id": 40340096360,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "a6ea1deb5b4df38b56f8cd328fb7cf7fac6fccd9",
+          "conclusion": "cancelled",
+          "started": "2026-10-26T14:29:54Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40340096360"
+        },
+        {
+          "id": 40339401439,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "bb2d76483de1b7d4bfe694babdb7ba9567ab95cf",
+          "conclusion": "success",
+          "started": "2026-10-26T14:24:44Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40339401439"
+        },
+        {
+          "id": 40339401871,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "bb2d76483de1b7d4bfe694babdb7ba9567ab95cf",
+          "conclusion": "success",
+          "started": "2026-10-26T14:24:44Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40339401871"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5654289058,
+          "state": "COMMENTED",
+          "commit_id": "7d8b6578c88703ecbbb92ab67f320253e6a4baa1",
+          "submitted_at": "2026-10-26T15:10:11Z",
+          "self_review": true
+        },
+        {
+          "id": 5654292775,
+          "state": "COMMENTED",
+          "commit_id": "7d8b6578c88703ecbbb92ab67f320253e6a4baa1",
+          "submitted_at": "2026-10-26T15:10:27Z",
+          "self_review": true
+        },
+        {
+          "id": 5654406352,
+          "state": "COMMENTED",
+          "commit_id": "01dcc3b40dee72220d5b237308803cfb53c1baaa",
+          "submitted_at": "2026-10-26T15:17:42Z",
+          "self_review": true
+        }
+      ],
+      "ai_review_comments": [
+        {
+          "id": 6418511218,
+          "created_at": "2026-10-26T14:27:07Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/9#issuecomment-6418511218",
+          "marker_sha": "bb2d76483de1b7d4bfe694babdb7ba9567ab95cf"
+        },
+        {
+          "id": 6418629762,
+          "created_at": "2026-10-26T14:32:42Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/9#issuecomment-6418629762",
+          "marker_sha": "a6ea1deb5b4df38b56f8cd328fb7cf7fac6fccd9"
+        },
+        {
+          "id": 6418662430,
+          "created_at": "2026-10-26T14:34:07Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/9#issuecomment-6418662430",
+          "marker_sha": "5cd7f2b214f4636005aebd1379f5afecbaa35184"
+        },
+        {
+          "id": 6419337621,
+          "created_at": "2026-10-26T15:02:18Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/9#issuecomment-6419337621",
+          "marker_sha": "7d8b6578c88703ecbbb92ab67f320253e6a4baa1"
+        },
+        {
+          "id": 6419601582,
+          "created_at": "2026-10-26T15:13:17Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/9#issuecomment-6419601582",
+          "marker_sha": "01dcc3b40dee72220d5b237308803cfb53c1baaa"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "샘플 앱 로컬 로그인 기능 추가",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-26T15:35:15Z",
+      "merge_commit_sha": "271797bdddfd784ae5c97e6018668a14ebc17c33",
+      "head_ref": "feature/local-login",
+      "head_sha": "a7e810c0cf400f467e4ad543a21318aacf23ca6d",
+      "changed_files": 8,
+      "additions": 503,
+      "deletions": 0,
+      "runs": [
+        {
+          "id": 40349405338,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "a7e810c0cf400f467e4ad543a21318aacf23ca6d",
+          "conclusion": "success",
+          "started": "2026-10-26T15:26:57Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40349405338"
+        },
+        {
+          "id": 40348758179,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "a7e810c0cf400f467e4ad543a21318aacf23ca6d",
+          "conclusion": "success",
+          "started": "2026-10-26T15:22:56Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40348758179"
+        },
+        {
+          "id": 40348758144,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "a7e810c0cf400f467e4ad543a21318aacf23ca6d",
+          "conclusion": "success",
+          "started": "2026-10-26T15:22:56Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40348758144"
+        },
+        {
+          "id": 40348007234,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "a64713f53fd3075844839ea096e18d9143688dbe",
+          "conclusion": "success",
+          "started": "2026-10-26T15:18:21Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40348007234"
+        },
+        {
+          "id": 40348007132,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "a64713f53fd3075844839ea096e18d9143688dbe",
+          "conclusion": "success",
+          "started": "2026-10-26T15:18:20Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40348007132"
+        },
+        {
+          "id": 40346463997,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "4bf850ab70ff7d0dce3a64669c00dd8551834085",
+          "conclusion": "success",
+          "started": "2026-10-26T15:09:01Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40346463997"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5654660234,
+          "state": "COMMENTED",
+          "commit_id": "a7e810c0cf400f467e4ad543a21318aacf23ca6d",
+          "submitted_at": "2026-10-26T15:35:02Z",
+          "self_review": true
+        }
+      ],
+      "ai_review_comments": [
+        {
+          "id": 6419761690,
+          "created_at": "2026-10-26T15:20:10Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/10#issuecomment-6419761690",
+          "marker_sha": "a64713f53fd3075844839ea096e18d9143688dbe"
+        },
+        {
+          "id": 6419860616,
+          "created_at": "2026-10-26T15:24:30Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/10#issuecomment-6419860616",
+          "marker_sha": "a7e810c0cf400f467e4ad543a21318aacf23ca6d"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "관리 앱에 AI 리뷰 의견 표시 및 behind 사유 안내",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-26T15:53:02Z",
+      "merge_commit_sha": "02f219c5dfc051f6a48c02a29ef89ce9fd55413e",
+      "head_ref": "feat/app-ai-review-view",
+      "head_sha": "c850d9605473c56c9dd087097720f72090eb5be6",
+      "changed_files": 8,
+      "additions": 136,
+      "deletions": 10,
+      "runs": [
+        {
+          "id": 40352233451,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "c850d9605473c56c9dd087097720f72090eb5be6",
+          "conclusion": "success",
+          "started": "2026-10-26T15:44:10Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40352233451"
+        },
+        {
+          "id": 40351394317,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "c850d9605473c56c9dd087097720f72090eb5be6",
+          "conclusion": "success",
+          "started": "2026-10-26T15:39:00Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40351394317"
+        },
+        {
+          "id": 40351394407,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "c850d9605473c56c9dd087097720f72090eb5be6",
+          "conclusion": "success",
+          "started": "2026-10-26T15:39:00Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40351394407"
+        },
+        {
+          "id": 40350996897,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "919fe633a081aaa370d4cad854206d24cc13b17e",
+          "conclusion": "cancelled",
+          "started": "2026-10-26T15:36:35Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40350996897"
+        },
+        {
+          "id": 40350997031,
+          "workflow": "AI review (advisory)",
+          "event": "pull_request",
+          "head_sha": "919fe633a081aaa370d4cad854206d24cc13b17e",
+          "conclusion": "success",
+          "started": "2026-10-26T15:36:35Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40350997031"
+        },
+        {
+          "id": 40347169244,
+          "workflow": "AI PR validation",
+          "event": "pull_request",
+          "head_sha": "77e140a6a51e2204ad9f6d79cf0a7cea5bfb039e",
+          "conclusion": "success",
+          "started": "2026-10-26T15:13:17Z",
+          "url": "https://github.com/jaezero/AIPRGATE/actions/runs/40347169244"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5654926264,
+          "state": "COMMENTED",
+          "commit_id": "c850d9605473c56c9dd087097720f72090eb5be6",
+          "submitted_at": "2026-10-26T15:52:53Z",
+          "self_review": true
+        }
+      ],
+      "ai_review_comments": [
+        {
+          "id": 6420172786,
+          "created_at": "2026-10-26T15:38:02Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/11#issuecomment-6420172786",
+          "marker_sha": "919fe633a081aaa370d4cad854206d24cc13b17e"
+        },
+        {
+          "id": 6420260182,
+          "created_at": "2026-10-26T15:41:50Z",
+          "url": "https://github.com/jaezero/AIPRGATE/pull/11#issuecomment-6420260182",
+          "marker_sha": "c850d9605473c56c9dd087097720f72090eb5be6"
+        }
+      ]
+    }
+  ]
+}

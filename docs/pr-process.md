@@ -145,7 +145,12 @@ BUN_BE_BUN=1 /home/jaeyeong/.omo/binary-runtime/5.1.40/omo
 Windows 한글 경로 테스트의 COMPAT 조건은 로컬 실행기에만 적용한다.
 GitHub Linux job에는 이 우회를 복사하지 않는다.
 
-## 5. GitHub 적용 순서 — 아직 실행하지 않음
+## 5. GitHub 적용 순서
+
+2026-10-26 `jaezero/AIPRGATE`에 1인 운영 보호 설정으로 적용했다.
+실제 결과는 [실제 PR 검증 결과](results/pr-scenarios-20261026/summary.md)에 있다.
+개인 저장소에서는 `contexts`와 `checks`를 함께 보내거나 `bypass_pull_request_allowances`를 보내면
+GitHub가 422로 거절한다(PR #7에서 도구를 수정함).
 
 1. 사용할 `owner/repository`, 접근 권한, 요금제에서 보호 기능 사용 가능 여부를 확인한다.
 2. 로컬 파일과 변경 내용을 검토하고 Git 기준 상태를 정한다.
