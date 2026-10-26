@@ -129,6 +129,14 @@ fun gateBlockers(detail: PullDetails): List<String> = buildList {
     }
 }
 
+// A finished PR is not "blocked": showing merge blockers after a successful
+// merge would read as a failure, so the merge area reports the final state.
+fun finishedPullNotice(pr: PullRequest): Pair<String, String>? = when {
+    pr.merged -> "병합 완료" to "이 PR은 GitHub에서 병합되었습니다.\n병합 기록은 GitHub에서 확인하세요."
+    pr.state != "open" -> "닫힌 PR" to "병합하지 않고 닫힌 PR입니다."
+    else -> null
+}
+
 fun mergeBlockers(
     detail: PullDetails, viewer: GitHubUser?, repository: RepositoryInfo?,
 ): List<String> = buildList {
