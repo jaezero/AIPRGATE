@@ -594,6 +594,14 @@ private fun MergeForm(
     var confirm by remember(detail.pull.target(state.repo)) {
         mutableStateOf<Pair<PullTarget, String>?>(null)
     }
+    val finished = finishedPullNotice(detail.pull)
+    if (finished != null) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("병합", style = MaterialTheme.typography.titleLarge)
+            NoticeCard(finished.first, finished.second)
+        }
+        return
+    }
     val blockers = mergeBlockers(detail, state.viewer, state.repository)
     val enabled = blockers.isEmpty() && !state.writing && !state.loading && state.error == null
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
