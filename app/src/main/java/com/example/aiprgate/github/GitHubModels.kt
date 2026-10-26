@@ -81,6 +81,15 @@ data class PullReview(
     val url: String,
 )
 
+/** Advisory comment from the ai-review workflow; never counted as an approval. */
+data class AiReviewComment(
+    val id: Long,
+    val commitSha: String,
+    val body: String,
+    val createdAt: String,
+    val url: String,
+)
+
 data class Page<T>(val items: List<T>, val hasNext: Boolean)
 data class MergeResult(val merged: Boolean, val message: String, val sha: String?)
 enum class ReviewEvent { COMMENT, REQUEST_CHANGES, APPROVE }
@@ -105,4 +114,5 @@ interface GitHubService {
         repo: RepoId, number: Int, token: String, sha: String, event: ReviewEvent, body: String,
     ): PullReview
     suspend fun merge(repo: RepoId, number: Int, token: String, sha: String, method: String): MergeResult
+    suspend fun aiReviews(repo: RepoId, number: Int, token: String?): List<AiReviewComment> = emptyList()
 }

@@ -201,6 +201,14 @@ class ManagementViewModel(
             val pr = api.pull(repo, number, credential)
             val files = async { api.files(repo, number, credential, 1) }
             val reviews = async { api.reviews(repo, number, credential) }
+            // AI opinions are advisory: failing to read them must not hide the PR.
+            val aiReviews = async {
+                try {
+                    api.aiReviews(repo, number, credential)
+                } catch (error: GitHubException) {
+                    emptyList()
+                }
+            }
             val statuses = async { api.statuses(repo, pr.headSha, credential) }
             val headChecks = async { api.checks(repo, pr.headSha, credential) }
             val mergeChecks = async {
@@ -219,7 +227,7 @@ class ManagementViewModel(
                 latest.updatedAt != pr.updatedAt) throw GitHubException(GitHubError.CONFLICT)
             PullDetails(
                 latest, page.items, 1, page.hasNext,
-                checks, statusResults, reviewResults,
+                checks, statusResults, reviewResults, aiReviews.await(),
             )
         }
 
